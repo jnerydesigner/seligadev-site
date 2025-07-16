@@ -20,7 +20,7 @@ export default function Hero() {
       <ul className="h-12 w-90 flex justify-center items-center gap-4 mt-4">
         <li className="h-10 w-10 flex justify-center items-center bg-white rounded-sm">
           <Link
-            href="https://www.linkedin.com/in/jandernery"
+            href="https://www.linkedin.com/in/jander-nery"
             target="_blank"
             rel="noopener noreferrer"
             title="LinkedIn"
