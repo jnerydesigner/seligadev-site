@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import React from "react";
 import prisma from "@/lib/prisma";
 import Image from "next/image";
@@ -5,7 +7,6 @@ import Image from "next/image";
 export default async function PageSetup() {
   const setups = await prisma.setup.findMany();
 
-  console.log(setups);
   return (
     <section className="w-full h-auto flex justify-center items-center flex-col p-4">
       <h1 className="text-center text-xl font-bold mb-4 w-full">
@@ -28,7 +29,7 @@ export default async function PageSetup() {
               <h2 className="font-medium line-clamp-2">{product.name}</h2>
               <span className="text-green-600 font-semibold">
                 R${" "}
-                {product.price.toLocaleString("pt-BR", {
+                {Number(product.price).toLocaleString("pt-BR", {
                   minimumFractionDigits: 2,
                 })}
               </span>
