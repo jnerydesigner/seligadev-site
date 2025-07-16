@@ -36,30 +36,30 @@ pipeline {
                 sh 'which pm2'
             }
         }
-        // stage('Deploy com PM2') {
-        //     steps {
-        //         script {
-        //             withCredentials([string(credentialsId: 'SSH_PASSWORD', variable: 'SSH_PASSWORD')]) {
-        //                 sh """
-        //                     sshpass -p '${SSH_PASSWORD}' ssh -o StrictHostKeyChecking=no root@deploy-server '
-        //                         export PATH=/var/lib/jenkins/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/NodeJS_22/bin:$PATH
+        stage('Deploy com PM2') {
+            steps {
+                script {
+                    withCredentials([string(credentialsId: 'SSH_PASSWORD', variable: 'SSH_PASSWORD')]) {
+                        sh """
+                            sshpass -p '${SSH_PASSWORD}' ssh -o StrictHostKeyChecking=no root@deploy-server '
+                                export PATH=/var/lib/jenkins/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/NodeJS_22/bin:$PATH
 
-        //                         node -v
-        //                         yarn -v
+                                node -v
+                                yarn -v
 
-        //                         cd /var/lib/jenkins/workspace/ProductsDigital
+                                cd /var/lib/jenkins/workspace/SeLigaDevSite
 
-        //                         yarn install
-        //                         yarn build
+                                yarn install
+                                yarn build
 
-        //                         pm2 update ${env.PROJECT_NAME} || true
-        //                         pm2 start my-pm2-start.json --update-env || pm2 restart my-pm2-start.json
-        //          '
-        //                 """
-        //             }
-        //         }
-        //     }
-        // }
+                                pm2 update ${env.PROJECT_NAME} || true
+                                pm2 start my-pm2-start.json --update-env || pm2 restart my-pm2-start.json
+                 '
+                        """
+                    }
+                }
+            }
+        }
         // stage('Send Mail Deploy Success') {
         //     steps {
         //         emailext(attachLog: true,
