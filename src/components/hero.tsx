@@ -40,7 +40,7 @@ export default function Hero() {
         </li>
         <li className="h-10 w-10 flex justify-center items-center bg-white rounded-sm">
           <Link
-            href="https://twitter.com/jandernery"
+            href="https://x.com/jandernerydev"
             target="_blank"
             rel="noopener noreferrer"
             title="Twitter/X"
@@ -50,7 +50,7 @@ export default function Hero() {
         </li>
         <li className="h-10 w-10 flex justify-center items-center bg-white rounded-sm">
           <Link
-            href="https://www.instagram.com/jandernery"
+            href="#"
             target="_blank"
             rel="noopener noreferrer"
             title="Instagram"
@@ -65,7 +65,7 @@ export default function Hero() {
         </li>
         <li className="h-10 w-10 flex justify-center items-center bg-white rounded-sm">
           <Link
-            href="https://www.facebook.com/jandernery"
+            href="#"
             target="_blank"
             rel="noopener noreferrer"
             title="Facebook"
@@ -75,7 +75,7 @@ export default function Hero() {
         </li>
         <li className="h-10 w-10 flex justify-center items-center bg-white rounded-sm">
           <Link
-            href="https://github.com/jandernery"
+            href="https://github.com/jnerydesigner"
             target="_blank"
             rel="noopener noreferrer"
             title="GitHub"
