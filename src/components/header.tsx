@@ -18,8 +18,8 @@ export default function Header() {
   const [active, setActive] = useState<NavItemType>("/");
 
   return (
-    <header className="w-full px-4 py-3 flex justify-center">
-      <nav className="flex gap-4 flex-wrap">
+    <header className="w-full px-4 py-3 flex justify-center text-oliver-dark">
+      <nav className="flex gap-4 flex-wrap text-oliver-dark">
         {navItems.map((item) => (
           <NavItem
             key={item.pathPage}

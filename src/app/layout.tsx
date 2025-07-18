@@ -1,17 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Bangers } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
 import PageContainer from "@/components/page-container";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const bangers = Bangers({
+  weight: "400",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: "--font-bangers",
 });
 
 export const metadata: Metadata = {
@@ -27,9 +23,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-principal-seligadev`}
+        className={`${bangers.variable} antialiased bg-principal-seligadev`}
       >
-        <div className="min-h-screen">
+        <div className="min-h-screen font-bangers halftone-bg halftone-close">
           <Header />
           <PageContainer>{children}</PageContainer>
         </div>

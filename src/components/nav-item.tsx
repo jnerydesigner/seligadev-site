@@ -21,8 +21,8 @@ export default function NavItem({
       className={`px-4 py-2 rounded-xl transition-colors duration-200 cursor-pointer
         ${
           active
-            ? "bg-[#101928] text-[#F7F0E9]"
-            : "text-white hover:bg-[#101928] hover:text-[#F7F0E9]"
+            ? "bg-oliver-light text-white"
+            : "bg-white text-oliver-dark hover:bg-[#101928] hover:text-[#F7F0E9]"
         }`}
     >
       {label}

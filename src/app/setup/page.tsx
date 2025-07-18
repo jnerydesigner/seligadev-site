@@ -3,16 +3,19 @@ export const dynamic = "force-dynamic";
 import React from "react";
 import prisma from "@/lib/prisma";
 import Image from "next/image";
+import { CardProductContainer } from "@/components/card-product-container";
 
 export default async function PageSetup() {
   const setups = await prisma.setup.findMany();
 
   return (
     <section className="w-full h-auto flex justify-center items-center flex-col p-4">
-      <h1 className="text-center text-xl font-bold mb-4 w-full">
-        Produtos Que eu Uso
-      </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4">
+      <section className="w-full h-auto flex justify-center items-center flex-col p-4">
+        <div className="h1-rectangle-path">
+          <h1 className="z-10 text-[1.8rem]">Produtos que eu Uso</h1>
+        </div>
+      </section>
+      {/* <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4">
         {setups.map((product) => (
           <div
             key={product.id}
@@ -44,7 +47,9 @@ export default async function PageSetup() {
             </div>
           </div>
         ))}
-      </div>
+      </div> */}
+
+      <CardProductContainer cardProducts={setups} />
     </section>
   );
 }
