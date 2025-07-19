@@ -20,6 +20,30 @@
 }
 
 @layer utilities {
+  .div-posts-path {
+    position: relative;
+    height: 210px;
+  }
+
+  .div-posts-path::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-oliver-dark);
+    clip-path: polygon(0 40%, 100% 0%, 100% 96%, 0 100%);
+    z-index: 1;
+  }
+
+  .div-posts-path::after {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    background-color: #a8dadc;
+    background-image: radial-gradient(#1d3557 10%, transparent 12%);
+    background-size: 18px 18px;
+    clip-path: polygon(0 41%, 100% 0%, 100% 96%, 0 100%);
+    z-index: 2;
+  }
 
   .div-rectangle-path {
     display: flex;
