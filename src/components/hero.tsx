@@ -51,12 +51,7 @@ export default function Hero() {
               key={alt}
               className="h-10 w-10 flex justify-center items-center bg-white rounded-sm shadow"
             >
-              <Link
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                title={alt}
-              >
+              <Link href={href} target="_blank" rel="noopener noreferrer" title={alt}>
                 <Image src={src} width={20} height={20} alt={alt} />
               </Link>
             </li>

@@ -9,13 +9,7 @@ export interface CardProps {
   imageUrl: string;
 }
 
-export const CardProduct = ({
-  name,
-  imageUrl,
-  productUrl,
-  price,
-}: CardProps) => {
-  console.log("Price ", price);
+export const CardProduct = ({ name, imageUrl, productUrl, price }: CardProps) => {
   return (
     <div className="div-rectangle-path flex justify-center items-center flex-col p-4">
       <div className="w-full h-40 z-10 border-2 border-amber-50">

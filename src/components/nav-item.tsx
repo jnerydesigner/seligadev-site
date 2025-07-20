@@ -8,12 +8,7 @@ interface NavItemProps {
   onClick: () => void;
 }
 
-export default function NavItem({
-  label,
-  active,
-  onClick,
-  path,
-}: NavItemProps) {
+export default function NavItem({ label, active, onClick, path }: NavItemProps) {
   return (
     <Link
       href={path}

@@ -4,14 +4,14 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --font-bangers: 'Bangers', sans-serif;
+  --font-bangers: "Bangers", sans-serif;
   --color-oliver-light: #40bd8bff;
   --color-yellow-dark: #f6eba9ff;
   --color-yellow-light: rgba(246, 235, 169, 1);
   --color-pink-light: #eb6974ff;
   --color-red-dark: #e63638ff;
   --color-oliver-dark: #30706fff;
-  --clip-path-div: polygon(0 1%, 100% 0%, 100% 80%, 0 100%) polygon(0 1%, 100% 0%, 100% 80%, 0 100%)
+  --clip-path-div: polygon(0 1%, 100% 0%, 100% 80%, 0 100%) polygon(0 1%, 100% 0%, 100% 80%, 0 100%);
 }
 
 .font-bangers {
@@ -104,7 +104,6 @@
     z-index: 2;
   }
 
-
   .hero-rectangle-path {
     position: relative;
     width: 100%;
@@ -130,7 +129,7 @@
     z-index: 2;
   }
 
-  .hero-rectangle-path>* {
+  .hero-rectangle-path > * {
     position: relative;
     z-index: 3;
   }
@@ -155,7 +154,7 @@
     z-index: 2;
   }
 
-  .hero-rectangle-path-alt>* {
+  .hero-rectangle-path-alt > * {
     position: relative;
     z-index: 3;
   }
@@ -183,7 +182,6 @@
       background-size: 20px 20px;
     }
   }
-
 
   .halftone-index {
     z-index: 0;
@@ -238,12 +236,11 @@
   }
 }
 
-
 @theme {
   --color-principal-seligadev: #020916;
   --color-secondary-seligadev: #101928;
-  --color-tertiary-seligadev: #F7F0E9;
-  --color-quarter-seligadev: #56758B;
+  --color-tertiary-seligadev: #f7f0e9;
+  --color-quarter-seligadev: #56758b;
   --color-oliver-light: #40bd8bff;
   --color-yellow-light: #f6eba9ff;
   --color-pink-light: #eb6974ff;

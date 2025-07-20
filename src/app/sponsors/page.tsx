@@ -1,4 +1,3 @@
-import { CardProductContainer } from "@/components/card-product-container";
 import React from "react";
 
 export default function PageSponsors() {

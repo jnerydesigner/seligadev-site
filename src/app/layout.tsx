@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/header";
 import PageContainer from "@/components/page-container";
 
+
 const bangers = Bangers({
   weight: "400",
   subsets: ["latin"],
@@ -22,9 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${bangers.variable} antialiased bg-principal-seligadev`}
-      >
+      <body className={`${bangers.variable} antialiased bg-principal-seligadev`}>
         <div className="min-h-screen font-bangers halftone-bg halftone-close">
           <Header />
           <PageContainer>{children}</PageContainer>

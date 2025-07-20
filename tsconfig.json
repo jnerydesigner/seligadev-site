@@ -1,27 +1,47 @@
 {
   "compilerOptions": {
+    /* =========================
+     * Caminhos e Resolução
+     * ========================= */
+    "baseUrl": ".", // Define a raiz do projeto
+    "paths": {
+      "@/*": ["src/*"], // Alias para a pasta src
+      "@generated/*": ["generated/*"] // Alias opcional para prisma gerado fora de src
+    },
+    /* =========================
+     * Configurações Essenciais
+     * ========================= */
     "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
+    "module": "esnext",
+    "moduleResolution": "bundler", // Next.js 13+ recomenda 'bundler'
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "jsx": "preserve",
+    /* =========================
+     * Segurança e Tipagem
+     * ========================= */
     "strict": true,
     "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "skipLibCheck": true,
     "incremental": true,
+    /* =========================
+     * Plugins Next.js
+     * ========================= */
     "plugins": [
       {
         "name": "next"
       }
     ],
-    "paths": {
-      "@/*": ["./src/*"]
-    }
+    "allowJs": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/generated/prisma" // Adicione se você mover o Prisma para src
+  ],
   "exclude": ["node_modules"]
 }

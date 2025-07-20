@@ -1,11 +1,11 @@
 {
-    "apps": [
-        {
-            "name": "seligadev",
-            "script": "yarn",
-            "args": "start",
-            "autorestart": true,
-            "watch": true
-        }
-    ]
+  "apps": [
+    {
+      "name": "seligadev",
+      "script": "yarn",
+      "args": "start",
+      "autorestart": true,
+      "watch": true
+    }
+  ]
 }
