@@ -1,5 +1,5 @@
 
-import { Videos } from "@/generated/prisma";
+import { Videos } from "@prisma/client";
 import { CardVideo, VideoProps } from "./card-video";
 
 interface CardVideoContainerProps {
