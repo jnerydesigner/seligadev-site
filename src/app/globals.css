@@ -129,7 +129,7 @@
     z-index: 2;
   }
 
-  .hero-rectangle-path > * {
+  .hero-rectangle-path>* {
     position: relative;
     z-index: 3;
   }
@@ -154,7 +154,7 @@
     z-index: 2;
   }
 
-  .hero-rectangle-path-alt > * {
+  .hero-rectangle-path-alt>* {
     position: relative;
     z-index: 3;
   }
@@ -221,13 +221,17 @@
 
   /* Cores alternativas */
   .halftone-red {
-    background-color: #fff;
-    background-image: radial-gradient(#e63946 10%, transparent 11%);
+    background-color: var(--color-pink-light);
+    background-image: radial-gradient(#e9ddde 10%, transparent 11%);
+    background-size: 16px 16px;
+    border: 3px solid var(--color-oliver-dark);
   }
 
   .halftone-blue {
     background-color: #a8dadc;
     background-image: radial-gradient(#1d3557 10%, transparent 11%);
+    background-size: 16px 16px;
+    border: 3px solid var(--color-oliver-dark);
   }
 
   .halftone-yellow {

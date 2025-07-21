@@ -25,6 +25,8 @@ model Setup {
   price      Float
   productUrl String
   imageUrl   String
+  slug       String
+  nameFull   String
   createdAt  DateTime @default(now())
 
   @@map("setup")
