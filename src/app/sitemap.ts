@@ -21,6 +21,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     {
+      url: `${baseUrl}/hostinger`,
+      lastModified: "2025-07-21",
+      changeFrequency: "yearly",
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/setup`,
       lastModified: "2025-07-21",
       changeFrequency: "yearly",

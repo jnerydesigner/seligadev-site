@@ -48,7 +48,7 @@ export const HostingerPlans = async () => {
             className="flex flex-col justify-between rounded-2xl border border-purple-100 bg-gray-50 p-6 shadow-lg transition-shadow hover:shadow-purple-400"
           >
             <div>
-              <h3 className="mb-4 text-xl font-semibold text-purple-500">{plan.title}</h3>
+              <h2 className="mb-4 text-xl font-semibold text-purple-500">{plan.title}</h2>
               <span className="mb-4 block rounded-sm p-2 text-center text-[1.6rem] font-semibold text-green-600 shadow-sm">
                 R${" "}
                 {Number(plan.price).toLocaleString("pt-BR", {
