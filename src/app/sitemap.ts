@@ -15,7 +15,37 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   });
   return [
     {
-      url: `${baseUrl}/about`,
+      url: `${baseUrl}`,
+      lastModified: "2025-07-21",
+      changeFrequency: "yearly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/setup`,
+      lastModified: "2025-07-21",
+      changeFrequency: "yearly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: "2025-07-21",
+      changeFrequency: "yearly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/videos`,
+      lastModified: "2025-07-21",
+      changeFrequency: "yearly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/shorts`,
+      lastModified: "2025-07-21",
+      changeFrequency: "yearly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/sponsors`,
       lastModified: "2025-07-21",
       changeFrequency: "yearly",
       priority: 0.8,

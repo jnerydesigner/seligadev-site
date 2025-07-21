@@ -1,7 +1,7 @@
 import Hero from "@/components/hero";
-import { LastPostBlog } from "@/components/last-post-blog";
+
 import { Consult } from "@/components/consult";
-import { AdsBanner } from "@/components/adsbanner";
+import { CardHome } from "@/components/card-home";
 
 export default function Home() {
   return (
@@ -13,7 +13,17 @@ export default function Home() {
         dataFullWidthResponsive={true}
         dataAdSlot="6139750906"
       /> */}
-      <Consult />
+      {/* <Consult /> */}
+      <CardHome
+        title="Consultoria Premium 🚀"
+        description="A orientação certa para levar seu projeto ao próximo nível."
+        link="/consult"
+      />
+      <CardHome
+        title="🌏 Quer uma VPS para aumentar sua produtividade 🚀"
+        description="Vem para Hostinger e seja feliz"
+        link="/hostinger"
+      />
     </div>
   );
 }
