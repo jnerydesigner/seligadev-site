@@ -7,12 +7,12 @@ export default function Home() {
   return (
     <div className="h-[1000px] w-full">
       <Hero />
-      <AdsBanner
+      {/* <AdsBanner
         dataAdClient="ca-pub-1600331961556195"
         dataAdFormat="auto"
         dataFullWidthResponsive={true}
         dataAdSlot="6139750906"
-      />
+      /> */}
       <Consult />
     </div>
   );
