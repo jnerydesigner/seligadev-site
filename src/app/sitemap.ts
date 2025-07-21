@@ -1,8 +1,18 @@
+import prisma from "@/lib/prisma";
 import { MetadataRoute } from "next";
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const setups = await prisma.setup.findMany();
+  const setupMetadata: MetadataRoute.Sitemap = setups.map((setup) => {
+    return {
+      url: `${baseUrl}/setup/${setup.slug}`,
+      lastModified: new Date(setup.createdAt),
+      changeFrequency: "monthly",
+      priority: 1,
+    };
+  });
   return [
     {
       url: `${baseUrl}/about`,
@@ -10,5 +20,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "yearly",
       priority: 0.8,
     },
+    ...setupMetadata,
   ];
 }
