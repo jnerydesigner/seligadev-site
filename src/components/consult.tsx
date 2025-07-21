@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export const Consult = () => {
   return (
-    <div>
+    <div className="mb-20">
       <Link href="/consult">
         <div className="halftone-blue z-10 mt-10 flex h-32 items-center justify-between rounded-xl p-4 shadow-lg ring-1 ring-blue-300 transition-shadow duration-300 hover:shadow-2xl">
           <div>
