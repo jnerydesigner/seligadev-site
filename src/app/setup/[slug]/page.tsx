@@ -1,21 +1,27 @@
+// src/app/setup/[slug]/page.tsx
 import prisma from "@/lib/prisma";
 import Image from "next/image";
 import Link from "next/link";
 import { FaAmazon } from "react-icons/fa";
 import { FaComputer } from "react-icons/fa6";
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 
-interface PageProps {
-  params: {
-    slug: string;
-  };
-}
+export const dynamic = "force-dynamic";
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+type tParams = Promise<{ slug: string }>;
+
+export async function generateMetadata({ params }: { params: tParams }): Promise<Metadata> {
+  const { slug }: { slug: string } = await params;
   const product = await prisma.setup.findFirst({
-    where: { slug: params.slug },
+    where: { slug },
+    select: {
+      slug: true,
+      name: true,
+      nameFull: true,
+      imageUrl: true,
+    },
   });
-  const url = `${process.env.NEXT_PUBLIC_BASE_URL}/setup/${product?.slug}`;
 
   if (!product) {
     return {
@@ -24,19 +30,24 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "";
+  const url = `${baseUrl}/setup/${product.slug}`;
+  const description = product.nameFull || product.name;
+  const image = product.imageUrl ?? `${baseUrl}/og-default.png`;
+
   return {
     title: `${product.name} | Se Liga Dev`,
-    description: product.nameFull || product.name,
+    description,
     alternates: {
       canonical: url,
     },
     openGraph: {
       title: product.name,
-      description: product.nameFull || product.name,
-      url: `${process.env.NEXT_PUBLIC_BASE_URL}/setup/${params.slug}`,
+      description,
+      url,
       images: [
         {
-          url: product.imageUrl,
+          url: image,
           width: 800,
           height: 600,
           alt: product.name,
@@ -47,56 +58,66 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     twitter: {
       card: "summary_large_image",
       title: product.name,
-      description: product.nameFull || product.name,
-      images: [product.imageUrl],
+      description,
+      images: [image],
     },
   };
 }
 
-export default async function Page({ params }: PageProps) {
-  const { slug } = await params;
+export default async function Page({ params }: { params: tParams }) {
+  const { slug }: { slug: string } = await params;
+
   const product = await prisma.setup.findFirst({
-    where: {
-      slug,
-    },
+    where: { slug },
   });
 
   if (!product) {
-    throw new Error("Not Found");
+    notFound();
   }
+
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "";
+
   return (
     <div>
       <div className="flex h-auto w-full flex-col items-center justify-center p-4">
         <div className="h1-rectangle-path">
-          <h1 className="z-10 text-[1.4rem]">{product?.name}</h1>
+          <h1 className="z-10 text-[1.4rem]">{product.name}</h1>
         </div>
       </div>
 
       <div className="halftone-red z-10 mt-10 flex h-90 items-center gap-2 bg-white p-4">
         <div className="z-10 h-60">
-          <Image
-            src={product?.imageUrl}
-            alt="Imagem exemplo"
-            className="h-full w-full object-contain p-2"
-            width={300}
-            height={300}
-          />
+          {product.imageUrl ? (
+            <Image
+              src={product.imageUrl}
+              alt={product.nameFull || product.name}
+              className="h-full w-full object-contain p-2"
+              width={300}
+              height={300}
+              priority
+            />
+          ) : null}
         </div>
+
         <div className="relative flex h-60 flex-1 flex-col items-center justify-center p-2">
           <h2 className="rounded-sm bg-white p-4 text-center text-xl font-bold shadow-sm">
-            {product.nameFull}
+            {product.nameFull ?? product.name}
           </h2>
+
+          {product.productUrl ? (
+            <Link
+              href={product.productUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 flex h-10 w-50 items-center justify-center gap-4 rounded-md bg-yellow-500 py-1 text-center text-sm text-gray-800 shadow-sm transition hover:bg-yellow-600 hover:text-white"
+            >
+              <FaAmazon /> Ver na Amazon
+            </Link>
+          ) : null}
+
           <Link
-            href={product.productUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-6 flex h-10 w-50 items-center justify-center gap-4 rounded-md bg-yellow-500 py-1 text-center text-sm text-gray-800 shadow-sm transition hover:bg-yellow-600 hover:text-white"
-          >
-            <FaAmazon /> Ver na Amazon
-          </Link>
-          <Link
-            href={`${process.env.NEXT_PUBLIC_BASE_URL}/setup`}
-            className="absolute top-[-70px] right-2 mt-6 flex h-10 w-50 items-center justify-center gap-4 rounded-md bg-yellow-500 py-1 text-center text-sm text-gray-800 shadow-sm transition hover:bg-yellow-600 hover:text-white"
+            href={`${baseUrl}/setup`}
+            className="absolute -top-[70px] right-2 mt-6 flex h-10 w-50 items-center justify-center gap-4 rounded-md bg-yellow-500 py-1 text-center text-sm text-gray-800 shadow-sm transition hover:bg-yellow-600 hover:text-white"
           >
             <FaComputer /> Voltar para o Setup
           </Link>
