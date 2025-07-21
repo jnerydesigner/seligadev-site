@@ -31,3 +31,21 @@ model Setup {
 
   @@map("setup")
 }
+
+model Hostinger {
+  id                     String @id @default(auto()) @map("_id") @db.ObjectId
+  title                  String
+  priceOriginalTotal     Float
+  discountOne            String
+  discountOneValue       Float
+  referralDiscount       String
+  referralDiscountValue  Float
+  price                  Float
+  discountDescription    String
+  priceAndDiscount       String
+  link                   String
+  description            Json
+  discountSubDescription Json
+
+  @@map("hostinger")
+}
