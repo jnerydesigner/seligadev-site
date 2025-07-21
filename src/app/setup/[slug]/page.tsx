@@ -103,21 +103,29 @@ export default async function Page({ params }: { params: tParams }) {
           <h2 className="rounded-sm bg-white p-4 text-center text-xl font-bold shadow-sm">
             {product.nameFull ?? product.name}
           </h2>
+          <div className="mt-4 flex h-auto w-full items-center justify-center gap-4">
+            <span className="rounded-sm bg-white p-2 text-center font-semibold text-green-600 shadow-sm">
+              R${" "}
+              {Number(product.price).toLocaleString("pt-BR", {
+                minimumFractionDigits: 2,
+              })}
+            </span>
 
-          {product.productUrl ? (
-            <Link
-              href={product.productUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6 flex h-10 w-50 items-center justify-center gap-4 rounded-md bg-yellow-500 py-1 text-center text-sm text-gray-800 shadow-sm transition hover:bg-yellow-600 hover:text-white"
-            >
-              <FaAmazon /> Ver na Amazon
-            </Link>
-          ) : null}
+            {product.productUrl ? (
+              <Link
+                href={product.productUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="halftone-blue-radial-white flex h-10 w-50 items-center justify-center gap-4 rounded-md py-1 text-center text-sm text-gray-800 shadow-sm transition hover:bg-yellow-600 hover:text-white"
+              >
+                <FaAmazon /> Ver na Amazon
+              </Link>
+            ) : null}
+          </div>
 
           <Link
             href={`${baseUrl}/setup`}
-            className="absolute -top-[70px] right-2 mt-6 flex h-10 w-50 items-center justify-center gap-4 rounded-md bg-yellow-500 py-1 text-center text-sm text-gray-800 shadow-sm transition hover:bg-yellow-600 hover:text-white"
+            className="halftone-blue-radial-white absolute -top-[40px] right-2 flex h-10 w-50 items-center justify-center gap-4 rounded-md text-center text-sm text-gray-800 shadow-sm transition hover:bg-yellow-600 hover:text-white"
           >
             <FaComputer /> Voltar para o Setup
           </Link>

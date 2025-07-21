@@ -16,10 +16,11 @@ type NavItemType = (typeof navItems)[number]["pathPage"];
 
 export default function Header() {
   const [active, setActive] = useState<NavItemType>("/");
+  console.log(active);
 
   return (
-    <header className="w-full px-4 py-3 flex justify-center text-oliver-dark">
-      <nav className="flex gap-4 flex-wrap text-oliver-dark">
+    <header className="text-oliver-dark flex w-full justify-center px-4 py-3">
+      <nav className="text-oliver-dark flex flex-wrap gap-4">
         {navItems.map((item) => (
           <NavItem
             key={item.pathPage}

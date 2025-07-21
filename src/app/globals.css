@@ -11,6 +11,7 @@
   --color-pink-light: #eb6974ff;
   --color-red-dark: #e63638ff;
   --color-oliver-dark: #30706fff;
+  --color-blue-light: #a8dadc;
   --clip-path-div: polygon(0 1%, 100% 0%, 100% 80%, 0 100%) polygon(0 1%, 100% 0%, 100% 80%, 0 100%);
 }
 
@@ -234,6 +235,13 @@
     border: 3px solid var(--color-oliver-dark);
   }
 
+  .halftone-blue-radial-white {
+    background-color: #a8dadc;
+    background-image: radial-gradient(#ffffff 10%, transparent 11%);
+    background-size: 16px 16px;
+    border: 3px solid var(--color-oliver-dark);
+  }
+
   .halftone-yellow {
     background-color: #f9d71c;
     background-image: radial-gradient(#e63946 10%, transparent 11%);
@@ -250,6 +258,7 @@
   --color-pink-light: #eb6974ff;
   --color-red-dark: #e63638ff;
   --color-oliver-dark: #30706fff;
+  --color-blue-light: #a8dadc;
 }
 
 @theme inline {
