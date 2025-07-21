@@ -17,13 +17,12 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Consultoria Para Desenvolvedores",
-    description:
-      "Apoio técnico e profissional para desenvolvedores em todas as fases da carreira.",
-    url: `${process.env.NEXT_PUBLIC_PAGE_URL}/consult`,
+    description: "Apoio técnico e profissional para desenvolvedores em todas as fases da carreira.",
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}/consult`,
     siteName: "Seu Site ou Nome da Marca",
     images: [
       {
-        url: `${process.env.NEXT_PUBLIC_PAGE_URL}/logo-jander-nery-dev-redondo.svg`,
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/logo-jander-nery-dev-redondo.svg`,
         width: 1200,
         height: 630,
         alt: "Consultoria personalizada para devs",
@@ -35,24 +34,21 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Consultoria Para Desenvolvedores",
-    description:
-      "Acelere sua carreira como desenvolvedor com apoio técnico e estratégico.",
-    images: [
-      `${process.env.NEXT_PUBLIC_PAGE_URL}/logo-jander-nery-dev-redondo.svg`,
-    ],
+    description: "Acelere sua carreira como desenvolvedor com apoio técnico e estratégico.",
+    images: [`${process.env.NEXT_PUBLIC_BASE_URL}/logo-jander-nery-dev-redondo.svg`],
   },
   robots: {
     index: true,
     follow: true,
   },
   alternates: {
-    canonical: `${process.env.NEXT_PUBLIC_PAGE_URL}/consult`,
+    canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/consult`,
   },
 };
 export default function Consult() {
   return (
     <>
-      <div className="max-w-5xl mx-auto p-6 flex justify-center items-center flex-col ">
+      <div className="mx-auto flex max-w-5xl flex-col items-center justify-center p-6">
         <PlanConsult />
       </div>
     </>
