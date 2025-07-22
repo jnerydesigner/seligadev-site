@@ -1,7 +1,32 @@
 import Hero from "@/components/hero";
 
-import { Consult } from "@/components/consult";
 import { CardHome } from "@/components/card-home";
+import { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const url = `${process.env.NEXT_PUBLIC_BASE_URL}`;
+  return {
+    title: "SeLigaDev",
+    description:
+      "A SeLigaDev é uma empresa de criação e desenvolvimento de Sistemas de Informação.",
+    alternates: {
+      canonical: url,
+    },
+    openGraph: {
+      title: "SeLigaDev",
+      description:
+        "A SeLigaDev é uma empresa de criação e desenvolvimento de Sistemas de Informação.",
+      url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}`,
+      siteName: "Se Liga Dev",
+    },
+    twitter: {
+      card: "summary",
+      title: "SeLigaDev",
+      description:
+        "A SeLigaDev é uma empresa de criação e desenvolvimento de Sistemas de Informação.",
+    },
+  };
+}
 
 export default function Home() {
   return (
