@@ -81,20 +81,46 @@ pipeline {
                 }
             }
         }
-        // stage('Send Mail Deploy Success') {
-        //     steps {
-        //         emailext(attachLog: true,
-        //         body: """
-        //         <h2>Build Completa - commit: ${COMMIT_MESSAGE} - ${COMMIT_HASH}</h2>
-        //         <p><b>Status:</b> ${currentBuild.currentResult}</p>
-        //         <p><b>Tempo de Execução:</b> ${currentBuild.durationString}</p>
-        //         """,
-        //         subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!',
-        //         to: "${EMAIL_RECIPIENT}",
-        //         mimeType: 'text/html'
-        //         )
-        //     }
-        // }
+        stage('Send Mail Deploy Success') {
+            steps {
+                emailext(
+                    attachLog: true,
+                    body: """
+                    <html>
+                    <body style="font-family: Arial, sans-serif; color: #333;">
+                        <h2 style="color: #4CAF50;">🚀 Deploy Concluído com Sucesso</h2>
+                        <p><b>Projeto:</b> ${PROJECT_NAME}</p>
+                        <table style="border-collapse: collapse; width: 100%; margin-top: 10px;">
+                            <tr style="background-color: #f2f2f2;">
+                                <td style="padding: 8px; border: 1px solid #ddd;"><b>Commit</b></td>
+                                <td style="padding: 8px; border: 1px solid #ddd;">${COMMIT_MESSAGE} - ${COMMIT_HASH}</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px; border: 1px solid #ddd;"><b>Status</b></td>
+                                <td style="padding: 8px; border: 1px solid #ddd; color: ${currentBuild.currentResult == 'SUCCESS' ? 'green' : 'red'};">
+                                    ${currentBuild.currentResult}
+                                </td>
+                            </tr>
+                            <tr style="background-color: #f2f2f2;">
+                                <td style="padding: 8px; border: 1px solid #ddd;"><b>Tempo de Execução</b></td>
+                                <td style="padding: 8px; border: 1px solid #ddd;">${currentBuild.durationString}</td>
+                            </tr>
+                        </table>
+                        <p style="margin-top: 20px;">
+                            <a href="${BUILD_URL}" style="text-decoration:none; background-color: #4CAF50; color: white; padding: 8px 16px; border-radius: 4px;">
+                                Ver Detalhes da Build
+                            </a>
+                        </p>
+                    </body>
+                    </html>
+                    """,
+                    subject: "[${currentBuild.currentResult}] ${PROJECT_NAME} - Build #${BUILD_NUMBER}",
+                    to: "${EMAIL_RECIPIENT}",
+                    mimeType: 'text/html'
+                )
+            }
+        }
+
     }
     
 }
