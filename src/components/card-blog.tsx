@@ -4,7 +4,7 @@ import React from "react";
 export const CardBlog = () => {
   return (
     <div className="halftone-red hover:bg-red-dark z-10 mt-10 flex h-32 cursor-pointer items-center p-4">
-      <Link href="#" className="z-10 flex h-full flex-1 items-center gap-4 p-10">
+      <Link href="/blog/1234567" className="z-10 flex h-full flex-1 items-center gap-4 p-10">
         <div className="flex-1">
           <h2 className="text-xl font-bold">Título da Notícia</h2>
           <p className="line-clamp-2 text-sm">

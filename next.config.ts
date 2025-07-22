@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "github.com", pathname: "**" },
       { protocol: "https", hostname: "m.media-amazon.com", pathname: "**" },
       { protocol: "https", hostname: "img.youtube.com", pathname: "**" },
+      { protocol: "https", hostname: "source.unsplash.com", pathname: "**" },
     ],
   },
 };

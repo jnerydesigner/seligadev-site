@@ -259,6 +259,9 @@
   --color-red-dark: #e63638ff;
   --color-oliver-dark: #30706fff;
   --color-blue-light: #a8dadc;
+
+  --tracking-h1: 0.08em;
+  --tracking-h2: 0.15em;
 }
 
 @theme inline {
