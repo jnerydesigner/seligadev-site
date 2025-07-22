@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import NavItem from "./nav-item";
+import Link from "next/link";
 
 const navItems = [
   { titlePage: "Home", pathPage: "/" },
@@ -19,8 +20,13 @@ export default function Header() {
   console.log(active);
 
   return (
-    <header className="text-oliver-dark flex w-full justify-center px-4 py-3">
-      <nav className="text-oliver-dark flex flex-wrap gap-4">
+    <header className="text-oliver-dark flex w-full flex-col justify-center px-4 py-3">
+      <Link href="/" className="mb-6 flex items-center justify-center">
+        <div className="halftone-blue mx-2 flex w-40 animate-pulse cursor-pointer items-center justify-center rounded-sm text-2xl font-bold text-indigo-600 select-none">
+          SeLigaDev
+        </div>
+      </Link>
+      <nav className="text-oliver-dark flex flex-wrap justify-center gap-4">
         {navItems.map((item) => (
           <NavItem
             key={item.pathPage}

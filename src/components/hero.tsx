@@ -4,8 +4,8 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section className="hero-rectangle-path relative w-full h-[320px] md:h-[380px] flex items-center justify-center px-4">
-      <div className="w-full relative z-10 flex flex-col items-center gap-3 text-center mt-[-50px] p-4">
+    <section className="halftone-blue relative flex h-[320px] w-full items-center justify-center rounded-sm px-4 md:h-[350px]">
+      <div className="relative z-10 -mt-[50px] flex w-full flex-col items-center gap-3 p-4 text-center">
         <div className="h-[120px] w-[120px] md:h-[150px] md:w-[150px]">
           <Image
             src="/logo-jander-nery-dev-redondo.svg"
@@ -22,7 +22,7 @@ export default function Hero() {
           <p>Apaixonado por ensinar 📚</p>
         </div>
 
-        <ul className="flex justify-center items-center gap-4 mt-2">
+        <ul className="mt-2 flex items-center justify-center gap-4">
           {[
             {
               href: "https://www.linkedin.com/in/jander-nery",
@@ -49,7 +49,7 @@ export default function Hero() {
           ].map(({ href, alt, src }) => (
             <li
               key={alt}
-              className="h-10 w-10 flex justify-center items-center bg-white rounded-sm shadow"
+              className="flex h-10 w-10 items-center justify-center rounded-sm bg-white shadow"
             >
               <Link href={href} target="_blank" rel="noopener noreferrer" title={alt}>
                 <Image src={src} width={20} height={20} alt={alt} />
