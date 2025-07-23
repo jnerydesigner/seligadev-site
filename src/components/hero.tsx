@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <section className="halftone-blue relative flex h-[320px] w-full items-center justify-center rounded-sm px-4 md:h-[350px]">
       <div className="relative z-10 -mt-[50px] flex w-full flex-col items-center gap-3 p-4 text-center">
-        <div className="h-[120px] w-[120px] md:h-[150px] md:w-[150px]">
+        <div className="mt-4 h-[120px] w-[120px] md:mt-0 md:h-[150px] md:w-[150px]">
           <Image
             src="/logo-jander-nery-dev-redondo.svg"
             width={500}
@@ -22,7 +22,7 @@ export default function Hero() {
           <p>Apaixonado por ensinar 📚</p>
         </div>
 
-        <ul className="mt-2 flex items-center justify-center gap-4">
+        <ul className="mt-2 flex items-center justify-center gap-2 px-10 md:gap-4">
           {[
             {
               href: "https://www.linkedin.com/in/jander-nery",
