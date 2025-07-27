@@ -70,7 +70,7 @@ export const PostContainer = ({
         </div>
 
         <div
-          className={`font-sans text-base leading-relaxed tracking-normal text-zinc-800 dark:text-zinc-100 ${inter.className}`}
+          className={`mt-4 font-sans text-base leading-relaxed tracking-normal text-zinc-800 dark:text-zinc-100 ${inter.className}`}
         >
           <MarkdownRenderer markdown={content} />
         </div>
