@@ -220,7 +220,7 @@
     }
   }
 
-  /* Cores alternativas */
+
   .halftone-red {
     background-color: var(--color-pink-light);
     background-image: radial-gradient(#e9ddde 10%, transparent 11%);
@@ -230,6 +230,13 @@
 
   .halftone-blue {
     background-color: #a8dadc;
+    background-image: radial-gradient(#1d3557 10%, transparent 11%);
+    background-size: 16px 16px;
+    border: 3px solid var(--color-oliver-dark);
+  }
+
+  .halftone-blue-dark {
+    background-color: #79d410;
     background-image: radial-gradient(#1d3557 10%, transparent 11%);
     background-size: 16px 16px;
     border: 3px solid var(--color-oliver-dark);

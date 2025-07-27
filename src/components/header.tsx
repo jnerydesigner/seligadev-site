@@ -22,16 +22,15 @@ export default function Header() {
   return (
     <header className="text-oliver-dark flex w-full flex-col justify-center px-4 py-3">
       <Link href="/" className="mb-6 flex items-center justify-center">
-        <div className="halftone-blue mx-2 flex w-40 animate-pulse cursor-pointer items-center justify-center rounded-sm text-2xl font-bold text-indigo-600 select-none">
+        <div className="halftone-blue mx-2 flex h-10 w-100 animate-pulse cursor-pointer items-center justify-center rounded-sm text-2xl font-bold text-indigo-600 select-none">
           SeLigaDev
         </div>
       </Link>
-      <nav className="text-oliver-dark flex flex-wrap justify-center gap-4">
+      <nav className="flex flex-wrap justify-center gap-4">
         {navItems.map((item) => (
           <NavItem
             key={item.pathPage}
             label={item.titlePage}
-            active={active === item.pathPage}
             onClick={() => setActive(item.pathPage)}
             path={item.pathPage}
           />

@@ -4,21 +4,15 @@ import React from "react";
 interface NavItemProps {
   path: string;
   label: string;
-  active: boolean;
   onClick: () => void;
 }
 
-export default function NavItem({ label, active, onClick, path }: NavItemProps) {
+export default function NavItem({ label, onClick, path }: NavItemProps) {
   return (
     <Link
       href={path}
       onClick={onClick}
-      className={`px-4 py-2 rounded-xl transition-colors duration-200 cursor-pointer
-        ${
-          active
-            ? "bg-oliver-light text-white"
-            : "bg-white text-oliver-dark hover:bg-[#101928] hover:text-[#F7F0E9]"
-        }`}
+      className={`bg-oliver-light cursor-pointer rounded-xl px-4 py-2 text-white transition-colors duration-200 hover:bg-white hover:text-gray-700`}
     >
       {label}
     </Link>
