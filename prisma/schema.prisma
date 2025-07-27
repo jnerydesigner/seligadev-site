@@ -26,7 +26,7 @@ model Setup {
   productUrl String
   imageUrl   String
   slug       String
-  nameFull   String?
+  nameFull   String
   createdAt  DateTime @default(now())
 
   @@map("setup")
