@@ -2,6 +2,11 @@ import Image from "next/image";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { MarkdownRenderer } from "./markdown-renderer";
 import Link from "next/link";
+import { showIcon } from "@/lib/show-icon";
+import { SocialMediaType } from "@/types/social-media.type";
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"] });
 
 interface PostContainerProps {
   title: string;
@@ -10,6 +15,8 @@ interface PostContainerProps {
   content: string;
   noticeFontLink: string;
   noticeFontTitle: string;
+  banner: string;
+  socialMedias: SocialMediaType[];
 }
 
 export const PostContainer = ({
@@ -19,18 +26,19 @@ export const PostContainer = ({
   content,
   noticeFontLink,
   noticeFontTitle,
+  socialMedias,
+  banner,
 }: PostContainerProps) => {
   return (
     <div className="my-10 min-h-screen bg-gray-50 text-gray-900">
       <div className="relative h-64 w-full">
         <Image
-          src="/blog/images/banner.jpg"
+          src={banner || "/no-image.png"}
           alt="Banner do Post"
-          className="absolute inset-0 h-full w-full object-cover"
-          width={500}
-          height={500}
+          className="absolute h-full w-full object-cover"
+          width={800}
+          height={800}
         />
-        <div className="absolute inset-0 bg-black/30"></div>
       </div>
 
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
@@ -47,20 +55,23 @@ export const PostContainer = ({
           <div>
             <h2 className="text-lg font-semibold">{authorName}</h2>
             <div className="mt-2 flex gap-3 text-gray-600">
-              <a href="#" className="hover:text-blue-500">
-                <FaTwitter size={20} />
-              </a>
-              <a href="#" className="hover:text-blue-700">
-                <FaLinkedin size={20} />
-              </a>
-              <a href="#" className="hover:text-gray-800">
-                <FaGithub size={20} />
-              </a>
+              {socialMedias.map((social) => (
+                <Link
+                  key={social.id}
+                  href={social.url}
+                  className="hover:text-blue-500"
+                  target="_blank"
+                >
+                  {showIcon(social.slug)}
+                </Link>
+              ))}
             </div>
           </div>
         </div>
 
-        <div className="prose prose-gray mt-8 max-w-none">
+        <div
+          className={`font-sans text-base leading-relaxed tracking-normal text-zinc-800 dark:text-zinc-100 ${inter.className}`}
+        >
           <MarkdownRenderer markdown={content} />
         </div>
 

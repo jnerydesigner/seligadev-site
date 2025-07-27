@@ -2,7 +2,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { oneDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { oneDark, dracula } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import type { ReactElement } from "react";
 import type { ComponentProps } from "react";
 import Image from "next/image";
@@ -20,28 +20,19 @@ export function MarkdownRenderer({ markdown, className }: MarkdownRendererProps)
         rehypePlugins={[rehypeRaw]}
         components={{
           h1: ({ node, ...props }) => (
-            <h1
-              className="tracking-h1 mt-12 scroll-m-20 text-4xl font-bold first:mt-0"
-              {...props}
-            />
+            <h1 className="mt-12 scroll-m-20 text-2xl font-bold first:mt-0" {...props} />
           ),
           h2: ({ node, ...props }) => (
             <h2
-              className="tracking-h2 mt-10 scroll-m-20 border-b pb-2 text-3xl font-semibold text-amber-300 first:mt-0"
+              className="mt-10 scroll-m-20 border-b pb-2 text-xl font-semibold text-gray-600 first:mt-0"
               {...props}
             />
           ),
           h3: ({ node, ...props }) => (
-            <h3
-              className="tracking-h2 mt-8 scroll-m-20 text-2xl font-semibold first:mt-0"
-              {...props}
-            />
+            <h3 className="mt-8 scroll-m-20 text-2xl font-semibold first:mt-0" {...props} />
           ),
           h4: ({ node, ...props }) => (
-            <h4
-              className="tracking-h2 mt-6 scroll-m-20 text-xl font-semibold first:mt-0"
-              {...props}
-            />
+            <h4 className="mt-6 scroll-m-20 text-xl font-semibold first:mt-0" {...props} />
           ),
           p: ({ node, ...props }) => <p className="mt-4 leading-7" {...props} />,
           a: ({ node, ...props }) => (
@@ -53,19 +44,22 @@ export function MarkdownRenderer({ markdown, className }: MarkdownRendererProps)
             />
           ),
           ul: ({ node, ...props }) => <ul className="my-4 ml-6 list-disc [&>li]:mt-2" {...props} />,
-          ol: ({ node, ...props }) => (
-            <ol className="my-4 ml-6 list-decimal [&>li]:mt-2" {...props} />
+          ol: ({ children, ...props }) => (
+            <ol className="list-decimal space-y-1 pl-6" {...props}>
+              {children}
+            </ol>
           ),
           li: ({ children, ...props }) => {
-            // Detecta se o primeiro filho é um input checkbox
             const firstChild = Array.isArray(children) ? children[0] : null;
-            if (
+
+            const isCheckbox =
               firstChild &&
               typeof firstChild === "object" &&
               "type" in firstChild &&
               firstChild.type === "input" &&
-              firstChild.props?.type === "checkbox"
-            ) {
+              firstChild.props?.type === "checkbox";
+
+            if (isCheckbox) {
               return (
                 <li className="mb-2 flex items-center gap-2">
                   <input
@@ -75,16 +69,25 @@ export function MarkdownRenderer({ markdown, className }: MarkdownRendererProps)
                     className="h-4 w-4 rounded border-gray-300 accent-amber-400"
                   />
                   <span className={firstChild.props.checked ? "text-gray-400 line-through" : ""}>
-                    {Array.isArray(children) ? children.slice(1) : null}
+                    {Array.isArray(children)
+                      ? children.slice(1).map((child, idx) => <span key={idx}>{child}</span>)
+                      : null}
                   </span>
                 </li>
               );
             }
-            return <li {...props}>{children}</li>;
+
+            return (
+              <li className="mb-2 list-item list-inside">
+                {Array.isArray(children)
+                  ? children.map((child, idx) => <div key={idx}>{child}</div>)
+                  : children}
+              </li>
+            );
           },
           blockquote: ({ node, ...props }) => (
             <blockquote
-              className="mt-6 border-l-4 border-gray-300 pl-4 text-gray-700 italic"
+              className="mt-6 border-l-4 border-gray-300 bg-gray-100 px-2 py-4 pl-4 text-gray-700 italic"
               {...props}
             />
           ),
@@ -95,16 +98,31 @@ export function MarkdownRenderer({ markdown, className }: MarkdownRendererProps)
             ...props
           }: ComponentProps<"code"> & { inline?: boolean }) => {
             const match = /language-(\w+)/.exec(className || "");
-            if (!inline && match) {
+            const code = String(children).trim();
+
+            if (!inline) {
               return (
-                <SyntaxHighlighter PreTag="div" language={match[1]} style={oneDark}>
-                  {String(children).replace(/\n$/, "")}
-                </SyntaxHighlighter>
+                <div className="my-6 overflow-hidden rounded-lg border border-zinc-700 bg-zinc-900 shadow-lg">
+                  <SyntaxHighlighter
+                    language={match?.[1] || "plaintext"}
+                    style={dracula}
+                    customStyle={{
+                      margin: 0,
+                      padding: "1rem",
+                      background: "transparent",
+                      fontSize: "0.875rem",
+                      lineHeight: "1.5",
+                    }}
+                  >
+                    {code}
+                  </SyntaxHighlighter>
+                </div>
               );
             }
+
             return (
               <code
-                className="rounded bg-gray-200 px-1 py-0.5 font-mono text-sm text-gray-800"
+                className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-sm text-zinc-800 dark:bg-zinc-800 dark:text-zinc-100"
                 {...props}
               >
                 {children}

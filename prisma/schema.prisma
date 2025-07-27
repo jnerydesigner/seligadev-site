@@ -26,7 +26,7 @@ model Setup {
   productUrl String
   imageUrl   String
   slug       String
-  nameFull   String
+  nameFull   String?
   createdAt  DateTime @default(now())
 
   @@map("setup")
@@ -51,25 +51,38 @@ model Hostinger {
 }
 
 model User {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  name      String
-  email     String
-  avatarUrl String
-  posts     Post[]
-  createdAt DateTime @default(now())
+  id           String        @id @default(auto()) @map("_id") @db.ObjectId
+  name         String
+  email        String
+  avatarUrl    String
+  posts        Post[]
+  createdAt    DateTime      @default(now())
+  socialMedias SocialMedia[]
 
-  @@map("users")
+  @@map("user")
 }
 
 model Post {
   id            String  @id @default(auto()) @map("_id") @db.ObjectId
   title         String
+  slug          String
   content       String
   imageUrl      String?
   newsSource    String
   newsSourceUrl String
-  User          User?   @relation(fields: [userId], references: [id])
+  user          User?   @relation(fields: [userId], references: [id])
   userId        String? @db.ObjectId
 
   @@map("posts")
+}
+
+model SocialMedia {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  name   String
+  slug   String
+  url    String
+  user   User   @relation(fields: [userId], references: [id])
+  userId String @db.ObjectId
+
+  @@map("socials_media")
 }
