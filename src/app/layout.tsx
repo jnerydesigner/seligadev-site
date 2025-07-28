@@ -26,6 +26,11 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <Adsense pid="ca-pub-1600331961556195" />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1600331961556195"
+          crossOrigin="anonymous"
+        ></script>
       </head>
       <body className={`${bangers.variable} bg-principal-seligadev antialiased`}>
         <div className="font-bangers halftone-bg halftone-close min-h-screen">
