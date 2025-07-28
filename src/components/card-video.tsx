@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { LinkGeneral } from "./link-general";
 
 export interface VideoProps {
   title: string;
@@ -9,26 +10,19 @@ export interface VideoProps {
 
 export const CardVideo = ({ thumb, title, url }: VideoProps) => {
   return (
-    <div className="div-rectangle-path flex justify-center items-center flex-col p-4">
-      <div className="w-full h-40 z-10">
+    <div className="div-rectangle-path flex flex-col items-center justify-center p-4">
+      <div className="z-10 h-40 w-full">
         <Image
           src={thumb}
           alt={title}
-          className="w-full h-full object-contain p-2 shadow-md"
+          className="h-full w-full object-contain p-2 shadow-md"
           width={300}
           height={300}
         />
       </div>
-      <div className="p-3 flex flex-col gap-2 z-10">
-        <h2 className="font-medium line-clamp-2">{title}</h2>
-        <Link
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-auto text-center text-gray-800 bg-yellow-500 hover:bg-yellow-600 transition rounded-md py-1 text-sm halftone-bg"
-        >
-          Ver no Youtube
-        </Link>
+      <div className="z-10 flex flex-col gap-2 p-3">
+        <h2 className="line-clamp-2 font-medium">{title}</h2>
+        <LinkGeneral image="/youtube-bg-white.svg" title="Ver no Youtube" url={url} />
       </div>
     </div>
   );

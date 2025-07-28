@@ -6,6 +6,7 @@ import { FaAmazon } from "react-icons/fa";
 import { FaComputer } from "react-icons/fa6";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { LinkGeneral } from "@/components/link-general";
 
 export const dynamic = "force-dynamic";
 
@@ -112,23 +113,13 @@ export default async function Page({ params }: { params: tParams }) {
             </span>
 
             {product.productUrl ? (
-              <Link
-                href={product.productUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="halftone-blue-radial-white flex h-10 w-50 items-center justify-center gap-4 rounded-md py-1 text-center text-sm text-gray-800 shadow-sm transition hover:bg-yellow-600 hover:text-white"
-              >
-                <FaAmazon /> Ver na Amazon
-              </Link>
+              <LinkGeneral
+                title="Ver na Amazon"
+                url={product.productUrl}
+                icon={<FaAmazon className="h-6 w-6 text-black" />}
+              />
             ) : null}
           </div>
-
-          <Link
-            href={`${baseUrl}/setup`}
-            className="halftone-blue-radial-white absolute -top-[40px] right-2 flex h-10 w-50 items-center justify-center gap-4 rounded-md text-center text-sm text-gray-800 shadow-sm transition hover:bg-yellow-600 hover:text-white"
-          >
-            <FaComputer /> Voltar para o Setup
-          </Link>
         </div>
       </div>
     </div>

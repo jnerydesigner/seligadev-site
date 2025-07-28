@@ -252,6 +252,8 @@
   .halftone-yellow {
     background-color: #f9d71c;
     background-image: radial-gradient(#e63946 10%, transparent 11%);
+    background-size: 16px 16px;
+    border: 3px solid var(--color-oliver-dark);
   }
 }
 

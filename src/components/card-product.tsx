@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { LinkGeneral } from "./link-general";
 
 export interface CardProps {
   id?: string;
@@ -30,13 +31,12 @@ export const CardProduct = ({ name, imageUrl, productUrl, price, slug }: CardPro
             minimumFractionDigits: 2,
           })}
         </span>
-        <Link
-          href={`${process.env.NEXT_PUBLIC_BASE_URL}/setup/${slug}`}
-          rel="noopener noreferrer"
-          className="halftone-bg mt-auto rounded-md bg-yellow-500 py-1 text-center text-sm text-gray-800 transition hover:bg-yellow-600"
-        >
-          Ver Produto
-        </Link>
+        <LinkGeneral
+          title="Ver Produto"
+          image="/dedo.svg"
+          url={`${process.env.NEXT_PUBLIC_BASE_URL}/setup/${slug}`}
+          blank={false}
+        />
       </div>
     </div>
   );

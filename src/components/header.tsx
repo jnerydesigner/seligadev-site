@@ -33,7 +33,11 @@ export default function Header() {
             key={item.pathPage}
             label={item.titlePage}
             path={item.pathPage}
-            isActive={activePath === item.pathPage}
+            isActive={
+              item.pathPage === "/"
+                ? activePath === "/"
+                : activePath.startsWith(item.pathPage + "/") || activePath === item.pathPage
+            }
             onClick={() => setActivePath(item.pathPage)}
           />
         ))}
