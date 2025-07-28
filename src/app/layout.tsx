@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/header";
 import PageContainer from "@/components/page-container";
 import { Adsense } from "@/components/adsense";
+import { AppProvider } from "@/context/app.context";
 
 const bangers = Bangers({
   weight: "400",
@@ -28,7 +29,9 @@ export default function RootLayout({
       </head>
       <body className={`${bangers.variable} bg-principal-seligadev antialiased`}>
         <div className="font-bangers halftone-bg halftone-close min-h-screen">
-          <Header />
+          <AppProvider>
+            <Header />
+          </AppProvider>
 
           <PageContainer>{children}</PageContainer>
         </div>

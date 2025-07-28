@@ -3,6 +3,7 @@
 import { useState } from "react";
 import NavItem from "./nav-item";
 import Link from "next/link";
+import { useAppContext } from "@/context/app.context";
 
 const navItems = [
   { titlePage: "Home", pathPage: "/" },
@@ -16,8 +17,8 @@ const navItems = [
 type NavItemType = (typeof navItems)[number]["pathPage"];
 
 export default function Header() {
-  const [active, setActive] = useState<NavItemType>("/");
-  console.log(active);
+  const { activePath, setActivePath } = useAppContext();
+  console.log(activePath);
 
   return (
     <header className="text-oliver-dark flex w-full flex-col justify-center px-4 py-3">
@@ -31,8 +32,9 @@ export default function Header() {
           <NavItem
             key={item.pathPage}
             label={item.titlePage}
-            onClick={() => setActive(item.pathPage)}
             path={item.pathPage}
+            isActive={activePath === item.pathPage}
+            onClick={() => setActivePath(item.pathPage)}
           />
         ))}
       </nav>
