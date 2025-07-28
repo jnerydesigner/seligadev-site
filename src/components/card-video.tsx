@@ -22,7 +22,7 @@ export const CardVideo = ({ thumb, title, url }: VideoProps) => {
       </div>
       <div className="z-10 flex flex-col gap-2 p-3">
         <h2 className="line-clamp-2 font-medium">{title}</h2>
-        <LinkGeneral image="/youtube-bg-white.svg" title="Ver no Youtube" url={url} />
+        <LinkGeneral image="/youtube-bg-white.svg" title="Ver no Youtube" url={url} blank={true} />
       </div>
     </div>
   );

@@ -117,6 +117,8 @@ export default async function Page({ params }: { params: tParams }) {
                 title="Ver na Amazon"
                 url={product.productUrl}
                 icon={<FaAmazon className="h-6 w-6 text-black" />}
+                key={product.id}
+                blank={true}
               />
             ) : null}
           </div>
