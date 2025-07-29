@@ -18,7 +18,6 @@ type NavItemType = (typeof navItems)[number]["pathPage"];
 
 export default function Header() {
   const { activePath, setActivePath } = useAppContext();
-  console.log(activePath);
 
   return (
     <header className="text-oliver-dark flex w-full flex-col justify-center px-4 py-3">
