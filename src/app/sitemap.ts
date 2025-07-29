@@ -14,6 +14,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     };
   });
 
+  const posts = await prisma.post.findMany();
+  const postMetadata: MetadataRoute.Sitemap = posts.map((post) => {
+    return {
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 1,
+    };
+  });
+
   return [
     {
       url: `${baseUrl}`,
@@ -58,5 +68,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     ...setupMetadata,
+    ...postMetadata,
   ];
 }

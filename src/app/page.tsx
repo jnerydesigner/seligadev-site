@@ -5,6 +5,7 @@ import { Metadata } from "next";
 
 export async function generateMetadata(): Promise<Metadata> {
   const url = `${process.env.NEXT_PUBLIC_BASE_URL}`;
+  const image = "https://seliga-dev.s3.us-east-1.amazonaws.com/logo.png";
   return {
     title: "SeLigaDev",
     description:
@@ -18,12 +19,21 @@ export async function generateMetadata(): Promise<Metadata> {
         "A SeLigaDev é uma empresa de criação e desenvolvimento de Sistemas de Informação.",
       url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}`,
       siteName: "Se Liga Dev",
+      images: [
+        {
+          url: image,
+          width: 800,
+          height: 600,
+          alt: "Logo Site Se Liga Dev",
+        },
+      ],
     },
     twitter: {
       card: "summary",
       title: "SeLigaDev",
       description:
         "A SeLigaDev é uma empresa de criação e desenvolvimento de Sistemas de Informação.",
+      images: [image],
     },
   };
 }
