@@ -17,7 +17,7 @@ export default function Hero() {
         </div>
 
         <div className="font-bangers leading-tight">
-          <p>Jander da Costa Nery 👨‍💻</p>
+          <h1>Jander da Costa Nery 👨‍💻</h1>
           <p>Apaixonado por tecnologia 🚀</p>
           <p>Apaixonado por ensinar 📚</p>
         </div>

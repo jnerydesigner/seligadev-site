@@ -17,6 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     openGraph: {
       title: "SeLigaDev",
+      type: "website",
       description:
         "A SeLigaDev é uma empresa de criação e desenvolvimento de Sistemas de Informação.",
       url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}`,
