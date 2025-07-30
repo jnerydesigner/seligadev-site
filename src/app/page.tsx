@@ -2,6 +2,8 @@ import Hero from "@/components/hero";
 
 import { CardHome } from "@/components/card-home";
 import { Metadata } from "next";
+import { NewsTicker } from "@/components/ticker";
+import prisma from "@/lib/prisma";
 
 export async function generateMetadata(): Promise<Metadata> {
   const url = `${process.env.NEXT_PUBLIC_BASE_URL}`;
@@ -38,9 +40,20 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function Home() {
+export default async function Home() {
+  const posts = await prisma.post.findMany({
+    take: 5,
+  });
+  const titleWithSlug = posts.map((post) => {
+    return {
+      title: post.title,
+      slug: post.slug,
+    };
+  });
+
   return (
     <div className="h-[1000px] w-full">
+      <NewsTicker postsTitleSlug={titleWithSlug} />
       <Hero />
       {/* <AdsBanner
         dataAdClient="ca-pub-1600331961556195"
