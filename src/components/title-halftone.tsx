@@ -11,11 +11,17 @@ export const TitleHalftone = ({ title, h2Exists = true, className }: TitleHalfto
     className = "";
   }
   return (
-    <div className={`halftone-yellow my-1 rounded-sm px-2.5 py-1.5 ${className}`}>
+    <div
+      className={`halftone-yellow my-1 flex h-auto w-full items-center justify-center rounded-sm px-2.5 py-1.5 ${className}`}
+    >
       {h2Exists ? (
-        <h2 className="rounded-sm bg-white px-1 py-0.5 text-black">{title}</h2>
+        <h2 className="flex w-full flex-col items-center justify-center rounded-sm bg-white px-1 py-0.5 text-black md:flex-row">
+          {title}
+        </h2>
       ) : (
-        <p className="rounded-sm bg-white px-1 py-0.5 text-black">{title}</p>
+        <p className="flex w-full flex-col items-center justify-center rounded-sm bg-white px-1 py-0.5 text-black md:flex-row">
+          {title}
+        </p>
       )}
     </div>
   );

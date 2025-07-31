@@ -53,7 +53,7 @@ export default async function Home() {
   });
 
   return (
-    <div className="h-[1000px] w-full">
+    <div className="h-auto w-full">
       <NewsTicker postsTitleSlug={titleWithSlug} />
       <Hero />
       {/* <AdsBanner

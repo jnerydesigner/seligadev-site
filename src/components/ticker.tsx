@@ -31,15 +31,16 @@ export const NewsTicker = ({ postsTitleSlug }: TickerProps) => {
   }, [postsTitleSlug]);
 
   return (
-    <div className="halftone-blue my-2 flex h-14 items-center justify-between overflow-hidden rounded-sm bg-black px-4 py-2 text-white">
-      <TitleHalftone title="noticias" h2Exists />
-      <div className="rounded-sm px-2.5 py-2 whitespace-nowrap text-black transition-all duration-500">
+    <div className="halftone-blue my-2 flex h-auto flex-col items-center justify-between overflow-hidden rounded-sm bg-black px-4 py-2 text-white md:h-14 md:flex-row">
+      <TitleHalftone title="noticias" h2Exists className="md:w-30" />
+      <div className="flex-grow overflow-hidden rounded-sm px-2.5 py-2 text-black transition-all duration-500">
         <LinkGeneral
           title={postsTitleSlug[index].title}
           url={`${process.env.NEXT_PUBLIC_BASE_URL}/blog/${postsTitleSlug[index].slug}`}
           key={postsTitleSlug[index].slug}
           blank={true}
           image="/dedo.svg"
+          className="md:flex-1"
         />
       </div>
     </div>

@@ -19,6 +19,17 @@ model Videos {
   @@map("videos")
 }
 
+model Shorts {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  title     String
+  slug      String
+  url       String
+  thumb     String
+  createdAt DateTime @default(now())
+
+  @@map("shorts")
+}
+
 model Setup {
   id         String   @id @default(auto()) @map("_id") @db.ObjectId
   name       String

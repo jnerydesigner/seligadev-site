@@ -8,15 +8,27 @@ interface LinkGeneralProps {
   title: string;
   icon?: ReactNode;
   blank: boolean;
+  className?: string;
 }
 
-export const LinkGeneral = ({ url, image, title, icon, blank = true }: LinkGeneralProps) => {
+export const LinkGeneral = ({
+  url,
+  image,
+  title,
+  icon,
+  className,
+  blank = true,
+}: LinkGeneralProps) => {
+  let classNameProps = "";
+  if (className !== undefined) {
+    classNameProps = className;
+  }
   return (
     <Link
       href={url}
       target={blank ? "_blank" : "_self"}
       rel="noopener noreferrer"
-      className="halftone-yellow mt-auto flex h-11 w-auto items-center justify-center gap-2 rounded-md bg-white px-2 py-1 text-center text-sm text-white transition hover:bg-yellow-600"
+      className={`halftone-yellow mt-auto flex h-auto w-auto items-center justify-center gap-2 rounded-md bg-white px-2 py-1 text-center text-sm text-white transition hover:bg-yellow-600 md:h-12 ${classNameProps}`}
     >
       {image ? (
         <Image src={image} alt="Logo Youtube" width={200} height={200} className="h-8 w-8" />

@@ -56,7 +56,7 @@ export default async function PageVideos() {
         <h1 className="z-10 text-[1.8rem]">Vídeos do Canal Jander Nery Dev</h1>
       </div>
 
-      <CardVideosContainer cardVideos={videos} />
+      <CardVideosContainer cardVideos={videos} cardShorts={[]} shorts={false} />
     </section>
   );
 }

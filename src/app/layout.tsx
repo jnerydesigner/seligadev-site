@@ -32,8 +32,8 @@ export default function RootLayout({
           crossOrigin="anonymous"
         ></script>
       </head>
-      <body className={`${bangers.variable} bg-principal-seligadev antialiased`}>
-        <div className="font-bangers halftone-bg halftone-close min-h-screen">
+      <body className={`${bangers.variable} bg-principal-seligadev flex min-h-screen flex-col`}>
+        <div className="font-bangers halftone-yellow halftone-close flex h-full flex-col overflow-y-auto">
           <AppProvider>
             <Header />
           </AppProvider>
