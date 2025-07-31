@@ -4,6 +4,12 @@ module.exports = {
   content: ["./app/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      screens: {
+        // Cria um breakpoint personalizado chamado `se`
+        se: "320px",
+        // (opcional) para telas até 320px
+        "max-se": { max: "320px" },
+      },
       fontFamily: {
         bangers: ["var(--font-bangers)", "sans-serif"],
       },

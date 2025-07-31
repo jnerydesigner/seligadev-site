@@ -42,8 +42,10 @@ export default async function PageSetup() {
   return (
     <section className="flex h-auto w-full flex-col items-center justify-center p-4">
       <div className="flex h-auto w-full flex-col items-center justify-center p-4">
-        <div className="h1-rectangle-path">
-          <h1 className="z-10 text-[1.8rem]">Produtos que eu Utilizo em meu Setup</h1>
+        <div className="halftone-blue flex w-full items-center justify-center">
+          <h1 className="z-10 p-2 text-[1.4rem] md:text-[1.8rem]">
+            Produtos que eu Utilizo em meu Setup
+          </h1>
         </div>
       </div>
 
