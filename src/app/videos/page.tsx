@@ -1,4 +1,5 @@
 import { CardVideosContainer } from "@/components/card-video-container";
+import TitleTop from "@/components/title";
 import prisma from "@/lib/prisma";
 import { Metadata } from "next";
 
@@ -52,9 +53,7 @@ export default async function PageVideos() {
   const videos = await prisma.videos.findMany();
   return (
     <section className="flex h-auto w-full flex-col items-center justify-center p-4">
-      <div className="halftone-blue flex w-full items-center justify-center">
-        <h1 className="z-10 text-[1.4rem] md:text-[1.8rem]">Vídeos do Canal Jander Nery Dev</h1>
-      </div>
+      <TitleTop titleStr="Vídeos do Canal Jander Nery Dev" />
 
       <CardVideosContainer cardVideos={videos} cardShorts={[]} shorts={false} />
     </section>

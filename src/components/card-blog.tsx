@@ -11,7 +11,7 @@ interface PostProps {
 
 export const CardBlog = async ({ title, slug, content, imageUrl }: PostProps) => {
   return (
-    <div className="halftone-blue z-10 mt-10 flex h-auto w-full cursor-pointer flex-col items-center justify-center p-4 hover:bg-blue-200 md:h-40">
+    <div className="halftone-blue z-10 mt-10 flex h-auto w-full cursor-pointer flex-col items-center justify-center rounded-sm p-4 hover:bg-blue-200 md:h-40">
       <Link
         href={`/blog/${slug}`}
         className="z-10 flex h-full w-full flex-col items-center gap-4 p-4 md:flex-row"

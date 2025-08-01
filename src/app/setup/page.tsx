@@ -1,4 +1,5 @@
 import { CardProductContainer } from "@/components/card-product-container";
+import TitleTop from "@/components/title";
 import prisma from "@/lib/prisma";
 import type { Metadata } from "next";
 
@@ -42,11 +43,7 @@ export default async function PageSetup() {
   return (
     <section className="flex h-auto w-full flex-col items-center justify-center p-4">
       <div className="flex h-auto w-full flex-col items-center justify-center p-4">
-        <div className="halftone-blue flex w-full items-center justify-center">
-          <h1 className="z-10 p-2 text-[1.4rem] md:text-[1.8rem]">
-            Produtos que eu Utilizo em meu Setup
-          </h1>
-        </div>
+        <TitleTop titleStr="Produtos que eu Utilizo em meu Setup" />
       </div>
 
       <CardProductContainer cardProducts={setups} />

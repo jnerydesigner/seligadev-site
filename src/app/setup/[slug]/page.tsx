@@ -80,7 +80,7 @@ export default async function Page({ params }: { params: tParams }) {
 
   return (
     <div>
-      <div className="flex h-auto w-full flex-col items-center justify-center p-4">
+      <div className="flex h-auto w-full flex-col items-center justify-center rounded-sm p-4">
         <div className="h1-rectangle-path">
           <h1 className="z-10 text-[1.4rem]">{product.name}</h1>
         </div>

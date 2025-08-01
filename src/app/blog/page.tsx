@@ -1,4 +1,5 @@
 import { CardBlog } from "@/components/card-blog";
+import TitleTop from "@/components/title";
 import prisma from "@/lib/prisma";
 import { Metadata } from "next";
 import React from "react";
@@ -42,11 +43,7 @@ export default async function PageBlog() {
   const findPost = await prisma.post.findMany();
   return (
     <section className="flex h-auto w-full flex-col items-center justify-center p-4">
-      <div className="halftone-blue flex w-full items-center justify-center">
-        <h1 className="z-10 p-2 text-[1.2rem] md:text-[1.8rem]">
-          Blog do Se Liga Dev - Notícias Gerais
-        </h1>
-      </div>
+      <TitleTop titleStr="Blog do Se Liga Dev - Notícias Gerais" />
       {findPost.map((post) => (
         <CardBlog
           key={post.id}

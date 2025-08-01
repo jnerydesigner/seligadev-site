@@ -13,7 +13,7 @@ export interface CardProps {
 
 export const CardProduct = ({ name, imageUrl, productUrl, price, slug }: CardProps) => {
   return (
-    <div className="halftone-blue flex h-auto flex-col items-center justify-center p-4">
+    <div className="halftone-blue flex h-auto flex-col items-center justify-center rounded-sm p-4">
       <div className="z-10 h-40 w-full border-2 border-amber-50">
         <Image
           src={imageUrl}
