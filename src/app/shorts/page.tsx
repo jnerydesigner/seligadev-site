@@ -1,7 +1,8 @@
 import { CardVideosContainer } from "@/components/card-video-container";
 import prisma from "@/lib/prisma";
-import Image from "next/image";
 import React from "react";
+
+export const revalidate = 360;
 
 export default async function PageShorts() {
   const shorts = await prisma.shorts.findMany();

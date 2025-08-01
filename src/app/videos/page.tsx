@@ -52,7 +52,7 @@ export default async function PageVideos() {
   const videos = await prisma.videos.findMany();
   return (
     <section className="flex h-auto w-full flex-col items-center justify-center p-4">
-      <div className="halftone-blue intens-center flex w-full justify-center">
+      <div className="halftone-blue flex w-full items-center justify-center">
         <h1 className="z-10 text-[1.4rem] md:text-[1.8rem]">Vídeos do Canal Jander Nery Dev</h1>
       </div>
 
