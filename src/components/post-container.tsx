@@ -35,7 +35,7 @@ export const PostContainer = ({
         <Image
           src={banner || "/no-image.png"}
           alt="Banner do Post"
-          className="absolute h-full w-full object-cover"
+          className="absolute h-46 w-full md:h-full md:object-cover"
           width={800}
           height={800}
         />
@@ -44,7 +44,7 @@ export const PostContainer = ({
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <h1 className="mt-6 text-3xl font-bold text-gray-800 sm:text-4xl">{title}</h1>
 
-        <div className="mt-6 flex items-center gap-4">
+        <div className="mt-6 flex flex-col items-center gap-4 md:flex-row">
           <Image
             src={avatar}
             alt={authorName}
@@ -52,9 +52,11 @@ export const PostContainer = ({
             width={300}
             height={300}
           />
-          <div>
-            <h2 className="text-lg font-semibold">{authorName}</h2>
-            <div className="mt-2 flex gap-3 text-gray-600">
+          <div className="fex-col flex h-10 items-center justify-center gap-2">
+            <h2 className="flex h-10 items-center justify-center text-lg font-semibold">
+              {authorName}
+            </h2>
+            <div className="mt-0 flex h-10 items-center justify-center gap-3 text-gray-600 md:mt-2">
               {socialMedias.map((social) => (
                 <Link
                   key={social.id}
@@ -75,13 +77,15 @@ export const PostContainer = ({
           <MarkdownRenderer markdown={content} />
         </div>
 
-        <footer className="mt-10 border-t border-gray-300 p-10 pt-4 text-sm text-gray-500">
-          <p>
-            Fonte {noticeFontTitle}:{" "}
-            <Link href={noticeFontLink} className="text-blue-600 hover:underline" target="_blank">
-              {noticeFontLink}
-            </Link>
-          </p>
+        <footer className="mt-10 flex h-auto w-full flex-col items-center justify-center border-t border-gray-300 bg-amber-500 p-0 pt-4 text-sm text-gray-500 md:flex-row md:p-10">
+          <p>Fonte {noticeFontTitle}: </p>
+          <Link
+            href={noticeFontLink}
+            className="w-full bg-red-600 text-blue-600 hover:underline"
+            target="_blank"
+          >
+            {noticeFontLink}
+          </Link>
         </footer>
       </div>
     </div>

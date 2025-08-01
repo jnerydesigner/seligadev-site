@@ -42,9 +42,7 @@ export default async function PageSetup() {
 
   return (
     <section className="flex h-auto w-full flex-col items-center justify-center p-4">
-      <div className="flex h-auto w-full flex-col items-center justify-center p-4">
-        <TitleTop titleStr="Produtos que eu Utilizo em meu Setup" />
-      </div>
+      <TitleTop titleStr="Produtos que eu Utilizo em meu Setup" />
 
       <CardProductContainer cardProducts={setups} />
     </section>

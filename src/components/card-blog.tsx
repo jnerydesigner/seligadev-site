@@ -16,11 +16,11 @@ export const CardBlog = async ({ title, slug, content, imageUrl }: PostProps) =>
         href={`/blog/${slug}`}
         className="z-10 flex h-full w-full flex-col items-center gap-4 p-4 md:flex-row"
       >
-        <div className="h-full w-32 flex-shrink-0 overflow-hidden rounded">
+        <div className="h-30 w-full flex-shrink-0 overflow-hidden rounded md:h-full md:w-32">
           <Image
             src={imageUrl || "/no-image.png"}
             alt={title}
-            className="h-full w-full object-cover"
+            className="h-full w-full md:object-cover"
             width={600}
             height={600}
           />
