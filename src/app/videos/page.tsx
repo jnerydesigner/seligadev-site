@@ -53,7 +53,7 @@ export default async function PageVideos() {
   const videos = await prisma.videos.findMany();
   return (
     <section className="flex h-auto w-full flex-col items-center justify-center p-4">
-      <TitleTop titleStr="Vídeos do Canal Jander Nery Dev" />
+      <TitleTop titleStr="Vídeos do Canal Jander Nery Dev" notH1 />
 
       <CardVideosContainer cardVideos={videos} cardShorts={[]} shorts={false} />
     </section>

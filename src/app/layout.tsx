@@ -5,6 +5,7 @@ import Header from "@/components/header";
 import PageContainer from "@/components/page-container";
 import { Adsense } from "@/components/adsense";
 import { AppProvider } from "@/context/app.context";
+import Footer from "@/components/footer";
 
 const bangers = Bangers({
   weight: "400",
@@ -33,12 +34,13 @@ export default function RootLayout({
         ></script>
       </head>
       <body className={`${bangers.variable} bg-principal-seligadev flex min-h-screen flex-col`}>
-        <div className="font-bangers halftone-yellow halftone-close flex h-full flex-col overflow-y-auto">
+        <div className="font-bangers halftone-yellow halftone-close overflow-y-full flex min-h-full flex-col">
           <AppProvider>
             <Header />
           </AppProvider>
 
           <PageContainer>{children}</PageContainer>
+          <Footer />
         </div>
       </body>
     </html>

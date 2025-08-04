@@ -9,7 +9,7 @@ export default async function PageShorts() {
   const shorts = await prisma.shorts.findMany();
   return (
     <section className="flex h-auto w-full flex-col items-center justify-center p-4">
-      <TitleTop titleStr="Shorts do Canal Jander Nery Dev" />
+      <TitleTop titleStr="Shorts do Canal Jander Nery Dev" notH1 />
 
       <CardVideosContainer cardVideos={[]} cardShorts={shorts} shorts={true} />
     </section>

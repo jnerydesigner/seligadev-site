@@ -1,4 +1,5 @@
 import prisma from "@/lib/prisma";
+import TitleTop from "./title";
 
 export type Plan = {
   id: number;
@@ -35,11 +36,11 @@ export const HostingerPlans = async () => {
 
   return (
     <>
-      <div className="h1-rectangle-path mb-10">
-        <h1 className="z-10 text-[1.4rem]">
-          Adquira os planos da Hostinger e ajude o Canal a Crescer 🚀
-        </h1>
-      </div>
+      <TitleTop
+        titleStr="Adquira os planos da Hostinger e ajude o Canal a Crescer 🚀"
+        notH1
+        className="md:text-[1.4rem]"
+      />
 
       <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2">
         {hostinger.map((plan) => (

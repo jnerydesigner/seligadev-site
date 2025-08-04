@@ -7,6 +7,7 @@ import { FaComputer } from "react-icons/fa6";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { LinkGeneral } from "@/components/link-general";
+import TitleTop from "@/components/title";
 
 export const dynamic = "force-dynamic";
 
@@ -79,14 +80,12 @@ export default async function Page({ params }: { params: tParams }) {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "";
 
   return (
-    <div>
+    <div className="flex min-h-full w-full flex-col items-center justify-center p-4">
       <div className="flex h-auto w-full flex-col items-center justify-center rounded-sm p-4">
-        <div className="h1-rectangle-path">
-          <h1 className="z-10 text-[1.4rem]">{product.name}</h1>
-        </div>
+        <TitleTop titleStr={product.name} notH1 />
       </div>
 
-      <div className="halftone-red z-10 mt-10 flex h-90 items-center gap-2 bg-white p-4">
+      <div className="halftone-red z-10 mt-10 flex h-90 items-center gap-2 rounded-sm bg-white p-4">
         <div className="z-10 h-60">
           {product.imageUrl ? (
             <Image

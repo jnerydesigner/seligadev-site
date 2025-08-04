@@ -257,6 +257,12 @@
     border: 3px solid var(--color-oliver-dark);
   }
 
+  .halftone-blue-no-border {
+    background-color: #a8dadc;
+    background-image: radial-gradient(#1d3557 10%, transparent 11%);
+    background-size: 16px 16px;
+  }
+
   .halftone-blue-dark {
     background-color: #79d410;
     background-image: radial-gradient(#1d3557 10%, transparent 11%);
