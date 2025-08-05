@@ -77,7 +77,7 @@ export const PostContainer = ({
           <MarkdownRenderer markdown={content} />
         </div>
 
-        <footer className="mt-10 flex h-auto w-full flex-col items-center justify-center border-t border-gray-300 bg-amber-500 p-0 pt-4 text-sm text-gray-500 md:flex-row md:p-10">
+        <footer className="mt-10 flex h-auto w-full flex-col items-center justify-center border-t border-gray-300 p-0 pt-4 text-sm text-gray-500 md:flex-row md:p-10">
           <p>Fonte {noticeFontTitle}: </p>
           <Link
             href={noticeFontLink}

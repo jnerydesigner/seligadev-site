@@ -20,10 +20,15 @@ export default function Header() {
   const { activePath, setActivePath } = useAppContext();
 
   return (
-    <header className="text-oliver-dark flex w-full flex-col justify-center px-4 py-3">
-      <Link href="/" className="mb-6 flex items-center justify-center">
+    <header className="text-oliver-dark flex w-full flex-col justify-center px-0">
+      {/* <Link href="/" className="mb-6 flex items-center justify-center">
         <div className="halftone-blue mx-2 flex h-10 w-100 animate-pulse cursor-pointer items-center justify-center rounded-sm text-2xl font-bold text-indigo-600 select-none">
           SeLigaDev
+        </div>
+      </Link> */}
+      <Link href="/" className="flex items-center justify-center">
+        <div className="halftone-blue-no-border border-oliver-dark mb-2 flex h-10 w-full cursor-pointer items-center justify-center border-b-[2px] text-2xl font-bold text-indigo-600 select-none">
+          <p className="animate-pulse">SeLigaDev</p>
         </div>
       </Link>
       <nav className="flex flex-wrap justify-center gap-4">
