@@ -14,7 +14,7 @@ export default function TitleTop({ titleStr, notH1, className, children }: Title
       {notH1 ? (
         <div
           className={twMerge(
-            "halftone-blue my-2 flex h-auto w-full items-center justify-center rounded-sm p-2 px-10 text-[1.4rem] md:h-20 md:text-[1.8rem]",
+            "halftone-blue border-oliver-dark my-2 flex h-auto w-full items-center justify-center rounded-sm border-2 p-2 px-10 text-[1.4rem] md:h-20 md:text-[1.8rem]",
             className ? className : ""
           )}
         >

@@ -31,7 +31,7 @@ export const NewsTicker = ({ postsTitleSlug }: TickerProps) => {
   }, [postsTitleSlug]);
 
   return (
-    <div className="halftone-blue my-2 flex h-auto flex-col items-center justify-between overflow-hidden rounded-sm bg-black px-4 py-2 text-white md:h-14 md:flex-row">
+    <div className="halftone-blue border-oliver-dark my-2 flex h-auto flex-col items-center justify-between overflow-hidden rounded-sm border-2 bg-black px-4 py-2 text-white md:h-14 md:flex-row">
       <TitleHalftone title="noticias" h2Exists className="md:w-30" />
       <div className="flex-grow overflow-hidden rounded-sm px-2.5 py-2 text-black transition-all duration-500">
         <LinkGeneral

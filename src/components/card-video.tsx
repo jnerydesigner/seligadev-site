@@ -10,7 +10,7 @@ export interface VideoProps {
 
 export const CardVideo = ({ thumb, title, url }: VideoProps) => {
   return (
-    <div className="halftone-blue flex flex-col items-center justify-center rounded-sm p-4">
+    <div className="halftone-blue border-oliver-dark flex flex-col items-center justify-center rounded-sm border-2 p-4">
       <div className="z-10 h-40 w-full">
         <Image
           src={thumb}

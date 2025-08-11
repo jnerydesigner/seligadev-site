@@ -11,7 +11,7 @@ export const CardHome = (props: CardHomeProps) => {
   return (
     <div className="mb-2">
       <Link href={props.link}>
-        <div className="halftone-blue z-10 mt-2 flex h-auto flex-col items-center justify-between rounded-xl p-4 shadow-lg ring-1 ring-blue-300 transition-shadow duration-300 hover:shadow-2xl md:h-40 md:flex-row md:gap-2">
+        <div className="halftone-blue border-oliver-dark z-10 mt-2 flex h-auto flex-col items-center justify-between rounded-xl border-2 p-4 duration-300 hover:bg-amber-100 hover:shadow-2xl md:h-40 md:flex-row md:gap-2">
           <div>
             <h2 className="flex items-center justify-center rounded-sm bg-white px-6 py-2 text-2xl font-bold text-black drop-shadow-lg">
               {props.title}

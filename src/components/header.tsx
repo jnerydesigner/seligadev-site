@@ -27,7 +27,7 @@ export default function Header() {
         </div>
       </Link> */}
       <Link href="/" className="flex items-center justify-center">
-        <div className="halftone-blue-no-border border-oliver-dark mb-2 flex h-10 w-full cursor-pointer items-center justify-center border-b-[2px] text-2xl font-bold text-indigo-600 select-none">
+        <div className="halftone-blue border-oliver-dark mb-2 flex h-10 w-full cursor-pointer items-center justify-center border-b-[2px] text-2xl font-bold text-indigo-600 select-none">
           <p className="animate-pulse">SeLigaDev</p>
         </div>
       </Link>

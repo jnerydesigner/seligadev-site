@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function NotFoundPage() {
   return (
-    <div className="halftone-blue bg-principal-seligadev flex min-h-screen flex-col items-center justify-center px-4 text-center text-black">
+    <div className="halftone-blue border-oliver-dark bg-principal-seligadev flex min-h-screen flex-col items-center justify-center border border-2 px-4 text-center text-black">
       <h1 className="text-6xl font-bold">404</h1>
       <p className="mt-4 text-xl">Página não encontrada</p>
       <p className="mt-2">A página que você está procurando não existe ou foi movida.</p>

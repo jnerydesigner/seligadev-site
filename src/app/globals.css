@@ -254,7 +254,7 @@
     background-color: #a8dadc;
     background-image: radial-gradient(#1d3557 10%, transparent 11%);
     background-size: 16px 16px;
-    border: 3px solid var(--color-oliver-dark);
+    /* border: 3px solid var(--color-oliver-dark); */
   }
 
   .halftone-blue-no-border {
@@ -267,7 +267,7 @@
     background-color: #79d410;
     background-image: radial-gradient(#1d3557 10%, transparent 11%);
     background-size: 16px 16px;
-    border: 3px solid var(--color-oliver-dark);
+    /* border: 3px solid var(--color-oliver-dark); */
   }
 
   .halftone-blue-radial-white {
@@ -281,7 +281,7 @@
     background-color: #f9d71c;
     background-image: radial-gradient(#e63946 10%, transparent 11%);
     background-size: 16px 16px;
-    border: 3px solid var(--color-oliver-dark);
+    /* border: 3px solid var(--color-oliver-dark); */
   }
 }
 

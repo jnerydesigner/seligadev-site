@@ -4,7 +4,7 @@ export function LastPostBlog() {
   return (
     <>
       <h1 className="z-10">Last Post Blog</h1>
-      <div className="halftone-blue z-10 mt-10 flex h-32 items-center p-4">
+      <div className="halftone-blue border-oliver-dark z-10 mt-10 flex h-32 items-center border-2 p-4">
         <Link href="#" className="z-10 flex h-full flex-1 items-center gap-4 p-10">
           <div className="flex-1">
             <h2 className="text-xl font-bold">Título da Notícia</h2>
