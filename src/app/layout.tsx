@@ -27,11 +27,6 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <Adsense pid="ca-pub-1600331961556195" />
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1600331961556195"
-          crossOrigin="anonymous"
-        ></script>
       </head>
       <body className={`${bangers.variable} bg-principal-seligadev flex min-h-screen flex-col`}>
         <div className="font-bangers halftone-yellow halftone-close overflow-y-full flex min-h-full flex-col">

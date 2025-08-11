@@ -9,6 +9,7 @@ export interface ShortsProps {
 }
 
 export const CardShorts = ({ thumb, title, url }: ShortsProps) => {
+  console.log("CardShorts", { thumb, title, url });
   return (
     <div className="halftone-blue flex flex-col items-center justify-center rounded-sm p-4">
       <div className="relative z-10 w-full overflow-hidden rounded-md pb-[177.77%] shadow-md">
