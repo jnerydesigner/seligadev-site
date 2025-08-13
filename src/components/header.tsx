@@ -12,6 +12,7 @@ const navItems = [
   { titlePage: "Shorts", pathPage: "/shorts" },
   { titlePage: "Meu Setup", pathPage: "/setup" },
   { titlePage: "Meus Patrocinadores", pathPage: "/sponsors" },
+  { titlePage: "Compre meu Café", pathPage: "/buy-my-coffee" },
 ] as const;
 
 type NavItemType = (typeof navItems)[number]["pathPage"];
