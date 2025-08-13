@@ -53,10 +53,10 @@ export const PostContainer = ({
             height={300}
           />
           <div className="fex-col flex h-10 items-center justify-center gap-2">
-            <h2 className="flex h-10 items-center justify-center text-lg font-semibold">
+            <h2 className="flex h-10 items-center justify-center px-4 text-lg font-semibold">
               {authorName}
             </h2>
-            <div className="mt-0 flex h-10 items-center justify-center gap-3 text-gray-600 md:mt-2">
+            <div className="mt-0 flex h-10 items-center justify-center gap-3 px-4 text-gray-600">
               {socialMedias.map((social) => (
                 <Link
                   key={social.id}
@@ -81,7 +81,7 @@ export const PostContainer = ({
           <p>Fonte {noticeFontTitle}: </p>
           <Link
             href={noticeFontLink}
-            className="w-full bg-red-600 text-blue-600 hover:underline"
+            className="w-full text-blue-600 hover:underline"
             target="_blank"
           >
             {noticeFontLink}
