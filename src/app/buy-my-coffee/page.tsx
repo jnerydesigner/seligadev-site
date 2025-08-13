@@ -1,4 +1,5 @@
 import { CardBlog } from "@/components/card-blog";
+import { PixCopyAndPaste } from "@/components/pix-copy-and-paste";
 import TitleTop from "@/components/title";
 import { TitleHalftone } from "@/components/title-halftone";
 import prisma from "@/lib/prisma";
@@ -44,22 +45,25 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function PageByMyCoffee() {
   const findPost = await prisma.post.findMany();
   return (
-    <section className="flex h-208 w-full flex-col items-center justify-center p-4">
+    <section className="flex h-160 w-full flex-col items-center justify-center p-4 md:h-208">
       <div className="halftone-blue border-oliver-dark flex h-full w-full flex-col items-center justify-center gap-4 rounded-sm border-2 bg-red-300 p-6">
         <TitleHalftone
           h2Exists={true}
           title="Seja Nosso Patrocinador, Ajude com um Pix de Qualquer Valor"
         />
-        <div className="flex h-[300px] w-full flex-1 items-center justify-center">
+        <div className="flex h-[160px] w-full flex-1 items-center justify-center md:h-[300px]">
           <Image
             src="/pix-new.png"
             alt="WhatsApp de Jander Nery"
             title="WhatsApp de Jander Nery"
-            className="h-[400px] w-[400px]"
+            className="h-[150px] w-[150px] md:h-[400px] md:w-[400px]"
             width={500}
             height={500}
             loading="eager"
           />
+        </div>
+        <div className="mt-4 text-gray-900">
+          <PixCopyAndPaste />
         </div>
       </div>
     </section>
