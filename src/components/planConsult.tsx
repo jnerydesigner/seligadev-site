@@ -47,21 +47,21 @@ export const PlanConsult = () => {
       </p>
       <div className="flex h-[140px] w-full items-center justify-center">
         <Image
-          src="/qrcode_whatsapp.svg"
+          src="/seligadev-qrcode-whatsapp.png"
           alt="WhatsApp de Jander Nery"
           title="WhatsApp de Jander Nery"
-          className="h-full"
-          width={300}
-          height={300}
+          className="h-full w-[140px]"
+          width={500}
+          height={500}
           loading="eager"
         />
       </div>
-      <Link
+      {/* <Link
         href="/"
         className="halftone-blue-radial-white absolute top-1.5 right-1.5 flex h-14 w-14 cursor-pointer items-center justify-center rounded-sm shadow-sm"
       >
         <FaHome />
-      </Link>
+      </Link> */}
     </div>
   );
 };
