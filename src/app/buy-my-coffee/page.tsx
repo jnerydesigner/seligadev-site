@@ -50,12 +50,12 @@ export default async function PageByMyCoffee() {
           h2Exists={true}
           title="Seja Nosso Patrocinador, Ajude com um Pix de Qualquer Valor"
         />
-        <div className="flex h-[300px] w-full items-center justify-center">
+        <div className="flex h-[300px] w-full flex-1 items-center justify-center">
           <Image
             src="/pix-new.png"
             alt="WhatsApp de Jander Nery"
             title="WhatsApp de Jander Nery"
-            className="h-full w-[300px]"
+            className="h-[400px] w-[400px]"
             width={500}
             height={500}
             loading="eager"
