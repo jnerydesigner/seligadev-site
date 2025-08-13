@@ -48,7 +48,7 @@ export default async function PageByMyCoffee() {
       <div className="halftone-blue border-oliver-dark flex h-full w-full flex-col items-center justify-center gap-4 rounded-sm border-2 bg-red-300 p-6">
         <TitleHalftone
           h2Exists={true}
-          title="Seja Nosso Patrocinador, Ajude com um Pix de Qualaquer Valor"
+          title="Seja Nosso Patrocinador, Ajude com um Pix de Qualquer Valor"
         />
         <div className="flex h-[300px] w-full items-center justify-center">
           <Image
