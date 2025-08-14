@@ -7,6 +7,7 @@ import { YoutubeIcon } from "./icons/youtube.icon";
 import { CalendarIcon } from "./icons/calendar.icon";
 import Image from "next/image";
 import { PersonalInfo } from "@/types/perosnal-info.type";
+import Link from "next/link";
 
 interface ResumeProps {
   resumeDataInfo: PersonalInfo;
@@ -165,19 +166,44 @@ export const Resume = ({ resumeDataInfo }: ResumeProps) => {
             </div>
             <div className="flex items-center px-2">
               <LinkedinIcon className="mr-2 h-4 w-4" />
-              <span>{resumeDataInfo.contact.linkedin}</span>
+
+              <Link
+                href={`https://${resumeDataInfo.contact.linkedin}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span>{resumeDataInfo.contact.linkedin}</span>
+              </Link>
             </div>
             <div className="flex items-center px-2">
               <GithubIcon className="mr-2 h-4 w-4" />
-              <span>{resumeDataInfo.contact.github}</span>
+              <Link
+                href={`https://${resumeDataInfo.contact.github}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span>{resumeDataInfo.contact.github}</span>
+              </Link>
             </div>
             <div className="flex items-center px-2">
               <GlobeIcon className="mr-2 h-4 w-4" />
-              <span>{resumeDataInfo.contact.portfolio}</span>
+              <Link
+                href={`https://${resumeDataInfo.contact.portfolio}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span>{resumeDataInfo.contact.portfolio}</span>
+              </Link>
             </div>
             <div className="flex items-center px-2">
               <YoutubeIcon className="mr-2 h-4 w-4" />
-              <span>{resumeDataInfo.contact.youtube}</span>
+              <Link
+                href={`https://${resumeDataInfo.contact.youtube}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span>{resumeDataInfo.contact.youtube}</span>
+              </Link>
             </div>
           </div>
         </div>
@@ -250,7 +276,7 @@ export const Resume = ({ resumeDataInfo }: ResumeProps) => {
                   {resumeDataInfo.skills.skillBackend.map((skill, index) => (
                     <span
                       key={index}
-                      className="rounded-full bg-blue-100 px-2 py-1 text-sm font-medium text-blue-800"
+                      className="rounded-full bg-blue-100 px-2 py-1 text-sm font-medium text-blue-800 shadow-sm"
                     >
                       {skill.name}
                     </span>
@@ -265,7 +291,7 @@ export const Resume = ({ resumeDataInfo }: ResumeProps) => {
                   {resumeDataInfo.skills.skillFrontend.map((skill) => (
                     <span
                       key={skill.id}
-                      className="rounded-full bg-green-100 px-3 py-1 text-sm font-medium text-green-800"
+                      className="rounded-full bg-green-100 px-3 py-1 text-sm font-medium text-green-800 shadow-sm"
                     >
                       {skill.name}
                     </span>
@@ -280,7 +306,7 @@ export const Resume = ({ resumeDataInfo }: ResumeProps) => {
                   {resumeDataInfo.skills.skillDatabase.map((skill) => (
                     <span
                       key={skill.id}
-                      className="rounded-full bg-purple-100 px-3 py-1 text-sm font-medium text-purple-800"
+                      className="rounded-full bg-purple-100 px-3 py-1 text-sm font-medium text-purple-800 shadow-sm"
                     >
                       {skill.name}
                     </span>
@@ -295,7 +321,7 @@ export const Resume = ({ resumeDataInfo }: ResumeProps) => {
                   {resumeDataInfo.skills.skillTool.map((skill) => (
                     <span
                       key={skill.id}
-                      className="rounded-full bg-orange-100 px-3 py-1 text-sm font-medium text-orange-800"
+                      className="rounded-full bg-orange-100 px-3 py-1 text-sm font-medium text-orange-800 shadow-sm"
                     >
                       {skill.name}
                     </span>
@@ -310,7 +336,7 @@ export const Resume = ({ resumeDataInfo }: ResumeProps) => {
                   {resumeDataInfo.skills.skillMethodology.map((skill) => (
                     <span
                       key={skill.id}
-                      className="rounded-full bg-red-100 px-3 py-1 text-sm font-medium text-red-800"
+                      className="rounded-full bg-red-100 px-3 py-1 text-sm font-medium text-red-800 shadow-sm"
                     >
                       {skill.name}
                     </span>
