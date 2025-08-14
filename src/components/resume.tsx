@@ -134,9 +134,9 @@ export const Resume = ({ resumeDataInfo }: ResumeProps) => {
   };
 
   return (
-    <div className="mx-auto max-w-4xl shadow-2xl">
-      <div className="halftone-black-dark border-oliver-dark flex items-center justify-center gap-4 border-t-2 border-r-2 border-l-2 p-8 text-white">
-        <div className="flex h-50 w-50 flex-col items-center justify-center overflow-hidden rounded-full border-4 border-white shadow-sm">
+    <div className="mx-auto w-full shadow-2xl md:max-w-4xl">
+      <div className="halftone-black-dark border-oliver-dark md:flex-rol flex flex-col items-center justify-center gap-4 border-t-2 border-r-2 border-l-2 p-0 text-white md:p-8">
+        <div className="flex-rol mt-2 flex h-30 w-30 items-center justify-center overflow-hidden rounded-full border-4 border-white shadow-sm md:mt-0 md:h-50 md:w-50 md:flex-col">
           <Image
             src="/jander-nery.png"
             alt="Foto de Jander Nery"
@@ -145,10 +145,14 @@ export const Resume = ({ resumeDataInfo }: ResumeProps) => {
             className="h-full w-full"
           />
         </div>
-        <div className="flex flex-col items-start justify-between gap-4 p-2 md:gap-8">
-          <div className="mb-4 md:mb-0">
-            <h1 className="mb-2 text-4xl font-bold">{resumeDataInfo.name}</h1>
-            <h2 className="mb-2 text-xl text-blue-100">{resumeDataInfo.title}</h2>
+        <div className="flex w-full flex-col items-start justify-center gap-4 p-2 md:gap-8">
+          <div className="mb-4 flex flex-col items-center justify-center md:mb-0">
+            <h1 className="mb-2 text-center text-xl font-bold md:text-left md:text-4xl">
+              {resumeDataInfo.name}
+            </h1>
+            <h2 className="mb-2 text-center text-xl text-blue-100 md:text-left">
+              {resumeDataInfo.title}
+            </h2>
             <div className="flex items-center px-2 text-blue-100">
               <MapPin className="mr-2 h-4 w-4" />
               <span>{resumeDataInfo.location}</span>
@@ -209,7 +213,7 @@ export const Resume = ({ resumeDataInfo }: ResumeProps) => {
         </div>
       </div>
 
-      <div className="halftone-white-dark border-oliver-dark border-r-2 border-b-2 border-l-2 p-8">
+      <div className="halftone-white-dark border-oliver-dark border-r-2 border-b-2 border-l-2 p-0 md:p-8">
         <section className="mb-8 rounded-sm p-2">
           <h3 className="bg-gray-light mb-4 rounded-sm border-b-2 border-blue-600 p-2 pb-2 text-2xl font-bold text-gray-800">
             🧑‍💻 Resumo Profissional
@@ -219,8 +223,8 @@ export const Resume = ({ resumeDataInfo }: ResumeProps) => {
           </p>
         </section>
 
-        <section className="mb-8">
-          <h3 className="bg-gray-light mb-4 rounded-sm border-b-2 border-blue-600 p-2 pb-2 text-2xl font-bold text-gray-800">
+        <section className="mb-8 p-2">
+          <h3 className="bg-gray-light mb-4 rounded-sm border-b-2 border-blue-600 p-2 pb-2 text-xl font-bold text-gray-800 md:text-2xl">
             💼 Experiência Profissional
           </h3>
           <div className="space-y-6">
