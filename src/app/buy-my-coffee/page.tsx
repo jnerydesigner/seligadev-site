@@ -43,9 +43,8 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function PageByMyCoffee() {
-  const findPost = await prisma.post.findMany();
   return (
-    <section className="flex h-160 w-full flex-col items-center justify-center p-4 md:h-208">
+    <section className="flex h-160 w-full flex-col items-center justify-center p-4 md:h-185">
       <div className="halftone-blue border-oliver-dark flex h-full w-full flex-col items-center justify-center gap-4 rounded-sm border-2 bg-red-300 p-6">
         <TitleHalftone
           h2Exists={true}
@@ -56,7 +55,7 @@ export default async function PageByMyCoffee() {
             src="/pix-new.png"
             alt="WhatsApp de Jander Nery"
             title="WhatsApp de Jander Nery"
-            className="h-[150px] w-[150px] md:h-[400px] md:w-[400px]"
+            className="h-[150px] w-[150px] md:h-[280px] md:w-[280px]"
             width={500}
             height={500}
             loading="eager"
