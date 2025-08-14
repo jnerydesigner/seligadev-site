@@ -1,0 +1,150 @@
+{
+    "_id": {
+        "$oid": "689e0b53b0c6967207a7150f"
+    },
+    "name": "JANDER DA COSTA NERY",
+    "title": "Tecnologia da Informação | Desenvolvedor Fullstack",
+    "location": "Manaus - AM",
+    "contact": {
+        "phone": "(92) 99531-9977",
+        "email": "jander.webmaster@gmail.com",
+        "linkedin": "linkedin.com/in/jander-nery",
+        "github": "github.com/jnerydesigner",
+        "portfolio": "jandernery.seligadev.com.br",
+        "youtube": "youtube.com/@janderneryjandernery"
+    },
+    "summary": "Desenvolvedor Fullstack Sênior com forte atuação em backend (Node.js, NestJS, Spring Boot) e participação crescente em decisões técnicas, code reviews e suporte técnico a outros desenvolvedores. Experiência com arquitetura de microserviços, ambientes de alta disponibilidade e integração de sistemas com RabbitMQ. Participei de iniciativas de melhoria de código e boas práticas (Clean Code, SOLID), além de colaborar em times com cultura DevOps usando Docker, Jenkins e AWS. Conhecimento prático em bancos PostgreSQL, MongoDB e metodologias ágeis.",
+    "education": [
+        {
+            "degree": "Bacharelado em Sistemas de Informação",
+            "institution": "Universidade Estácio de Sá",
+            "period": "Concluído em Dez/2020"
+        },
+        {
+            "degree": "MBA em Auditoria e Segurança em Sistemas de Informação",
+            "institution": "UNEOURO",
+            "period": "Jan/2024"
+        }
+    ],
+    "certifications": [
+        "Certificação Rocketseat: NodeJS, ReactJS, React Native",
+        "Certificação Upinside: Upinside",
+        "AWS Certified Cloud Practitioner",
+        "Clean Architecture e Clean Code — Rodrigo Branas",
+        "Git, Docker, Jenkins, AWS (SQS, ECS, EC2, S3)"
+    ],
+    "experience": [
+        {
+            "company": "Bemol Digital",
+            "position": "Software Engineer",
+            "technologies": "Salesforce, LWC, Apex, Einstein AI",
+            "period": "11/2024 – 03/2025",
+            "description": [
+                "Criei e implementei funcionalidades para Salesforce, incluindo desenvolvimento com LWC (Lightning Web Components), Apex Class e Visualforce Pages.",
+                "Colaborei na evolução de soluções inteligentes com Salesforce Einstein, propondo melhorias técnicas e otimizando componentes LWC em conjunto com a equipe de engenharia."
+            ]
+        },
+        {
+            "company": "Okto Bank",
+            "position": "Desenvolvedor Backend",
+            "technologies": "Node.js, PostgreSQL, Docker, RabbitMQ",
+            "period": "08/2024 – 11/2024",
+            "description": [
+                "Desenvolvi funcionalidades críticas para a plataforma bancária de casas de apostas, atendendo clientes como PixBet, Betfair e Bet Nacional.",
+                "Atuei com arquitetura baseada em microsserviços utilizando Node.js, Express.js, Redis, RabbitMQ e PostgreSQL em ambientes Dockerizados e Kubernetes."
+            ]
+        },
+        {
+            "company": "Compass UOL",
+            "position": "Desenvolvedor Sênior",
+            "technologies": "NestJS, Node.js, AWS, Strapi, Microserviços",
+            "period": "10/2022 – 02/2024",
+            "description": [
+                "Desenvolvi sistemas complexos com foco em escalabilidade e performance, utilizando NestJS, NextJs, Node.js e AWS em arquitetura de microserviços.",
+                "Atuei em projetos para empresas como Unidas Rent a Car, Poliedro Educação, Raia/Drogasil e Track & Field.",
+                "Introduzi o Strapi CMS para expor o frontend como API, otimizando o deploy e a gestão de conteúdo.",
+                "Atuei como referência técnica (leadership), promovendo boas práticas de arquitetura, Clean Code e qualidade de software.",
+                "Projeto Marketing Pro - Poliedro Educação: Crescimento no portfólio geral das escolas associadas, com integração de Redes Sociais para Marketing e consequentemente, aumento de receita em 8% para Poliedro, devido aos custos operacionais da plataforma."
+            ]
+        },
+        {
+            "company": "Progress Rail, a Caterpillar Company",
+            "position": "Desenvolvedor Fullstack Sênior",
+            "technologies": "Java, Spring Boot, Angular, Jenkins, AWS",
+            "period": "04/2022 – 10/2022",
+            "description": [
+                "Realizei integração de serviços ferroviários utilizando Spring Boot, Groovy e Angular.",
+                "Desenvolvi bots para automação de integrações entre sistemas.",
+                "Implementei pipelines de CI/CD com Jenkins, integrando serviços na AWS."
+            ]
+        },
+        {
+            "company": "ITBAM – Conecthus",
+            "position": "Desenvolvedor Backend Sênior",
+            "technologies": "Node.js, NestJS, Java, PostgreSQL, Docker",
+            "period": "12/2019 – 04/2022",
+            "description": [
+                "Desenvolvi sistemas de bilhetagem eletrônica para o Exército Brasileiro, com foco em segurança e confiabilidade.",
+                "Implementei autenticação OAuth2 utilizando Node.js, NestJS, PostgreSQL, Docker e MongoDB.",
+                "Atuei como líder técnico (leadership) com equipes de 4 pessoas (1 backend, 1 frontend, 1 estagiário, 1 QA) em entregas críticas, promovendo boas práticas de código e garantindo padrões de qualidade e segurança."
+            ]
+        },
+        {
+            "company": "PROSAM – Programas Sociais da Amazônia",
+            "position": "Desenvolvedor Web Pleno",
+            "technologies": "PHP, MySQL, HTML, JavaScript",
+            "period": "06/2010 – 10/2017",
+            "description": [
+                "Desenvolvimento de sistema web para controle de horas trabalhadas por colaboradores.",
+                "Criação e manutenção de site institucional da organização.",
+                "Atuação com tecnologias como PHP, HTML, CSS, JavaScript e MySQL."
+            ]
+        }
+    ],
+    "skills": {
+        "backend": [
+            "NodeJS",
+            "NestJS",
+            "Java (Spring Boot)",
+            "Microserviços",
+            "APIs RESTful",
+            "AWS"
+        ],
+        "frontend": [
+            "ReactJS",
+            "Angular",
+            "React Native",
+            "Tailwind CSS",
+            "Styled Components"
+        ],
+        "databases": [
+            "PostgreSQL",
+            "MongoDB",
+            "MySQL"
+        ],
+        "tools": [
+            "Git",
+            "GitHub",
+            "GitLab",
+            "Docker",
+            "Jenkins",
+            "AWS"
+        ],
+        "methodologies": [
+            "TDD",
+            "Scrum",
+            "DevOps",
+            "SOLID"
+        ]
+    },
+    "languages": [
+        {
+            "language": "Português",
+            "level": "Nativo"
+        },
+        {
+            "language": "Inglês",
+            "level": "Intermediário (leitura técnica fluente e comunicação funcional)"
+        }
+    ]
+}

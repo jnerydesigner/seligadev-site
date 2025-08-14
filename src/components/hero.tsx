@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section className="halftone-blue border-oliver-dark relative flex h-[380px] w-full items-center justify-center rounded-sm border-2 px-0 md:h-[350px]">
+    <section className="halftone-blue border-oliver-dark relative flex h-[360px] w-full items-center justify-center rounded-sm border-2 px-0 md:h-[370px]">
       <div className="relative z-10 -mt-[50px] flex w-full flex-col items-center gap-3 p-4 text-center">
         <div className="mt-4 h-[120px] w-[120px] md:mt-0 md:h-[150px] md:w-[150px]">
           <Image
@@ -57,6 +57,15 @@ export default function Hero() {
             </li>
           ))}
         </ul>
+
+        <div>
+          <Link
+            href="/resume"
+            className="bg-oliver-dark hover:bg-oliver-light rounded-sm px-4 py-2 text-white transition-colors"
+          >
+            Saiba mais sobre mim
+          </Link>
+        </div>
       </div>
     </section>
   );

@@ -7,6 +7,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// Modelos existentes mantidos
 model Videos {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   title     String
@@ -96,4 +97,148 @@ model SocialMedia {
   userId String @db.ObjectId
 
   @@map("socials_media")
+}
+
+// MODELOS DE CURRÍCULO - REESTRUTURADOS
+
+model PersonalInfo {
+  id            String          @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  title         String
+  location      String
+  summary       String
+  contact       ContactInfo     @relation(fields: [contactId], references: [id])
+  contactId     String          @db.ObjectId
+  education     Education[]
+  certification Certification[]
+  experience    Experience[]
+  skills        Skills?         @relation(fields: [skillsId], references: [id])
+  skillsId      String?         @db.ObjectId
+  languages     Languages[]
+
+  @@map("personal_info")
+}
+
+model ContactInfo {
+  id           String         @id @default(auto()) @map("_id") @db.ObjectId
+  phone        String
+  email        String
+  linkedin     String
+  github       String
+  portfolio    String
+  youtube      String
+  personalInfo PersonalInfo[]
+
+  @@map("contact_info")
+}
+
+model Education {
+  id             String       @id @default(auto()) @map("_id") @db.ObjectId
+  degree         String
+  institution    String
+  period         String
+  personalInfo   PersonalInfo @relation(fields: [personalInfoId], references: [id])
+  personalInfoId String       @db.ObjectId
+
+  @@map("education")
+}
+
+model Certification {
+  id             String       @id @default(auto()) @map("_id") @db.ObjectId
+  name           String
+  description    String
+  personalInfo   PersonalInfo @relation(fields: [personalInfoId], references: [id])
+  personalInfoId String       @db.ObjectId
+
+  @@map("certifications")
+}
+
+model Experience {
+  id             String                  @id @default(auto()) @map("_id") @db.ObjectId
+  company        String
+  position       String
+  technologies   String
+  period         String
+  descriptions   ExperienceDescription[]
+  personalInfo   PersonalInfo            @relation(fields: [personalInfoId], references: [id])
+  personalInfoId String                  @db.ObjectId
+
+  @@map("experience")
+}
+
+model ExperienceDescription {
+  id           String     @id @default(auto()) @map("_id") @db.ObjectId
+  description  String
+  experience   Experience @relation(fields: [experienceId], references: [id])
+  experienceId String     @db.ObjectId
+
+  @@map("experience_description")
+}
+
+model Skills {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  personalInfo     PersonalInfo[]
+  skillBackend     SkillBackend[]
+  skillFrontend    SkillFrontend[]
+  skillDatabase    SkillDatabase[]
+  skillTool        SkillTool[]
+  skillMethodology SkillMethodology[]
+
+  @@map("skills")
+}
+
+model SkillBackend {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  name     String
+  skills   Skills @relation(fields: [skillsId], references: [id])
+  skillsId String @db.ObjectId
+
+  @@map("skill_backend")
+}
+
+model SkillFrontend {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  name     String
+  skills   Skills @relation(fields: [skillsId], references: [id])
+  skillsId String @db.ObjectId
+
+  @@map("skill_frontend")
+}
+
+model SkillDatabase {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  name     String
+  skills   Skills @relation(fields: [skillsId], references: [id])
+  skillsId String @db.ObjectId
+
+  @@map("skill_database")
+}
+
+model SkillTool {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  name     String
+  skills   Skills @relation(fields: [skillsId], references: [id])
+  skillsId String @db.ObjectId
+
+  @@map("skill_tool")
+}
+
+model SkillMethodology {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  name     String
+  skills   Skills @relation(fields: [skillsId], references: [id])
+  skillsId String @db.ObjectId
+
+  @@map("skill_methodology")
+}
+
+model Languages {
+  id             String       @id @default(auto()) @map("_id") @db.ObjectId
+  language       String
+  level          String
+  personalInfo   PersonalInfo @relation(fields: [personalInfoId], references: [id])
+  personalInfoId String       @db.ObjectId
+
+  @@map("languages")
 }
