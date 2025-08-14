@@ -135,8 +135,8 @@ export const Resume = ({ resumeDataInfo }: ResumeProps) => {
 
   return (
     <div className="mx-auto w-full shadow-2xl md:max-w-4xl">
-      <div className="halftone-black-dark border-oliver-dark md:flex-rol flex flex-col items-center justify-center gap-4 border-t-2 border-r-2 border-l-2 p-0 text-white md:p-8">
-        <div className="flex-rol mt-2 flex h-30 w-30 items-center justify-center overflow-hidden rounded-full border-4 border-white shadow-sm md:mt-0 md:h-50 md:w-50 md:flex-col">
+      <div className="halftone-black-dark border-oliver-dark flex flex-col items-center justify-center gap-4 border-t-2 border-r-2 border-l-2 p-0 text-white md:flex-row md:p-8">
+        <div className="mt-2 flex h-30 w-30 items-center justify-center overflow-hidden rounded-full border-4 border-white shadow-sm md:mt-0 md:h-40 md:w-50 md:flex-col">
           <Image
             src="/jander-nery.png"
             alt="Foto de Jander Nery"
