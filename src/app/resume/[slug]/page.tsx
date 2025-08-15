@@ -3,7 +3,9 @@ import prisma from "@/lib/prisma";
 import { ResumeMapper } from "@/types/mapper/resume.mapper";
 import { Metadata } from "next";
 
-export async function generateMetadata(): Promise<Metadata> {
+type tParams = Promise<{ slug: string }>;
+
+export async function generateMetadata({ params }: { params: tParams }): Promise<Metadata> {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "";
   const url = `${baseUrl}/resume`;
   const image = `${baseUrl}/logo.png`;
@@ -41,10 +43,11 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function PageResume() {
+export default async function PageResume({ params }: { params: tParams }) {
+  const { slug }: { slug: string } = await params;
   const resume = await prisma.personalInfo.findFirst({
     where: {
-      id: "689e104bb0c6967207a71513",
+      slug,
     },
     include: {
       contact: true,

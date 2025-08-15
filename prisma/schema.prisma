@@ -106,6 +106,7 @@ model PersonalInfo {
   name          String
   title         String
   location      String
+  slug          String
   summary       String
   contact       ContactInfo     @relation(fields: [contactId], references: [id])
   contactId     String          @db.ObjectId

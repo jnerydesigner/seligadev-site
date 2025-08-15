@@ -60,7 +60,7 @@ export default function Hero() {
 
         <div>
           <Link
-            href="/resume"
+            href="/resume/resume-jander-da-costa-nery"
             className="bg-oliver-dark hover:bg-oliver-light rounded-sm px-4 py-2 text-white transition-colors"
           >
             Saiba mais sobre mim
