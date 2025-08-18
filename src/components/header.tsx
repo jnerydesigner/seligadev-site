@@ -4,6 +4,7 @@ import { useState } from "react";
 import NavItem from "./nav-item";
 import Link from "next/link";
 import { useAppContext } from "@/context/app.context";
+import Image from "next/image";
 
 const navItems = [
   { titlePage: "Home", pathPage: "/" },
@@ -27,12 +28,19 @@ export default function Header() {
           SeLigaDev
         </div>
       </Link> */}
-      <Link href="/" className="flex items-center justify-center">
+      {/*       <Link href="/" className="flex items-center justify-center">
         <div className="halftone-blue border-oliver-dark mb-2 flex h-10 w-full cursor-pointer items-center justify-center border-b-[2px] text-2xl font-bold text-indigo-600 select-none">
           <p className="animate-pulse">SeLigaDev</p>
         </div>
-      </Link>
-      <nav className="flex flex-wrap justify-center gap-4">
+      </Link> */}
+      <nav className="halftone-blue border-oliver-dark flex flex-wrap justify-center gap-4 border-b-[2px] py-2">
+        <Image
+          src="https://seligadev-site-bk.s3.us-east-1.amazonaws.com/logo_site_se_liga_dev.png"
+          alt="logo site seligadev"
+          width={300}
+          height={300}
+          className="h-10 w-10 rounded-full"
+        />
         {navItems.map((item) => (
           <NavItem
             key={item.pathPage}
