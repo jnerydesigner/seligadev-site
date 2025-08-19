@@ -6,6 +6,7 @@ import PageContainer from "@/components/page-container";
 import { Adsense } from "@/components/adsense";
 import { AppProvider } from "@/context/app.context";
 import Footer from "@/components/footer";
+import { AmpAdsense } from "@/components/amp";
 
 const bangers = Bangers({
   weight: "400",
@@ -27,6 +28,18 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <Adsense pid="ca-pub-1600331961556195" />
+        {/* AMP auto ads custom element */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `<amp-auto-ads type="adsense" data-ad-client="ca-pub-1600331961556195"></amp-auto-ads>`,
+          }}
+        />
+        <AmpAdsense pid="ca-pub-1600331961556195" />
+        <script
+          async
+          custom-element="amp-auto-ads"
+          src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"
+        ></script>
       </head>
       <body className={`${bangers.variable} bg-principal-seligadev flex min-h-screen flex-col`}>
         <div className="font-bangers halftone-yellow halftone-close overflow-y-full flex min-h-full flex-col">
