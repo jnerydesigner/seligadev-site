@@ -1,10 +1,20 @@
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
+import { twMerge } from "tailwind-merge";
 
-export default function Hero() {
+interface HeroProps {
+  className: string;
+}
+
+export default function Hero(props: HeroProps) {
   return (
-    <section className="halftone-blue border-oliver-dark relative flex h-[360px] w-full items-center justify-center rounded-sm border-2 px-0 md:h-[370px]">
+    <section
+      className={twMerge(
+        "halftone-blue border-oliver-dark relative col-span-8 flex h-[360px] w-full items-center justify-center rounded-sm border-2 px-0 md:h-[370px]",
+        props.className
+      )}
+    >
       <div className="relative z-10 -mt-[50px] flex w-full flex-col items-center gap-3 p-4 text-center">
         <div className="mt-4 h-[120px] w-[120px] md:mt-0 md:h-[150px] md:w-[150px]">
           <Image
@@ -13,6 +23,7 @@ export default function Hero() {
             height={500}
             alt="Imagem do Perfil do Criador do site Se Liga Dev"
             className="h-full w-full object-contain"
+            priority
           />
         </div>
 

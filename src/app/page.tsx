@@ -4,6 +4,7 @@ import { CardHome } from "@/components/card-home";
 import { Metadata } from "next";
 import { NewsTicker } from "@/components/ticker";
 import prisma from "@/lib/prisma";
+import { CardFlexHome } from "@/components/card-flex-home";
 
 export async function generateMetadata(): Promise<Metadata> {
   const url = `${process.env.NEXT_PUBLIC_BASE_URL}`;
@@ -55,24 +56,22 @@ export default async function Home() {
   return (
     <div className="h-auto w-full">
       <NewsTicker postsTitleSlug={titleWithSlug} />
-      <Hero />
-      {/* <AdsBanner
-        dataAdClient="ca-pub-1600331961556195"
-        dataAdFormat="auto"
-        dataFullWidthResponsive={true}
-        dataAdSlot="6139750906"
-      /> */}
-      {/* <Consult /> */}
-      <CardHome
-        title="Consultoria Premium 🚀"
-        description="A orientação certa para levar seu projeto ao próximo nível."
-        link="/consult"
-      />
-      <CardHome
-        title="🌏 Quer uma VPS para aumentar sua produtividade 🚀"
-        description="Vem para Hostinger e seja feliz"
-        link="/hostinger"
-      />
+      <div className="grid auto-rows-auto grid-cols-12 gap-2">
+        <Hero className="col-span-12 md:col-span-8" />
+        <CardFlexHome
+          title="Consultoria Premium 🚀"
+          description="A orientação certa para levar seu projeto ao próximo nível."
+          link="/consult"
+          className="halftone-purple col-span-12 md:col-span-4"
+        />
+
+        <CardHome
+          title="🌏 Quer uma VPS para aumentar sua produtividade 🚀"
+          description="Vem para Hostinger e seja feliz"
+          link="/hostinger"
+          className="halftone-emerald border-oliver-dark col-span-12 rounded-sm border-2"
+        />
+      </div>
     </div>
   );
 }

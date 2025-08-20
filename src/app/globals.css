@@ -247,21 +247,36 @@
     background-color: var(--color-pink-light);
     background-image: radial-gradient(#e9ddde 10%, transparent 11%);
     background-size: 16px 16px;
-    border: 3px solid var(--color-oliver-dark);
   }
 
   .halftone-blue {
     background-color: #a8dadc;
     background-image: radial-gradient(#1d3557 10%, transparent 11%);
     background-size: 16px 16px;
-    /* border: 3px solid var(--color-oliver-dark); */
   }
 
   .halftone-gray-light {
     background-color: #7f8c8d;
     background-image: radial-gradient(#1d3557 10%, transparent 11%);
     background-size: 16px 16px;
-    /* border: 3px solid var(--color-oliver-dark); */
+  }
+
+  .halftone-purple {
+    background-color: #9b59b6;
+    background-image: radial-gradient(#1d3557 10%, transparent 11%);
+    background-size: 16px 16px;
+  }
+
+  .halftone-emerald {
+    background-color: #2ecc71;
+    background-image: radial-gradient(#1d3557 10%, transparent 11%);
+    background-size: 16px 16px;
+  }
+
+  .halftone-blue-sky {
+    background-color: #aedeff;
+    background-image: radial-gradient(#1d3557 10%, transparent 11%);
+    background-size: 16px 16px;
   }
 
 
@@ -304,7 +319,6 @@
     background-color: #f9d71c;
     background-image: radial-gradient(#e63946 10%, transparent 11%);
     background-size: 16px 16px;
-    /* border: 3px solid var(--color-oliver-dark); */
   }
 }
 
