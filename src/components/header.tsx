@@ -22,7 +22,7 @@ export default function Header() {
   const { activePath, setActivePath } = useAppContext();
 
   return (
-    <header className="halftone-blue-sky border-oliver-dark text-oliver-dark mx-auto flex w-full max-w-4xl flex-col items-center justify-center rounded-l-sm rounded-r-sm border-r-2 border-b-2 border-l-2 px-0 py-4">
+    <header className="halftone-blue-sky border-oliver-dark text-oliver-dark mx-auto mt-1 flex w-full max-w-4xl flex-col items-center justify-center rounded-l-sm rounded-r-sm border-2 px-0 py-4">
       <Link href="/" onClick={() => setActivePath("/")}>
         <Image
           src="/logo-new.png"
