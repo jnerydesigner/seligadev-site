@@ -14,6 +14,7 @@ const navItems = [
   { titlePage: "Meu Setup", pathPage: "/setup" },
   { titlePage: "Meus Patrocinadores", pathPage: "/sponsors" },
   { titlePage: "Compre meu Café", pathPage: "/buy-my-coffee" },
+  { titlePage: "Curriculo Jander Nery", pathPage: "/resume/resume-jander-da-costa-nery" },
 ] as const;
 
 type NavItemType = (typeof navItems)[number]["pathPage"];
