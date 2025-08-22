@@ -4,6 +4,7 @@ import React from "react";
 
 export async function generateMetadata(): Promise<Metadata> {
   const url = `${process.env.NEXT_PUBLIC_BASE_URL}/setup`;
+  const imageHostinger = `${process.env.NEXT_PUBLIC_BASE_URL}/images/image-hostinger.png`;
   return {
     title: "Planos Hostinger | Se Liga Dev",
     description:
@@ -17,12 +18,15 @@ export async function generateMetadata(): Promise<Metadata> {
         "Planos Hostinger para você elevar o nível de seu desenvolvimento, com VPS e não tem desculpa de que na minha máquina não funciona.",
       url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}/hostinger`,
       siteName: "Se Liga Dev",
+      type: "website",
+      images: [imageHostinger],
     },
     twitter: {
       card: "summary",
       title: "Planos Hostinger",
       description:
         "Planos Hostinger para você elevar o nível de seu desenvolvimento, com VPS e não tem desculpa de que na minha máquina não funciona.",
+      images: [imageHostinger],
     },
   };
 }
