@@ -1,4 +1,3 @@
-// app/layout.tsx
 import type { Metadata } from "next";
 import { Bangers } from "next/font/google";
 import "./globals.css";
