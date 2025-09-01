@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
   const url = `${process.env.NEXT_PUBLIC_BASE_URL}/setup`;
-  const image = `${url}/logo.png`;
+  const image = `https://seliga-dev.s3.us-east-1.amazonaws.com/logo-new.png`;
   return {
     title: "Setup que eu utilizo | Se Liga Dev",
     description: "Veja os produtos, equipamentos e serviços que eu uso no meu setup.",

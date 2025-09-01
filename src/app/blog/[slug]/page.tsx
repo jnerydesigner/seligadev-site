@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: { params: tParams }): Promise
 
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "";
   const url = `${baseUrl}/blog/${post.slug}`;
-  const image = post.imageUrl ?? `${baseUrl}/logo.png`;
+  const image = post.imageUrl ?? `https://seliga-dev.s3.us-east-1.amazonaws.com/logo-new.png`;
 
   return {
     title: `${post.title} | Se Liga Dev`,

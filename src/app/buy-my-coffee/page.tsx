@@ -10,7 +10,7 @@ import React from "react";
 export async function generateMetadata(): Promise<Metadata> {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "";
   const url = `${baseUrl}/by-my-coffee`;
-  const image = `${baseUrl}/logo.png`;
+  const image = `https://seliga-dev.s3.us-east-1.amazonaws.com/logo-new.png`;
 
   return {
     title: `Compre meu Café | Se Liga Dev`,

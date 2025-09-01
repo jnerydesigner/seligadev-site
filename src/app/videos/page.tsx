@@ -17,7 +17,7 @@ export interface VideoResponseDB {
 export async function generateMetadata(): Promise<Metadata> {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "";
   const url = `${baseUrl}/blog`;
-  const image = `${baseUrl}/logo.png`;
+  const image = `https://seliga-dev.s3.us-east-1.amazonaws.com/logo-new.png`;
 
   return {
     title: `Vídeos | Se Liga Dev`,

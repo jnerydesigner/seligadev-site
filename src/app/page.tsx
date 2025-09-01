@@ -8,7 +8,7 @@ import { CardFlexHome } from "@/components/card-flex-home";
 
 export async function generateMetadata(): Promise<Metadata> {
   const url = `${process.env.NEXT_PUBLIC_BASE_URL}`;
-  const image = "https://seliga-dev.s3.us-east-1.amazonaws.com/logo.png";
+  const image = "https://seliga-dev.s3.us-east-1.amazonaws.com/logo-new.png";
   return {
     title: "SeLigaDev",
     description:

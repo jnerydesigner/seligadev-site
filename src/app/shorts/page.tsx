@@ -8,7 +8,7 @@ export const revalidate = 360;
 
 export async function generateMetadata(): Promise<Metadata> {
   const url = `${process.env.NEXT_PUBLIC_BASE_URL}/shorts`;
-  const image = `${url}/logo.png`;
+  const image = `https://seliga-dev.s3.us-east-1.amazonaws.com/logo-new.png`;
   return {
     title: "Shorts do Youtube | Se Liga Dev",
     description: "Veja alguns shorts do youtube relevantes do canal jander nery dev",

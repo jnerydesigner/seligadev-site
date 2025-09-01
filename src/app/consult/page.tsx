@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     siteName: "Seu Site ou Nome da Marca",
     images: [
       {
-        url: `${process.env.NEXT_PUBLIC_BASE_URL}/logo-jander-nery-dev-redondo.svg`,
+        url: `https://seliga-dev.s3.us-east-1.amazonaws.com/logo-new.png`,
         width: 1200,
         height: 630,
         alt: "Consultoria personalizada para devs",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Consultoria Para Desenvolvedores",
     description: "Acelere sua carreira como desenvolvedor com apoio técnico e estratégico.",
-    images: [`${process.env.NEXT_PUBLIC_BASE_URL}/logo-jander-nery-dev-redondo.svg`],
+    images: [`https://seliga-dev.s3.us-east-1.amazonaws.com/logo-new.png`],
   },
   robots: {
     index: true,
