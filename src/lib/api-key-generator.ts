@@ -2,7 +2,7 @@ import { env } from "./zod-env";
 import bcrypt from "bcryptjs";
 
 export class ApiKeyGenerator {
-  private baseKey = env.NEXT_PUBLIC_API_KEY;
+  private baseKey = "apikeynaofunciona";
   private saltRounds = 12;
 
   async generateApiKeyHash() {
