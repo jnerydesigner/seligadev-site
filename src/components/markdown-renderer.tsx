@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
@@ -128,7 +129,6 @@ export function MarkdownRenderer({ markdown, className }: MarkdownRendererProps)
             );
           },
           pre: ({ node, children, ...props }) => {
-            // Verifica se contém um elemento code com linguagem
             const codeElement = Array.isArray(children)
               ? children.find(
                   (child: any) =>
