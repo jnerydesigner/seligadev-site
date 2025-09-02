@@ -35,7 +35,7 @@ export const PostContainer = ({
         <Image
           src={banner || "/no-image.png"}
           alt="Banner do Post"
-          className="absolute h-46 w-full md:h-full md:object-cover"
+          className="md:object-fit absolute h-46 w-full md:h-full"
           width={800}
           height={800}
         />

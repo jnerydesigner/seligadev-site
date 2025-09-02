@@ -80,7 +80,7 @@ export function MarkdownRenderer({ markdown, className }: MarkdownRendererProps)
             return (
               <li className="mb-2 list-item list-inside">
                 {Array.isArray(children)
-                  ? children.map((child, idx) => <div key={idx}>{child}</div>)
+                  ? children.map((child, idx) => <span key={idx}>{child}</span>)
                   : children}
               </li>
             );
