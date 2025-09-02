@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
@@ -17,10 +18,13 @@ export function MarkdownRenderer({ markdown, className }: MarkdownRendererProps)
         rehypePlugins={[rehypeRaw]}
         components={{
           p: ({ node, children, ...props }) => {
-            const hasPreOrCode = node.children?.some(
-              (child) =>
-                child.type === "element" && (child.tagName === "pre" || child.tagName === "code")
-            );
+            const hasPreOrCode =
+              node?.children &&
+              Array.isArray(node.children) &&
+              node.children.some(
+                (child) =>
+                  child.type === "element" && (child.tagName === "pre" || child.tagName === "code")
+              );
 
             if (hasPreOrCode) {
               return <>{children}</>;
@@ -35,13 +39,14 @@ export function MarkdownRenderer({ markdown, className }: MarkdownRendererProps)
           pre: ({ node, children, ...props }) => {
             return <pre {...props}>{children}</pre>;
           },
-          code: ({ inline, className, children, ...props }) => {
+          code: (props) => {
+            const { node, inline, className, children, ...rest } = props as any;
             const match = /language-(\w+)/.exec(className || "");
             if (inline) {
               return (
                 <code
                   className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-sm text-zinc-800 dark:bg-zinc-800 dark:text-zinc-100"
-                  {...props}
+                  {...rest}
                 >
                   {children}
                 </code>
