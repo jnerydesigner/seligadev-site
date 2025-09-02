@@ -2,45 +2,59 @@ import Image from "next/image";
 import { Button } from "./ui/button";
 import { FaHome } from "react-icons/fa";
 import Link from "next/link";
+import { TechsType } from "@/types/techs.type";
+import TitleTop from "./title";
 
-export const PlanConsult = () => {
+interface TechsProps {
+  techs: TechsType[];
+}
+
+export const PlanConsult = ({ techs }: TechsProps) => {
   return (
-    <div className="relative mx-auto max-w-3xl rounded-lg bg-white p-6 shadow-lg">
+    <section className="halftone-blue border-oliver-dark relative mx-auto my-2 w-full max-w-4xl rounded-lg border-2 p-6 shadow-lg">
       <h1 className="border-b-2 border-blue-500 pb-2 text-2xl font-bold text-gray-900">
         Mentoria para você deslanchar nas suas conquistas
       </h1>
 
       <h2 className="mt-4 text-xl font-semibold text-blue-600">Tecnologias</h2>
       <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
-        {[
-          {
-            id: 1,
-            title: "Node.js",
-            desc: "Back-end performático e escalável.",
-          },
-          {
-            id: 2,
-            title: "NestJS",
-            desc: "APIs robustas e arquitetura modular.",
-          },
-          { id: 3, title: "Java", desc: "Aplicações robustas com Java 11+." },
-          { id: 4, title: "Spring Boot", desc: "Soluções ágeis e seguras." },
-        ].map((tech) => (
-          <div key={tech.id} className="rounded-md border-l-4 border-blue-500 bg-gray-100 p-4">
-            <h3 className="font-semibold text-gray-900">{tech.title}</h3>
-            <p className="text-gray-700">{tech.desc}</p>
+        {techs.map((tech) => (
+          <div
+            key={tech.id}
+            className="flex items-center justify-between gap-4 rounded-md border-l-4 border-blue-500 bg-gray-100 p-4"
+          >
+            <div className="h-18 w-18">
+              <Image
+                src={`${tech.slug}.svg`}
+                alt="Logo Java"
+                width={300}
+                height={300}
+                className="h-full w-full object-cover"
+              />
+            </div>
+            <div className="flex flex-1 flex-col items-start justify-center">
+              <h3 className="font-semibold text-gray-900">{tech.title}</h3>
+              <p className="text-gray-700">{tech.description}</p>
+            </div>
           </div>
         ))}
       </div>
 
       <h4 className="mt-6 text-xl font-semibold text-blue-600">Serviços</h4>
-      <ul className="mt-2 list-inside list-disc text-gray-800">
-        <li>Code Review</li>
-        <li>Arquitetura de Software</li>
-        <li>Mentoria</li>
-        <li>Otimização de Performance</li>
-        <li>Resolução de Problemas</li>
-      </ul>
+      {[
+        { id: 1, title: "Code Review", className: "my-0 border-0 p-0 text-2xl" },
+        { id: 2, title: "Arquitetura de Software", className: "my-0 border-0 p-0 text-2xl" },
+        { id: 3, title: "Mentoria", className: "my-0 border-0 p-0 text-2xl" },
+        { id: 4, title: "Otimização de Performance", className: "my-0 border-0 p-0 text-2xl" },
+        { id: 5, title: "Resolução de Problemas", className: "my-0 border-0 p-0 text-2xl" },
+      ].map((service) => (
+        <TitleTop
+          key={service.id}
+          titleStr={service.title}
+          notH1
+          className={service.className}
+        ></TitleTop>
+      ))}
 
       <p className="mt-4 text-gray-900">
         Entre em contato e leve seu conhecimento para o próximo nível! 🚀
@@ -62,6 +76,6 @@ export const PlanConsult = () => {
       >
         <FaHome />
       </Link> */}
-    </div>
+    </section>
   );
 };

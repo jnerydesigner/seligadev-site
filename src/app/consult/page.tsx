@@ -1,4 +1,6 @@
 import { PlanConsult } from "@/components/planConsult";
+import prisma from "@/lib/prisma";
+import { TechsType } from "@/types/techs.type";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -45,12 +47,11 @@ export const metadata: Metadata = {
     canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/consult`,
   },
 };
-export default function Consult() {
+export default async function Consult() {
+  const techs: TechsType[] = await prisma.techs.findMany();
   return (
     <>
-      <div className="mx-auto flex max-w-5xl flex-col items-center justify-center p-6">
-        <PlanConsult />
-      </div>
+      <PlanConsult techs={techs} />
     </>
   );
 }

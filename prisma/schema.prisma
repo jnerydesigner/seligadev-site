@@ -243,3 +243,12 @@ model Languages {
 
   @@map("languages")
 }
+
+model Techs {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  slug        String
+  description String
+
+  @@map("techs")
+}
