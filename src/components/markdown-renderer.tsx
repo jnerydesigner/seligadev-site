@@ -98,28 +98,26 @@ export function MarkdownRenderer({ markdown, className }: MarkdownRendererProps)
             ...props
           }: ComponentProps<"code"> & { inline?: boolean }) => {
             const match = /language-(\w+)/.exec(className || "");
-            const code = String(children).trim();
+
+            if (!inline && match) {
+              // Este é um bloco de código com linguagem especificada
+              // Retorna null para deixar o componente pre lidar com isso
+              return null;
+            }
 
             if (!inline) {
+              // Bloco de código simples sem linguagem
               return (
-                <div className="my-6 overflow-hidden rounded-lg border border-zinc-700 bg-zinc-900 shadow-lg">
-                  <SyntaxHighlighter
-                    language={match?.[1] || "plaintext"}
-                    style={dracula}
-                    customStyle={{
-                      margin: 0,
-                      padding: "1rem",
-                      background: "transparent",
-                      fontSize: "0.875rem",
-                      lineHeight: "1.5",
-                    }}
-                  >
-                    {code}
-                  </SyntaxHighlighter>
-                </div>
+                <code
+                  className="my-6 block overflow-x-auto rounded-lg bg-zinc-900 p-4 text-sm text-zinc-100"
+                  {...props}
+                >
+                  {children}
+                </code>
               );
             }
 
+            // Código inline
             return (
               <code
                 className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-sm text-zinc-800 dark:bg-zinc-800 dark:text-zinc-100"
@@ -127,6 +125,47 @@ export function MarkdownRenderer({ markdown, className }: MarkdownRendererProps)
               >
                 {children}
               </code>
+            );
+          },
+          pre: ({ node, children, ...props }) => {
+            // Verifica se contém um elemento code com linguagem
+            const codeElement = Array.isArray(children)
+              ? children.find(
+                  (child: any) =>
+                    child?.type === "code" && child?.props?.className?.includes("language-")
+                )
+              : null;
+
+            if (codeElement) {
+              const match = /language-(\w+)/.exec(codeElement.props.className || "");
+              const code = String(codeElement.props.children).trim();
+
+              return (
+                <SyntaxHighlighter
+                  language={match?.[1] || "plaintext"}
+                  style={dracula}
+                  customStyle={{
+                    margin: "1.5rem 0",
+                    padding: "1rem",
+                    background: "#1e293b",
+                    fontSize: "0.875rem",
+                    lineHeight: "1.5",
+                    borderRadius: "0.5rem",
+                    border: "1px solid #374151",
+                  }}
+                  wrapLongLines={true}
+                >
+                  {code}
+                </SyntaxHighlighter>
+              );
+            }
+
+            // Pre normal sem syntax highlighting
+            return (
+              <pre
+                className="my-6 overflow-x-auto rounded-lg bg-zinc-900 p-4 text-zinc-100"
+                {...props}
+              />
             );
           },
           table: ({ node, ...props }) => (
