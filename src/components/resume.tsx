@@ -26,6 +26,7 @@ export const Resume = ({ resumeDataInfo }: ResumeProps) => {
             width={500}
             height={500}
             className="h-full w-full"
+            title={`Foto de ${resumeDataInfo.name}`}
           />
         </div>
         <div className="flex w-full flex-col items-start justify-center gap-4 p-2 md:gap-8">
