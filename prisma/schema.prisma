@@ -105,6 +105,7 @@ model PersonalInfo {
   id            String          @id @default(auto()) @map("_id") @db.ObjectId
   name          String
   title         String
+  avatarUrl     String
   location      String
   slug          String
   summary       String

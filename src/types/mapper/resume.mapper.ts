@@ -8,6 +8,7 @@ export class ResumeMapper {
       id: resume.id,
       name: resume.name,
       title: resume.title,
+      avatarUrl: resume.avatarUrl,
       location: resume.location,
       contactId: resume.contactId,
       skillsId: resume.skillsId,

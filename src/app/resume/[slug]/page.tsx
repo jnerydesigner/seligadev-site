@@ -8,7 +8,6 @@ type tParams = Promise<{ slug: string }>;
 export async function generateMetadata({ params }: { params: tParams }): Promise<Metadata> {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "";
   const url = `${baseUrl}/resume`;
-  const image = `${baseUrl}/jander-nery.png`;
 
   const { slug }: { slug: string } = await params;
   const resume = await prisma.personalInfo.findFirst({
@@ -38,6 +37,7 @@ export async function generateMetadata({ params }: { params: tParams }): Promise
   });
 
   const mapper = ResumeMapper.toResponse(resume);
+  const imageAvatarUrl = mapper.avatarUrl;
 
   return {
     title: `Esse é meu Curriculo | Se Liga Dev`,
@@ -54,7 +54,7 @@ export async function generateMetadata({ params }: { params: tParams }): Promise
       url,
       images: [
         {
-          url: image,
+          url: imageAvatarUrl,
           width: 800,
           height: 600,
           alt: "Imagem do Blog Se Liga Dev",
@@ -67,7 +67,7 @@ export async function generateMetadata({ params }: { params: tParams }): Promise
       title: `Esse é meu Curriculo | Se Liga Dev`,
       description:
         "Meu currículo completo com informações sobre minha experiência, formação e habilidades.",
-      images: [image],
+      images: [imageAvatarUrl],
     },
   };
 }

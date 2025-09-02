@@ -1,6 +1,7 @@
 export interface PersonalInfo {
   id: string;
   name: string;
+  avatarUrl: string;
   title: string;
   location: string;
   contactId: string;
