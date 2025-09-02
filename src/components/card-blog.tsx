@@ -26,9 +26,9 @@ export const CardBlog = async ({ title, slug, content, imageUrl }: PostProps) =>
           />
         </div>
 
-        <div className="w-full flex-1 rounded bg-white p-3 shadow">
+        <div className="w-[80%] rounded bg-white p-3 shadow md:w-[80%]">
           <h2 className="text-xl font-bold text-black">{title}</h2>
-          <p className="line-clamp-2 text-sm text-gray-700">{content}</p>
+          <p className="line-clamp-3 text-sm text-gray-700">{content}</p>
         </div>
       </Link>
     </div>
