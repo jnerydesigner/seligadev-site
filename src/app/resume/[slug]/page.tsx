@@ -40,14 +40,14 @@ export async function generateMetadata({ params }: { params: tParams }): Promise
   const imageAvatarUrl = mapper.avatarUrl;
 
   return {
-    title: `Esse é meu Curriculo | Se Liga Dev`,
+    title: `Curriculo ${mapper.name} | Se Liga Dev`,
     description:
       "Meu currículo completo com informações sobre minha experiência, formação e habilidades.",
     alternates: {
       canonical: url,
     },
     openGraph: {
-      title: `Esse é meu Curriculo | Se Liga Dev`,
+      title: `Curriculo ${mapper.name} | Se Liga Dev`,
       type: "website",
       description:
         "Meu currículo completo com informações sobre minha experiência, formação e habilidades.",
@@ -64,7 +64,7 @@ export async function generateMetadata({ params }: { params: tParams }): Promise
     },
     twitter: {
       card: "summary_large_image",
-      title: `Esse é meu Curriculo | Se Liga Dev`,
+      title: `Curriculo ${mapper.name} | Se Liga Dev`,
       description:
         "Meu currículo completo com informações sobre minha experiência, formação e habilidades.",
       images: [imageAvatarUrl],
