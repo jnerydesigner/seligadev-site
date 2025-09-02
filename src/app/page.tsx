@@ -54,9 +54,9 @@ export default async function Home() {
   });
 
   return (
-    <div className="h-auto w-full">
+    <div className="w-full">
       <NewsTicker postsTitleSlug={titleWithSlug} />
-      <div className="grid auto-rows-auto grid-cols-12 gap-2">
+      <div className="grid h-auto w-full auto-rows-auto grid-cols-12 gap-2">
         <Hero className="col-span-12 md:col-span-8" />
         <CardFlexHome
           title="Consultoria Premium 🚀"
