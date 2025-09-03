@@ -43,7 +43,7 @@ export default async function PageBlog() {
   const findPosts = await prisma.post.findMany();
 
   return (
-    <section className="flex h-auto w-full flex-col items-center justify-center p-4">
+    <section className="flex h-auto w-[100%] flex-col items-center justify-center p-4 md:w-full">
       <TitleTop titleStr="Blog do Se Liga Dev - Notícias Gerais" notH1 />
       {findPosts.map((post) => (
         <CardBlog

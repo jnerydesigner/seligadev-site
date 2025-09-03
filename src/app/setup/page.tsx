@@ -41,7 +41,7 @@ export default async function PageSetup() {
   const setups = await prisma.setup.findMany();
 
   return (
-    <section className="flex h-auto w-full flex-col items-center justify-center p-4">
+    <section className="flex h-auto w-[95%] flex-col items-center justify-center p-4 md:w-full">
       <TitleTop titleStr="Produtos que eu Utilizo em meu Setup" notH1 />
 
       <CardProductContainer cardProducts={setups} />

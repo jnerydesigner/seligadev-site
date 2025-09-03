@@ -6,8 +6,8 @@ interface CardProductContainerProps {
 
 export const CardProductContainer = ({ cardProducts }: CardProductContainerProps) => {
   return (
-    <section className="container mx-auto px-4 py-8">
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+    <section className="container mx-auto">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
         {cardProducts?.map((card) => (
           <CardProduct
             imageUrl={card.imageUrl}

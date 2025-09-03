@@ -103,7 +103,7 @@ export default async function PageResume({ params }: { params: tParams }) {
   const mapper = ResumeMapper.toResponse(resume);
 
   return (
-    <section className="my-2 flex h-auto w-full max-w-4xl flex-col items-center justify-center">
+    <section className="my-2 flex h-auto w-full flex-col items-center justify-center md:max-w-[100%]">
       <Resume resumeDataInfo={mapper} />
     </section>
   );

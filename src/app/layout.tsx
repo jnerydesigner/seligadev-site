@@ -33,12 +33,14 @@ export default function RootLayout({
       </head>
       <body className={`${bangers.variable} halftone-bg flex flex-col`}>
         <div className="font-bangers overflow-y-full flex h-[100vh] flex-col">
-          <AppProvider>
-            <Header />
-          </AppProvider>
+          <div className="mx-auto flex w-[100%] flex-1 flex-col bg-amber-700 p-2 md:w-[70%]">
+            <AppProvider>
+              <Header />
+            </AppProvider>
 
-          <PageContainer className="flex-1">{children}</PageContainer>
-          <Footer />
+            <PageContainer className="flex-1">{children}</PageContainer>
+            <Footer />
+          </div>
         </div>
       </body>
     </html>
