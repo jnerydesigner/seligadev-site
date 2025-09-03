@@ -17,6 +17,27 @@ export function MarkdownRenderer({ markdown, className }: MarkdownRendererProps)
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw]}
         components={{
+          h1: ({ node, children, ...props }) => (
+            <h1 className="mt-8 mb-4 text-4xl font-bold" {...props}>
+              {children}
+            </h1>
+          ),
+          h2: ({ node, children, ...props }) => (
+            <h2 className="mt-6 mb-3 text-2xl font-semibold" {...props}>
+              {children}
+            </h2>
+          ),
+          h3: ({ node, children, ...props }) => (
+            <h3 className="mt-4 mb-2 text-xl font-medium" {...props}>
+              {children}
+            </h3>
+          ),
+          h4: ({ node, children, ...props }) => (
+            <h4 className="mt-4 mb-2 text-[0.8rem] font-medium" {...props}>
+              {children}
+            </h4>
+          ),
+
           p: ({ node, children, ...props }) => {
             const hasPreOrCode =
               node?.children &&
@@ -26,9 +47,7 @@ export function MarkdownRenderer({ markdown, className }: MarkdownRendererProps)
                   child.type === "element" && (child.tagName === "pre" || child.tagName === "code")
               );
 
-            if (hasPreOrCode) {
-              return <>{children}</>;
-            }
+            if (hasPreOrCode) return <>{children}</>;
 
             return (
               <p className="mt-4 leading-7" {...props}>

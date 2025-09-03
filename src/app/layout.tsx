@@ -31,9 +31,9 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
       </head>
-      <body className={`${bangers.variable} halftone-bg flex flex-col`}>
-        <div className="font-bangers overflow-y-full flex h-[100vh] flex-col">
-          <div className="mx-auto flex w-[100%] flex-1 flex-col p-2 md:w-[70%]">
+      <body className={`${bangers.variable} halftone-bg flex min-h-screen flex-col`}>
+        <div className="font-bangers overflow-y-full flex h-[100vh] min-h-screen flex-col">
+          <div className="mx-auto flex min-h-screen w-[95%] flex-col p-2 md:w-[70%] lg:w-[70%]">
             <AppProvider>
               <Header />
             </AppProvider>

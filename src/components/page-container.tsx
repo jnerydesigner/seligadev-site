@@ -10,7 +10,7 @@ export default function PageContainer({ children, className }: PageContainerProp
   return (
     <div
       className={twMerge(
-        "font-bangers mx-auto flex w-full max-w-4xl justify-center text-black md:max-w-[100%]",
+        "font-bangers mx-auto flex w-full max-w-4xl items-start justify-center text-black md:max-w-[100%]",
         className
       )}
     >

@@ -30,14 +30,14 @@ export const PostContainer = ({
   banner,
 }: PostContainerProps) => {
   return (
-    <div className="my-10 min-h-screen bg-gray-50 text-gray-900">
-      <div className="relative h-64 w-full">
+    <div className="my-10 min-h-screen bg-gray-50 text-gray-900 md:min-w-[100%]">
+      <div className="relative h-50 w-full md:h-80">
         <Image
           src={banner || "/no-image.png"}
           alt="Banner do Post"
-          className="md:object-fit absolute h-46 w-full md:h-full"
-          width={800}
-          height={800}
+          className="md:object-fit absolute h-full w-full md:h-full"
+          width={1200}
+          height={1200}
         />
       </div>
 
