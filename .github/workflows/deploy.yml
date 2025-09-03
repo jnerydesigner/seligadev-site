@@ -71,3 +71,36 @@ jobs:
             cd /root/projects/seligadev
             pm2 update seligadev || true
             pm2 start my-pm2-start.json --update-env || pm2 restart my-pm2-start.json
+    
+      - name: Enviar e-mail de sucesso
+        if: success()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.EMAIL_USER }}
+          password: ${{ secrets.EMAIL_PASS }}
+          subject: "✅ Deploy NextJS concluído com sucesso"
+          to: ${{ secrets.EMAIL_USER }}
+          from: GitHub Actions <${{ secrets.EMAIL_USER }}>
+          body: |
+            <html>
+              <body style="font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;">
+                <div style="max-width: 600px; margin: auto; background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                  <h2 style="color: #2F855A;">✅ Deploy Concluído com Sucesso!</h2>
+                  <p>Olá,</p>
+                  <p>O deploy do projeto <strong>NextJS</strong> no servidor <strong>Hostinger</strong> foi concluído com sucesso.</p>
+                  <p><strong>Detalhes do deploy:</strong></p>
+                  <ul>
+                    <li>Branch: <code>main</code></li>
+                    <li>Servidor: <code>${{ secrets.HOST }}</code></li>
+                    <li>Data/Hora: <strong>${{ github.event.head_commit.timestamp }}</strong></li>
+                  </ul>
+                  <p style="color: #2F855A; font-weight: bold;">Tudo está funcionando normalmente! 🚀</p>
+                  <hr>
+                  <p style="font-size: 12px; color: #888;">Este é um e-mail automático enviado pelo GitHub Actions.</p>
+                </div>
+              </body>
+            </html>
+
