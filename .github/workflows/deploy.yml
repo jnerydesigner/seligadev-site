@@ -82,7 +82,7 @@ jobs:
           username: ${{ secrets.EMAIL_USER }}
           password: ${{ secrets.EMAIL_PASS }}
           subject: "✅ Deploy NextJS concluído com sucesso"
-          to: ${{ secrets.EMAIL_USER }}
+          to: jander.webmaster@gmail.com
           from: GitHub Actions <${{ secrets.EMAIL_USER }}>
           body: |
             <html>
