@@ -30,18 +30,16 @@ export const PostContainer = ({
   banner,
 }: PostContainerProps) => {
   return (
-    <div className="my-10 min-h-screen bg-gray-50 text-gray-900 md:min-w-[100%]">
-      <div className="relative h-50 w-full md:h-80">
-        <Image
-          src={banner || "/no-image.png"}
-          alt="Banner do Post"
-          className="md:object-fit absolute h-full w-full md:h-full"
-          width={1200}
-          height={1200}
-        />
-      </div>
+    <div className="border-oliver-dark my-10 min-h-screen w-full rounded-sm border-2 bg-gray-50 text-gray-900 shadow-sm md:min-w-[100%]">
+      <Image
+        src={banner || "/no-image.png"}
+        alt="Banner do Post"
+        className="w-full rounded-t-[4px]"
+        width={1200}
+        height={1200}
+      />
 
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto w-full px-4 sm:px-6 lg:px-8">
         <h1 className="mt-6 text-3xl font-bold text-gray-800 sm:text-4xl">{title}</h1>
 
         <div className="mt-6 flex flex-col items-center gap-4 md:flex-row">
