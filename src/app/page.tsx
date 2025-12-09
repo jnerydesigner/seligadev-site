@@ -38,7 +38,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description:
         "A SeLigaDev é uma empresa de criação e desenvolvimento de Sistemas de Informação.",
       images: [image],
-    },
+    }
   };
 }
 
