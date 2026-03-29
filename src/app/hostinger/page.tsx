@@ -1,6 +1,10 @@
+import { getDirectusHostingerData } from "@/api/directus";
 import { HostingerPlans } from "@/components/hostingerPlans";
+import { DirectusItemResponse } from "@/types/hostinger_directus_type";
 import { Metadata } from "next";
 import React from "react";
+import { getHostingerData } from "../services/hostinger.service";
+import { HostingerPageDataType } from "@/types/hostinger-page-data.type";
 
 export async function generateMetadata(): Promise<Metadata> {
   const url = `${process.env.NEXT_PUBLIC_BASE_URL}/setup`;
@@ -31,10 +35,18 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function Page() {
+
+const urlParmetersWithSlug = "/items/HostingerPage?fields=*,HostingerPageHotingerObject.*,HostingerPageHotingerObject.Hostinger_id.*,HostingerPageHotingerObject.Hostinger_id.hostinger_description.*,HostingerPageHotingerObject.Hostinger_id.hostinger_description.HostingerDescription_id.*,HostingerPageHotingerObject.Hostinger_id.hostinger_discount_description.*,HostingerPageHotingerObject.Hostinger_id.hostinger_discount_description.HostingerDiscountDescription_id.*&filter[slug][_eq]=hostinger"
+
+export default async function Page() {
+  const response = await getDirectusHostingerData<DirectusItemResponse<HostingerPageDataType>>(urlParmetersWithSlug);
+  const hostingerData = (response.data.HostingerPageHotingerObject ?? [])
+    .map((item) => getHostingerData(item.Hostinger_id))
+    .filter((item) => item !== undefined);
+
   return (
     <section className="flex h-auto w-full flex-col items-center justify-center p-4">
-      <HostingerPlans />
+      <HostingerPlans hostinger={hostingerData} titleTop={response.data.title} />
     </section>
   );
 }
