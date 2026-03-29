@@ -3,18 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --port 4455 --turbopack",
+    "dev": "next dev --port 3000 --turbopack",
     "build": "prisma generate && next build",
-    "start": "next start --port 4455",
+    "start": "next start --port 3000",
     "lint": "next lint",
     "biome:check": "biome check --max-diagnostics=50000",
     "biome:format": "biome check --write --max-diagnostics=50000",
     "prettier:lint": "npx prettier --write ."
   },
   "dependencies": {
+    "@directus/sdk": "^21.2.0",
     "@next/eslint-plugin-next": "^15.4.2",
     "@prisma/client": "^6.12.0",
     "@radix-ui/react-slot": "^1.2.3",
+    "axios": "^1.14.0",
     "bcryptjs": "^3.0.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -36,7 +38,7 @@
     "rehype-raw": "^7.0.0",
     "remark-gfm": "^4.0.1",
     "tailwind-merge": "^3.3.1",
-    "zod": "^4.1.5"
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@biomejs/biome": "2.1.2",

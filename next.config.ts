@@ -1,5 +1,19 @@
 import type { NextConfig } from "next";
 
+const directusUrl = process.env.NEXT_PUBLIC_DIRECTUS_URL;
+const directusPattern = directusUrl
+  ? (() => {
+      const url = new URL(directusUrl);
+
+      return {
+        protocol: url.protocol.replace(":", "") as "http" | "https",
+        hostname: url.hostname,
+        port: url.port || undefined,
+        pathname: "/assets/**",
+      };
+    })()
+  : null;
+
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
@@ -14,6 +28,7 @@ const nextConfig: NextConfig = {
         hostname: "seligadev-site-bk.s3.us-east-1.amazonaws.com",
         pathname: "**",
       },
+      ...(directusPattern ? [directusPattern] : []),
     ],
   },
 };
