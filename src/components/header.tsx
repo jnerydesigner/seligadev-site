@@ -1,30 +1,35 @@
 "use client";
 
-import { useState } from "react";
 import NavItem from "./nav-item";
 import Link from "next/link";
-import { useAppContext } from "@/context/app.context";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 const navItems = [
   { titlePage: "Home", pathPage: "/" },
   { titlePage: "Blog", pathPage: "/blog" },
   { titlePage: "Vídeos", pathPage: "/videos" },
   { titlePage: "Shorts", pathPage: "/shorts" },
-  { titlePage: "Meu Setup", pathPage: "/setup" },
+  { titlePage: "Meu SETUP", pathPage: "/setup" },
+  { titlePage: "Hostinger", pathPage: "/hostinger" },
   { titlePage: "Meus Patrocinadores", pathPage: "/sponsors" },
   { titlePage: "Compre meu Café", pathPage: "/buy-my-coffee" },
-  { titlePage: "Curriculo Jander Nery", pathPage: "/resume/resume-jander-da-costa-nery" },
 ] as const;
 
-type NavItemType = (typeof navItems)[number]["pathPage"];
-
 export default function Header() {
-  const { activePath, setActivePath } = useAppContext();
+  const pathname = usePathname();
+
+  const isActivePath = (path: string) => {
+    if (path === "/") {
+      return pathname === "/";
+    }
+
+    return pathname === path || pathname.startsWith(`${path}/`);
+  };
 
   return (
     <header className="halftone-blue-sky border-oliver-dark text-oliver-dark mx-auto mt-1 flex w-full max-w-[100%] flex-col items-center justify-center rounded-l-sm rounded-r-sm border-2 px-0 py-4">
-      <Link href="/" onClick={() => setActivePath("/")}>
+      <Link href="/">
         <Image
           src="/logo-new.png"
           alt="logo site seligadev"
@@ -39,12 +44,7 @@ export default function Header() {
             key={item.pathPage}
             label={item.titlePage}
             path={item.pathPage}
-            isActive={
-              item.pathPage === "/"
-                ? activePath === "/"
-                : activePath.startsWith(item.pathPage + "/") || activePath === item.pathPage
-            }
-            onClick={() => setActivePath(item.pathPage)}
+            isActive={isActivePath(item.pathPage)}
           />
         ))}
       </nav>
