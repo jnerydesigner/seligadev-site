@@ -6,21 +6,23 @@ import { NewsTicker } from "@/components/ticker";
 import prisma from "@/lib/prisma";
 import { CardFlexHome } from "@/components/card-flex-home";
 
+import { getGlobals } from '@/lib/directus';
+
+
 export async function generateMetadata(): Promise<Metadata> {
+  const global = await getGlobals();
   const url = `${process.env.NEXT_PUBLIC_BASE_URL}`;
-  const image = "https://seliga-dev.s3.us-east-1.amazonaws.com/logo-new.png";
+  const image = global.image_url;
   return {
-    title: "SeLigaDev",
-    description:
-      "A SeLigaDev é uma empresa de criação e desenvolvimento de Sistemas de Informação.",
+    title: global.title,
+    description: global.description,
     alternates: {
       canonical: url,
     },
     openGraph: {
-      title: "SeLigaDev",
+      title: global.title,
       type: "website",
-      description:
-        "A SeLigaDev é uma empresa de criação e desenvolvimento de Sistemas de Informação.",
+      description: global.description,
       url: `${process.env.NEXT_PUBLIC_BASE_URL ?? ""}`,
       siteName: "Se Liga Dev",
       images: [
@@ -34,15 +36,17 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: "summary",
-      title: "SeLigaDev",
-      description:
-        "A SeLigaDev é uma empresa de criação e desenvolvimento de Sistemas de Informação.",
-      images: [image],
+      title: global.title,
+      description: global.description,
+      images: [global.image_url],
     }
   };
 }
 
+
+
 export default async function Home() {
+
   const posts = await prisma.post.findMany({
     take: 5,
   });

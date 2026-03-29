@@ -3,7 +3,6 @@ import { Bangers } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
 import PageContainer from "@/components/page-container";
-import { AppProvider } from "@/context/app.context";
 import Footer from "@/components/footer";
 
 const bangers = Bangers({
@@ -34,9 +33,7 @@ export default function RootLayout({
       <body className={`${bangers.variable} halftone-bg flex min-h-screen flex-col`}>
         <div className="font-bangers overflow-y-full flex h-[100vh] min-h-screen flex-col">
           <div className="mx-auto flex min-h-screen w-[95%] flex-col p-2 md:w-[70%] lg:w-[70%]">
-            <AppProvider>
-              <Header />
-            </AppProvider>
+            <Header />
 
             <PageContainer className="flex-1">{children}</PageContainer>
             <Footer />
