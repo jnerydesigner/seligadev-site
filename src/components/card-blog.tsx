@@ -1,3 +1,4 @@
+import { getImageUrl } from "@/helpers/image.helper";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -7,9 +8,13 @@ interface PostProps {
   slug: string;
   content: string;
   imageUrl: string;
+  imageId?: string | null;
 }
 
-export const CardBlog = async ({ title, slug, content, imageUrl }: PostProps) => {
+export const CardBlog = async ({ title, slug, content, imageUrl, imageId }: PostProps) => {
+  if (imageId) {
+    imageUrl = getImageUrl(imageId);
+  }
   return (
     <div className="halftone-blue border-oliver-dark z-10 mt-10 flex h-auto w-full cursor-pointer flex-col items-center justify-center rounded-sm border-2 p-4 hover:bg-blue-200 md:h-40">
       <Link
