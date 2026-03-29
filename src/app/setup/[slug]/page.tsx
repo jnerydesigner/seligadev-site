@@ -1,29 +1,29 @@
 // src/app/setup/[slug]/page.tsx
-import prisma from "@/lib/prisma";
+import { getDirectusSetupData } from "@/api/directus";
+import { CardProductContainer } from "@/components/card-product-container";
 import Image from "next/image";
-import Link from "next/link";
 import { FaAmazon } from "react-icons/fa";
-import { FaComputer } from "react-icons/fa6";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { LinkGeneral } from "@/components/link-general";
 import TitleTop from "@/components/title";
+import { SetupMapper } from "@/types/mapper/setup.mapper";
+import { SetupPageDirectusDataType } from "@/types/setup_page_directus.type";
 
 export const dynamic = "force-dynamic";
 
 type tParams = Promise<{ slug: string }>;
+const getParams = "/items/setup?fields=*,setup_items.*,setup_items.setup_items_id.*";
+
+async function getSetupPageData() {
+  const setupData = await getDirectusSetupData<SetupPageDirectusDataType>(getParams);
+  return SetupMapper.toResponse(setupData.data);
+}
 
 export async function generateMetadata({ params }: { params: tParams }): Promise<Metadata> {
   const { slug }: { slug: string } = await params;
-  const product = await prisma.setup.findFirst({
-    where: { slug },
-    select: {
-      slug: true,
-      name: true,
-      nameFull: true,
-      imageUrl: true,
-    },
-  });
+  const setupPageData = await getSetupPageData();
+  const product = setupPageData.setup_items.find((item) => item.slug === slug);
 
   if (!product) {
     return {
@@ -66,18 +66,19 @@ export async function generateMetadata({ params }: { params: tParams }): Promise
   };
 }
 
+
+
 export default async function Page({ params }: { params: tParams }) {
   const { slug }: { slug: string } = await params;
-
-  const product = await prisma.setup.findFirst({
-    where: { slug },
-  });
+  const setupPageData = await getSetupPageData();
+  const product = setupPageData.setup_items.find((item) => item.slug === slug);
+  const recommendedProducts = setupPageData.setup_items
+    .filter((item) => item.slug !== slug)
+    .slice(0, 4);
 
   if (!product) {
     notFound();
   }
-
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "";
 
   return (
     <div className="flex min-h-full w-full flex-col items-center justify-center p-4">
@@ -85,7 +86,7 @@ export default async function Page({ params }: { params: tParams }) {
         <TitleTop titleStr={product.name} notH1 />
       </div>
 
-      <div className="halftone-red z-10 mt-10 flex h-90 items-center gap-2 rounded-sm bg-white p-4">
+      <div className="halftone-red z-10 mt-10 flex h-90 w-full items-center gap-2 rounded-sm bg-white p-4">
         <div className="z-10 h-60">
           {product.imageUrl ? (
             <Image
@@ -123,6 +124,20 @@ export default async function Page({ params }: { params: tParams }) {
           </div>
         </div>
       </div>
+
+      {recommendedProducts.length > 0 ? (
+        <section className="mt-10 flex w-full flex-col items-center">
+          <span className="halftone-yellow border-oliver-dark rounded-sm border-2 bg-white px-4 py-2 text-sm font-semibold uppercase tracking-[0.2em] text-black">
+            Recomendados
+          </span>
+          <p className="mt-3 text-center text-sm text-gray-700">
+            Continue navegando por outros itens do setup sem sair da página.
+          </p>
+          <div className="mt-6 w-full">
+            <CardProductContainer cardProducts={recommendedProducts} />
+          </div>
+        </section>
+      ) : null}
     </div>
   );
 }

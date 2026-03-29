@@ -1,6 +1,8 @@
+import { getDirectusSetupData } from "@/api/directus";
 import { CardProductContainer } from "@/components/card-product-container";
 import TitleTop from "@/components/title";
-import prisma from "@/lib/prisma";
+import { SetupMapper } from "@/types/mapper/setup.mapper";
+import { SetupPageDirectusDataType } from "@/types/setup_page_directus.type";
 import type { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
@@ -37,14 +39,20 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
+const getParams = "/items/setup?fields=*,setup_items.*,setup_items.setup_items_id.*"
+
 export default async function PageSetup() {
-  const setups = await prisma.setup.findMany();
+  const setupData = await getDirectusSetupData<SetupPageDirectusDataType>(getParams);
+  const { data: setup } = setupData;
+  const setupMapper = SetupMapper.toResponse(setup);
+
+  console.log("setupMapper", setupMapper);
 
   return (
     <section className="flex h-auto w-[95%] flex-col items-center justify-center p-4 md:w-full">
-      <TitleTop titleStr="Produtos que eu Utilizo em meu Setup" notH1 />
+      <TitleTop titleStr={setupMapper.title} notH1 />
 
-      <CardProductContainer cardProducts={setups} />
+      <CardProductContainer cardProducts={setupMapper.setup_items} />
     </section>
   );
 }
