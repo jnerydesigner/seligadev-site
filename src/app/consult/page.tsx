@@ -1,6 +1,6 @@
 import { PlanConsult } from "@/components/planConsult";
-import prisma from "@/lib/prisma";
-import { TechsType } from "@/types/techs.type";
+import { getConsult, getTechnologies } from "@/lib/directus";
+import { TechnologyGeneral } from "@/types/consult.type";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -48,10 +48,12 @@ export const metadata: Metadata = {
   },
 };
 export default async function Consult() {
-  const techs: TechsType[] = await prisma.techs.findMany();
+  const consult = await getConsult()
+  const technologies: TechnologyGeneral[] = await getTechnologies();
+
   return (
     <>
-      <PlanConsult techs={techs} />
+      <PlanConsult consult={consult} techsGeneral={technologies[0]} />
     </>
   );
 }

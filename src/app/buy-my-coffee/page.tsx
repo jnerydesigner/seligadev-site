@@ -2,7 +2,12 @@ import { CardBlog } from "@/components/card-blog";
 import { PixCopyAndPaste } from "@/components/pix-copy-and-paste";
 import TitleTop from "@/components/title";
 import { TitleHalftone } from "@/components/title-halftone";
+import { Article } from "@/helpers/article-convert.helper";
+import { getImageUrl } from "@/helpers/image.helper";
+import { getBlog, getByMyCoffe } from "@/lib/directus";
 import prisma from "@/lib/prisma";
+import { ByMyCoofeType } from "@/types/bymycoffe.type";
+import { PostBlogType } from "@/types/post_blog.type";
 import { Metadata } from "next";
 import Image from "next/image";
 import React from "react";
@@ -43,18 +48,19 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function PageByMyCoffee() {
+  const bymycoffe: ByMyCoofeType = await getByMyCoffe();
   return (
     <section className="flex h-160 w-full flex-col items-center justify-center p-4 md:h-185">
       <div className="halftone-blue border-oliver-dark flex h-full w-full flex-col items-center justify-center gap-4 rounded-sm border-2 bg-red-300 p-6">
         <TitleHalftone
           h2Exists={true}
-          title="Seja Nosso Patrocinador, Ajude com um Pix de Qualquer Valor"
+          title={bymycoffe.title}
         />
         <div className="flex h-[160px] w-full flex-1 items-center justify-center md:h-[300px]">
           <Image
-            src="/pix-new.png"
-            alt="WhatsApp de Jander Nery"
-            title="WhatsApp de Jander Nery"
+            src={getImageUrl(bymycoffe.qrcode_pix)}
+            alt={`QR Code para ${bymycoffe.description}`}
+            title={`QR Code para ${bymycoffe.description}`}
             className="h-[150px] w-[150px] md:h-[280px] md:w-[280px]"
             width={500}
             height={500}
@@ -62,7 +68,7 @@ export default async function PageByMyCoffee() {
           />
         </div>
         <div className="mt-4 text-gray-900">
-          <PixCopyAndPaste />
+          <PixCopyAndPaste textToCopy={bymycoffe.pix} />
         </div>
       </div>
     </section>

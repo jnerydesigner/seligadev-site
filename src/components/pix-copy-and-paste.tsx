@@ -3,11 +3,15 @@
 import { useState } from "react";
 import { Copy, Check } from "lucide-react";
 
-export const PixCopyAndPaste = () => {
+interface PixCopyAndPasteProps {
+  textToCopy: string;
+}
+
+export const PixCopyAndPaste = ({ textToCopy }: PixCopyAndPasteProps) => {
   const [copied, setCopied] = useState(false);
 
-  const textToCopy =
-    "00020126990014BR.GOV.BCB.PIX0136aedfa8da-bea0-4652-89eb-2d600dd43de20237Muito obrigado por contribuir com nos5204000053039865802BR5920JANDER DA COSTA NERY6006MANAUS62120508PixCanal6304B9D5";
+  // const textToCopy =
+  //   "00020126990014BR.GOV.BCB.PIX0136aedfa8da-bea0-4652-89eb-2d600dd43de20237Muito obrigado por contribuir com nos5204000053039865802BR5920JANDER DA COSTA NERY6006MANAUS62120508PixCanal6304B9D5";
 
   const copyToClipboard = async () => {
     try {
@@ -67,9 +71,8 @@ export const PixCopyAndPaste = () => {
 
       <button
         onClick={copyToClipboard}
-        className={`flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg px-4 py-3 font-medium transition-all duration-200 ${
-          copied ? "bg-green-600 text-white" : "bg-blue-600 text-white hover:bg-blue-700"
-        }`}
+        className={`flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg px-4 py-3 font-medium transition-all duration-200 ${copied ? "bg-green-600 text-white" : "bg-blue-600 text-white hover:bg-blue-700"
+          }`}
       >
         {copied ? (
           <>
