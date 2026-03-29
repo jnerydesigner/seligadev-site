@@ -1,10 +1,10 @@
-import { Shorts, Videos } from "@prisma/client";
+import { ShortType } from "@/types/shorts.type";
 import { CardVideo, VideoProps } from "./card-video";
 import { CardShorts } from "./card-shorts";
 
 interface CardVideoContainerProps {
-  cardVideos: Videos[];
-  cardShorts: Shorts[];
+  cardVideos: VideoProps[];
+  cardShorts: ShortType[];
   shorts: boolean;
 }
 export const CardVideosContainer = ({
@@ -19,9 +19,9 @@ export const CardVideosContainer = ({
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
         {itemsToRender?.map((item) =>
           shorts ? (
-            <CardShorts title={item.title} thumb={item.thumb} url={item.url} key={item.id} />
+            <CardShorts title={item.title} thumb={item.thumb} url={item.url} key={item.url} />
           ) : (
-            <CardVideo title={item.title} thumb={item.thumb} url={item.url} key={item.id} />
+            <CardVideo title={item.title} thumb={item.thumb} url={item.url} key={item.url} />
           )
         )}
       </div>

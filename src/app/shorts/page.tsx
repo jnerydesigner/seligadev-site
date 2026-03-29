@@ -1,6 +1,7 @@
+import { getDirectusShorts } from "@/api/directus";
 import { CardVideosContainer } from "@/components/card-video-container";
 import TitleTop from "@/components/title";
-import prisma from "@/lib/prisma";
+import { ShortDataType } from "@/types/shorts.type";
 import { Metadata } from "next";
 import React from "react";
 
@@ -39,7 +40,9 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function PageShorts() {
-  const shorts = await prisma.shorts.findMany();
+  const shortsDirectus = await getDirectusShorts<ShortDataType>();
+  const shorts = shortsDirectus.data;
+
   return (
     <section className="flex h-auto w-full flex-col items-center justify-center p-4">
       <TitleTop titleStr="Shorts do Canal Jander Nery Dev" notH1 />
