@@ -24,7 +24,7 @@ export const AdsBanner = ({
       (window as any).adsbygoogle = (window as any).adsbygoogle || [];
       (window as any).adsbygoogle.push({});
     } catch (error: any) {
-      console.log("Adsense error:", error);
+      // console.log("Adsense error:", error);
     }
   }, []);
 

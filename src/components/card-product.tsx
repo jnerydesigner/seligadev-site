@@ -3,7 +3,7 @@ import Link from "next/link";
 import { LinkGeneral } from "./link-general";
 
 export interface CardProps {
-  id?: string;
+  id?: string | number;
   name: string;
   price: number;
   productUrl: string;
@@ -35,7 +35,7 @@ export const CardProduct = ({ name, imageUrl, productUrl, price, slug }: CardPro
           title="Ver Produto"
           image="/dedo.svg"
           url={`${process.env.NEXT_PUBLIC_BASE_URL}/setup/${slug}`}
-          blank={false}
+          blank={true}
         />
       </div>
     </div>
