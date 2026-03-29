@@ -1,4 +1,6 @@
-import { Fragment } from "react";
+"use client";
+
+import { Fragment, useMemo } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dracula } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
@@ -11,33 +13,42 @@ type ContentSegment =
   | { type: "html"; value: string }
   | { type: "code"; value: string; language: string };
 
-const decodeHtmlEntities = (value: string) =>
-  value
-    .replace(/&nbsp;/g, " ")
-    .replace(/&amp;/g, "&")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/&apos;/g, "'")
-    .replace(/&ldquo;/g, '"')
-    .replace(/&rdquo;/g, '"')
-    .replace(/&lsquo;/g, "'")
-    .replace(/&rsquo;/g, "'")
-    .replace(/&hellip;/g, "...")
-    .replace(/&mdash;/g, "—")
-    .replace(/&ndash;/g, "–")
-    .replace(/&eacute;/g, "é")
-    .replace(/&ecirc;/g, "ê")
-    .replace(/&ccedil;/g, "ç")
-    .replace(/&atilde;/g, "ã")
-    .replace(/&otilde;/g, "õ")
-    .replace(/&aacute;/g, "á")
-    .replace(/&iacute;/g, "í")
-    .replace(/&uacute;/g, "ú")
-    .replace(/&oacute;/g, "ó")
-    .replace(/&agrave;/g, "à")
-    .replace(/&#(\d+);/g, (_, code: string) => String.fromCharCode(Number(code)));
+const decodeHtmlEntities = (value: string): string => {
+  const entities: Record<string, string> = {
+    "&nbsp;": " ",
+    "&amp;": "&",
+    "&lt;": "<",
+    "&gt;": ">",
+    "&quot;": '"',
+    "&#39;": "'",
+    "&apos;": "'",
+    "&ldquo;": '"',
+    "&rdquo;": '"',
+    "&lsquo;": "'",
+    "&rsquo;": "'",
+    "&hellip;": "...",
+    "&mdash;": "—",
+    "&ndash;": "–",
+    "&eacute;": "é",
+    "&ecirc;": "ê",
+    "&ccedil;": "ç",
+    "&atilde;": "ã",
+    "&otilde;": "õ",
+    "&aacute;": "á",
+    "&iacute;": "í",
+    "&uacute;": "ú",
+    "&oacute;": "ó",
+    "&agrave;": "à",
+  };
+
+  return value.replace(/&[#\w]+;/g, (match) => {
+    if (entities[match]) return entities[match];
+    if (/^&#\d+$/.test(match)) {
+      return String.fromCharCode(Number(match.slice(2, -1)));
+    }
+    return match;
+  });
+};
 
 const inferCodeLanguage = (code: string) => {
   if (
