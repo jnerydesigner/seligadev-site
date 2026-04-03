@@ -31,8 +31,8 @@ export default function RootLayout({
         />
       </head>
       <body className={`${bangers.variable} halftone-bg flex min-h-screen flex-col`}>
-        <div className="font-bangers overflow-y-full flex h-[100vh] min-h-screen flex-col">
-          <div className="mx-auto flex min-h-screen w-[95%] flex-col p-2 md:w-[70%] lg:w-[70%]">
+        <div className="font-bangers flex min-h-screen flex-col">
+          <div className="mx-auto flex min-h-screen w-full max-w-7xl flex-col px-2 py-2 sm:px-3 md:px-4">
             <Header />
 
             <PageContainer className="flex-1">{children}</PageContainer>

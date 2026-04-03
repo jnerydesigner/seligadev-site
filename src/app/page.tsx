@@ -7,6 +7,8 @@ import prisma from "@/lib/prisma";
 import { CardFlexHome } from "@/components/card-flex-home";
 
 import { getGlobals } from '@/lib/directus';
+import { getDirectusAuthor } from "@/api/directus";
+import { AuthorDirectusTypeData } from "@/types/author.type";
 
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -46,6 +48,9 @@ export async function generateMetadata(): Promise<Metadata> {
 
 
 export default async function Home() {
+  const author = await getDirectusAuthor<AuthorDirectusTypeData>();
+
+
 
   const posts = await prisma.post.findMany({
     take: 5,
@@ -60,13 +65,13 @@ export default async function Home() {
   return (
     <div className="w-full">
       <NewsTicker postsTitleSlug={titleWithSlug} />
-      <div className="grid h-auto w-full auto-rows-auto grid-cols-12 gap-2">
-        <Hero className="col-span-12 md:col-span-8" />
+      <div className="grid h-auto w-full auto-rows-auto grid-cols-12 gap-2 md:items-stretch">
+        <Hero className="col-span-12 h-full md:col-span-8" author={author} />
         <CardFlexHome
           title="Consultoria Premium 🚀"
           description="A orientação certa para levar seu projeto ao próximo nível."
           link="/consult"
-          className="halftone-purple col-span-12 md:col-span-4"
+          className="halftone-purple col-span-12 h-full md:col-span-4"
         />
 
         <CardHome

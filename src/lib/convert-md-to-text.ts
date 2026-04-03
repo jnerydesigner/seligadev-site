@@ -6,6 +6,18 @@ export const ConvertMdToText = async (content: string, limit = 150) => {
   const pureText = htmlToText(html, {
     wordwrap: 100,
   });
+  const normalizedText = pureText.replace(/\s+/g, " ").trim();
 
-  return pureText.slice(0, limit);
+  if (normalizedText.length <= limit) {
+    return normalizedText;
+  }
+
+  const truncatedText = normalizedText.slice(0, limit).trimEnd();
+  const lastSpaceIndex = truncatedText.lastIndexOf(" ");
+  const safeText =
+    lastSpaceIndex > Math.floor(limit * 0.6)
+      ? truncatedText.slice(0, lastSpaceIndex)
+      : truncatedText;
+
+  return safeText.replace(/[.\u2026,;:!?-]+$/g, "").trimEnd();
 };

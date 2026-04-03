@@ -50,18 +50,18 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function PageByMyCoffee() {
   const bymycoffe: ByMyCoofeType = await getByMyCoffe();
   return (
-    <section className="flex h-160 w-full flex-col items-center justify-center p-4 md:h-185">
-      <div className="halftone-blue border-oliver-dark flex h-full w-full flex-col items-center justify-center gap-4 rounded-sm border-2 bg-red-300 p-6">
+    <section className="flex w-full flex-col items-center justify-center p-3 sm:p-4">
+      <div className="halftone-blue border-oliver-dark flex w-full max-w-3xl flex-col items-center justify-center gap-4 rounded-sm border-2 bg-red-300 p-4 sm:p-6">
         <TitleHalftone
           h2Exists={true}
           title={bymycoffe.title}
         />
-        <div className="flex h-[160px] w-full flex-1 items-center justify-center md:h-[300px]">
+        <div className="flex w-full items-center justify-center">
           <Image
             src={getImageUrl(bymycoffe.qrcode_pix)}
             alt={`QR Code para ${bymycoffe.description}`}
             title={`QR Code para ${bymycoffe.description}`}
-            className="h-[150px] w-[150px] md:h-[280px] md:w-[280px]"
+            className="h-[180px] w-[180px] sm:h-[220px] sm:w-[220px] md:h-[280px] md:w-[280px]"
             width={500}
             height={500}
             loading="eager"

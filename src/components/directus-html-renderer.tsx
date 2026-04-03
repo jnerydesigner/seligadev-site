@@ -236,9 +236,11 @@ export function DirectusHtmlRenderer({ html, className }: DirectusHtmlRendererPr
         }
 
         return (
-          <Fragment key={`html-${index}`}>
-            <div dangerouslySetInnerHTML={{ __html: segment.value }} />
-          </Fragment>
+          <div
+            key={`html-${index}`}
+            suppressHydrationWarning
+            dangerouslySetInnerHTML={{ __html: segment.value }}
+          />
         );
       })}
     </div>

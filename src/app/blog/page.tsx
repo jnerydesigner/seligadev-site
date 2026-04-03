@@ -50,7 +50,7 @@ export default async function PageBlog() {
 
 
   return (
-    <section className="flex h-auto w-[100%] flex-col items-center justify-center p-4 md:w-full">
+    <section className="flex h-auto w-full flex-col items-center justify-center p-3 sm:p-4">
       <TitleTop titleStr="Blog do Se Liga Dev - Notícias Gerais" notH1 />
       {findPosts.map((post) => (
         <CardBlog

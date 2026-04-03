@@ -11,7 +11,7 @@ export default function NavItem({ label, path, isActive }: NavItemProps) {
   return (
     <Link
       href={path}
-      className={`cursor-pointer rounded-xl px-4 py-2 transition-colors duration-200 ${
+      className={`cursor-pointer rounded-xl px-3 py-2 text-center text-sm leading-tight transition-colors duration-200 sm:px-4 ${
         isActive
           ? "bg-pink-light text-white"
           : "bg-oliver-light text-white hover:bg-white hover:text-gray-700"

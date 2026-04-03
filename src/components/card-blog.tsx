@@ -1,4 +1,5 @@
 import { getImageUrl } from "@/helpers/image.helper";
+import { ConvertMdToText } from "@/lib/convert-md-to-text";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -15,8 +16,11 @@ export const CardBlog = async ({ title, slug, content, imageUrl, imageId }: Post
   if (imageId) {
     imageUrl = getImageUrl(imageId);
   }
+
+  const plainContent = await ConvertMdToText(content, 180);
+
   return (
-    <div className="halftone-blue border-oliver-dark z-10 mt-10 flex h-auto w-full cursor-pointer flex-col items-center justify-center rounded-sm border-2 p-4 hover:bg-blue-200 md:h-40">
+    <div className="halftone-blue border-oliver-dark z-10 mt-6 flex w-full cursor-pointer flex-col items-center justify-center rounded-sm border-2 p-3 hover:bg-blue-200 sm:p-4 md:mt-10 md:h-40">
       <Link
         href={`/blog/${slug}`}
         className="z-10 flex h-full w-full flex-col items-center gap-4 p-4 md:flex-row"
@@ -31,9 +35,9 @@ export const CardBlog = async ({ title, slug, content, imageUrl, imageId }: Post
           />
         </div>
 
-        <div className="w-[80%] rounded bg-white p-3 shadow md:w-[80%]">
-          <h2 className="text-xl font-bold text-black">{title}</h2>
-          <p className="line-clamp-3 text-sm text-gray-700">{content}</p>
+        <div className="w-full rounded bg-white p-3 shadow md:w-[80%]">
+          <h2 className="text-lg font-bold text-black sm:text-xl">{title}</h2>
+          <p className="line-clamp-3 text-sm text-gray-700">{plainContent}</p>
         </div>
       </Link>
     </div>

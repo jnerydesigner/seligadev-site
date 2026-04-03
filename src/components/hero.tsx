@@ -2,68 +2,63 @@ import Image from "next/image";
 import React from "react";
 import Link from "next/link";
 import { twMerge } from "tailwind-merge";
+import { AuthorDirectusTypeData } from "@/types/author.type";
+import { isRemoteImage, normalizeImageSrc } from "@/helpers/image.helper";
+import { showIcon } from "@/lib/show-icon";
 
 interface HeroProps {
   className: string;
+  author: AuthorDirectusTypeData;
 }
 
 export default function Hero(props: HeroProps) {
+  const authorPage = props.author.data[0];
+  const author = authorPage?.user_author[0]?.author_id;
+  const authorAvatarUrl = normalizeImageSrc(
+    author?.avatar_url,
+    "/logo-jander-nery-dev-redondo.svg"
+  );
+
   return (
     <section
       className={twMerge(
-        "halftone-blue border-oliver-dark relative col-span-8 flex h-[360px] w-full items-center justify-center rounded-sm border-2 px-0 md:h-[370px]",
+        "halftone-blue border-oliver-dark relative col-span-8 flex min-h-[360px] w-full items-center justify-center rounded-sm border-2 px-0 py-6 md:min-h-[370px]",
         props.className
       )}
     >
-      <div className="relative z-10 -mt-[50px] flex w-full flex-col items-center gap-3 p-4 text-center">
+      <div className="relative z-10 flex w-full flex-col items-center gap-3 p-4 text-center">
         <div className="mt-4 h-[120px] w-[120px] md:mt-0 md:h-[150px] md:w-[150px]">
           <Image
-            src="/logo-jander-nery-dev-redondo.svg"
+            src={authorAvatarUrl}
             width={500}
             height={500}
-            alt="Imagem do Perfil do Criador do site Se Liga Dev"
-            className="h-full w-full object-contain"
+            alt={author?.name || "Imagem do Perfil do Criador do site Se Liga Dev"}
+            className="h-full w-full rounded-full object-cover"
             priority
+            unoptimized={isRemoteImage(authorAvatarUrl)}
           />
         </div>
 
-        <div className="font-bangers leading-tight">
-          <h1>Jander da Costa Nery 👨‍💻</h1>
-          <p>Apaixonado por tecnologia 🚀</p>
-          <p>Apaixonado por ensinar 📚</p>
+        <div className="max-w-[640px] font-bangers leading-tight">
+          <h1>{authorPage?.name_full} 👨‍💻</h1>
+          <p>{authorPage?.bio_one} 🚀</p>
+          <p>{authorPage?.bio_two} 🚀</p>
         </div>
 
-        <ul className="mt-2 flex w-full items-center justify-center gap-2 px-0 md:gap-4 md:px-10">
-          {[
-            {
-              href: "https://www.linkedin.com/in/jander-nery",
-              alt: "LinkedIn",
-              src: "/linkedin.svg",
-            },
-            {
-              href: "https://www.youtube.com/@jandernery",
-              alt: "YouTube",
-              src: "/youtube.svg",
-            },
-            {
-              href: "https://x.com/jandernerydev",
-              alt: "X",
-              src: "/icon-x.svg",
-            },
-            { href: "#", alt: "Instagram", src: "/instagram.svg" },
-            { href: "#", alt: "Facebook", src: "/facebook.svg" },
-            {
-              href: "https://github.com/jnerydesigner",
-              alt: "GitHub",
-              src: "/github.svg",
-            },
-          ].map(({ href, alt, src }) => (
+        <ul className="mt-2 flex w-full flex-wrap items-center justify-center gap-2 px-2 md:gap-4 md:px-10">
+          {(author?.author_social_medias ?? []).map(({ social_media_id }) => (
             <li
-              key={alt}
+              key={social_media_id.id}
               className="flex h-10 w-10 items-center justify-center rounded-sm bg-white shadow"
             >
-              <Link href={href} target="_blank" rel="noopener noreferrer" title={alt}>
-                <Image src={src} width={20} height={20} alt={alt} />
+              <Link
+                href={social_media_id.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={social_media_id.name}
+                className="flex h-full w-full items-center justify-center"
+              >
+                {showIcon(social_media_id.slug)}
               </Link>
             </li>
           ))}

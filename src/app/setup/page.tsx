@@ -46,10 +46,8 @@ export default async function PageSetup() {
   const { data: setup } = setupData;
   const setupMapper = SetupMapper.toResponse(setup);
 
-  console.log("setupMapper", setupMapper);
-
   return (
-    <section className="flex h-auto w-[95%] flex-col items-center justify-center p-4 md:w-full">
+    <section className="flex h-auto w-full flex-col items-center justify-center p-3 sm:p-4">
       <TitleTop titleStr={setupMapper.title} notH1 />
 
       <CardProductContainer cardProducts={setupMapper.setup_items} />
