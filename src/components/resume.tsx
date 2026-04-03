@@ -19,7 +19,7 @@ export const Resume = ({ resumeDataInfo }: ResumeProps) => {
   return (
     <div className="mx-auto w-full shadow-2xl md:max-w-[100%]">
       <div className="halftone-black-dark border-oliver-dark flex flex-col items-center justify-center gap-4 border-t-2 border-r-2 border-l-2 p-0 text-white md:flex-row md:p-8">
-        <div className="mt-2 flex h-30 w-30 items-center justify-center overflow-hidden rounded-full border-4 border-white shadow-sm md:mt-0 md:h-40 md:w-50 md:flex-col">
+        <div className="mt-2 flex h-32 w-32 items-center justify-center overflow-hidden rounded-full border-4 border-white shadow-sm md:mt-0 md:h-40 md:w-48 md:flex-col lg:w-52">
           <Image
             src={resumeDataInfo.avatarUrl}
             alt="Foto de Jander Nery"
@@ -43,7 +43,7 @@ export const Resume = ({ resumeDataInfo }: ResumeProps) => {
             </div>
           </div>
 
-          <div className="ga grid w-100 grid-cols-1 rounded-sm p-2 text-sm">
+          <div className="grid w-full grid-cols-1 gap-4 rounded-sm p-2 text-sm">
             <div className="flex items-center px-2">
               <Phone className="mr-2 h-4 w-4" />
               <span>{resumeDataInfo.contact.phone}</span>
@@ -161,7 +161,7 @@ export const Resume = ({ resumeDataInfo }: ResumeProps) => {
             <div className="space-y-6">
               <div>
                 <h4 className="bg-gray-light mb-2 text-center font-bold text-gray-800">Backend:</h4>
-                <div className="ga flex flex-wrap gap-2 rounded-sm p-2">
+                <div className="flex flex-wrap gap-2 rounded-sm p-2">
                   {resumeDataInfo.skills.skillBackend.map((skill, index) => (
                     <span
                       key={index}
@@ -176,7 +176,7 @@ export const Resume = ({ resumeDataInfo }: ResumeProps) => {
                 <h4 className="bg-gray-light mb-2 text-center font-bold text-gray-800">
                   Frontend:
                 </h4>
-                <div className="ga flex flex-wrap gap-2 rounded-sm p-2">
+                <div className="flex flex-wrap gap-2 rounded-sm p-2">
                   {resumeDataInfo.skills.skillFrontend.map((skill) => (
                     <span
                       key={skill.id}
@@ -191,7 +191,7 @@ export const Resume = ({ resumeDataInfo }: ResumeProps) => {
                 <h4 className="bg-gray-light mb-2 text-center font-bold text-gray-800">
                   Bancos de Dados:
                 </h4>
-                <div className="ga flex flex-wrap gap-2 rounded-sm p-2">
+                <div className="flex flex-wrap gap-2 rounded-sm p-2">
                   {resumeDataInfo.skills.skillDatabase.map((skill) => (
                     <span
                       key={skill.id}
@@ -206,7 +206,7 @@ export const Resume = ({ resumeDataInfo }: ResumeProps) => {
                 <h4 className="bg-gray-light mb-2 text-center font-bold text-gray-800">
                   Ferramentas:
                 </h4>
-                <div className="ga flex flex-wrap gap-2 rounded-sm p-2">
+                <div className="flex flex-wrap gap-2 rounded-sm p-2">
                   {resumeDataInfo.skills.skillTool.map((skill) => (
                     <span
                       key={skill.id}
@@ -221,7 +221,7 @@ export const Resume = ({ resumeDataInfo }: ResumeProps) => {
                 <h4 className="bg-gray-light mb-2 text-center font-bold text-gray-800">
                   Metodologias:
                 </h4>
-                <div className="ga flex flex-wrap gap-2 rounded-sm p-2">
+                <div className="flex flex-wrap gap-2 rounded-sm p-2">
                   {resumeDataInfo.skills.skillMethodology.map((skill) => (
                     <span
                       key={skill.id}
