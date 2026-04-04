@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --port 3000 --turbopack",
+    "dev": "next dev --port 4455 --turbopack",
     "build": "prisma generate && next build",
-    "start": "next start --port 3000",
+    "start": "next start --port 4455",
     "lint": "next lint",
     "biome:check": "biome check --max-diagnostics=50000",
     "biome:format": "biome check --write --max-diagnostics=50000",
