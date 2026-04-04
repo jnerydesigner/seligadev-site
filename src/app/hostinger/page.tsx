@@ -13,6 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Planos Hostinger | Se Liga Dev",
     description:
       "Planos Hostinger para você elevar o nível de seu desenvolvimento, com VPS e não tem desculpa de que na minha máquina não funciona.",
+    keywords: ["hostinger", "vps", "hospedagem", "servidor", "desenvolvimento"],
     alternates: {
       canonical: url,
     },
@@ -35,11 +36,14 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-
-const urlParmetersWithSlug = "/items/HostingerPage?fields=*,HostingerPageHotingerObject.*,HostingerPageHotingerObject.Hostinger_id.*,HostingerPageHotingerObject.Hostinger_id.hostinger_description.*,HostingerPageHotingerObject.Hostinger_id.hostinger_description.HostingerDescription_id.*,HostingerPageHotingerObject.Hostinger_id.hostinger_discount_description.*,HostingerPageHotingerObject.Hostinger_id.hostinger_discount_description.HostingerDiscountDescription_id.*&filter[slug][_eq]=hostinger"
+const urlParmetersWithSlug =
+  "/items/HostingerPage?fields=*,HostingerPageHotingerObject.*,HostingerPageHotingerObject.Hostinger_id.*,HostingerPageHotingerObject.Hostinger_id.hostinger_description.*,HostingerPageHotingerObject.Hostinger_id.hostinger_description.HostingerDescription_id.*,HostingerPageHotingerObject.Hostinger_id.hostinger_discount_description.*,HostingerPageHotingerObject.Hostinger_id.hostinger_discount_description.HostingerDiscountDescription_id.*&filter[slug][_eq]=hostinger";
 
 export default async function Page() {
-  const response = await getDirectusHostingerData<DirectusItemResponse<HostingerPageDataType>>(urlParmetersWithSlug);
+  const response =
+    await getDirectusHostingerData<DirectusItemResponse<HostingerPageDataType>>(
+      urlParmetersWithSlug
+    );
   const hostingerData = (response.data.HostingerPageHotingerObject ?? [])
     .map((item) => getHostingerData(item.Hostinger_id))
     .filter((item) => item !== undefined);

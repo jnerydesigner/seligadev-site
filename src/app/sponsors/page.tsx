@@ -3,6 +3,13 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { FaHome } from "react-icons/fa";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Patrocinadores | Se Liga Dev",
+  description: "Patrocinadores do Se Liga Dev",
+  keywords: ["patrocinadores", "parcerias", "apoio"],
+};
 
 export default function PageSponsors() {
   return (

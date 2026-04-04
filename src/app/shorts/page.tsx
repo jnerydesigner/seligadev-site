@@ -13,11 +13,12 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Shorts do Youtube | Se Liga Dev",
     description: "Veja alguns shorts do youtube relevantes do canal jander nery dev",
+    keywords: ["shorts", "youtube", "vídeos curtos", "tutoriais rápidos", "dicas programação"],
     alternates: {
       canonical: url,
     },
     openGraph: {
-      title: "Setup que eu utilizo",
+      title: "Shorts do Youtube | Se Liga Dev",
       description: "Veja alguns shorts do youtube relevantes do canal jander nery dev",
       url,
       siteName: "Se Liga Dev",
@@ -33,7 +34,7 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: "summary",
-      title: "Setup que eu utilizo",
+      title: "Shorts do Youtube | Se Liga Dev",
       description: "Veja alguns shorts do youtube relevantes do canal jander nery dev",
     },
   };

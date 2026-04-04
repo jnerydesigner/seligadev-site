@@ -13,6 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Setup que eu utilizo | Se Liga Dev",
     description: "Veja os produtos, equipamentos e serviços que eu uso no meu setup.",
+    keywords: ["setup", "equipamentos", "hardware", "monitor", "computador", "setup dev"],
     alternates: {
       canonical: url,
     },
@@ -39,7 +40,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-const getParams = "/items/setup?fields=*,setup_items.*,setup_items.setup_items_id.*"
+const getParams = "/items/setup?fields=*,setup_items.*,setup_items.setup_items_id.*";
 
 export default async function PageSetup() {
   const setupData = await getDirectusSetupData<SetupPageDirectusDataType>(getParams);

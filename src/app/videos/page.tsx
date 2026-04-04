@@ -16,12 +16,13 @@ export interface VideoResponseDB {
 
 export async function generateMetadata(): Promise<Metadata> {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "";
-  const url = `${baseUrl}/blog`;
+  const url = `${baseUrl}/videos`;
   const image = `https://seliga-dev.s3.us-east-1.amazonaws.com/logo-new.png`;
 
   return {
     title: `Vídeos | Se Liga Dev`,
     description: "Videos do Canal Jander Nery Dev / Se Liga Dev",
+    keywords: ["vídeos", "youtube", "tutoriais", "desenvolvimento web", "programação"],
     alternates: {
       canonical: url,
     },

@@ -40,6 +40,7 @@ export async function generateMetadata({ params }: { params: tParams }): Promise
   return {
     title: `${product.name} | Se Liga Dev`,
     description,
+    keywords: [product.name, "setup", "equipamento", "produto"],
     alternates: {
       canonical: url,
     },
@@ -65,8 +66,6 @@ export async function generateMetadata({ params }: { params: tParams }): Promise
     },
   };
 }
-
-
 
 export default async function Page({ params }: { params: tParams }) {
   const { slug }: { slug: string } = await params;
@@ -127,7 +126,7 @@ export default async function Page({ params }: { params: tParams }) {
 
       {recommendedProducts.length > 0 ? (
         <section className="mt-10 flex w-full flex-col items-center">
-          <span className="halftone-yellow border-oliver-dark rounded-sm border-2 bg-white px-4 py-2 text-sm font-semibold uppercase tracking-[0.2em] text-black">
+          <span className="halftone-yellow border-oliver-dark rounded-sm border-2 bg-white px-4 py-2 text-sm font-semibold tracking-[0.2em] text-black uppercase">
             Recomendados
           </span>
           <p className="mt-3 text-center text-sm text-gray-700">
