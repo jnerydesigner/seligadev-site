@@ -1,16 +1,17 @@
 import Image from "next/image";
 import TitleTop from "./title";
-import { Consult } from "@/lib/directus";
-import { TechnologyGeneral } from "@/types/consult.type";
-import { getTechLogoSrc, isRemoteImage } from "@/helpers/image.helper";
+import { ConsultType, TechnologyGeneral } from "@/types/consult.type";
+import { getImageUrl, getTechLogoSrc, isRemoteImage } from "@/helpers/image.helper";
 
 interface TechsProps {
-  consult: Consult;
+  consult: ConsultType;
   techsGeneral: TechnologyGeneral;
 }
 
 export const PlanConsult = ({ consult, techsGeneral }: TechsProps) => {
-  const qrcodeSrc = getTechLogoSrc([], "qrcode", techsGeneral.qrcode);
+  const qrcodeSrc = getImageUrl(consult.image);
+
+  console.log("Consult object:", qrcodeSrc);
 
   return (
     <section className="halftone-blue border-oliver-dark relative mx-auto my-2 w-full max-w-4xl rounded-lg border-2 p-6 shadow-lg">
@@ -32,8 +33,8 @@ export const PlanConsult = ({ consult, techsGeneral }: TechsProps) => {
                 <Image
                   src={logoSrc}
                   alt={`Logo ${tech.tech_id.name}`}
-                  width={300}
-                  height={300}
+                  width={200}
+                  height={200}
                   unoptimized={isRemoteImage(logoSrc)}
                   className="h-full w-full object-cover"
                 />

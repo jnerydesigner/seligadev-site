@@ -27,3 +27,9 @@ export const getDirectusAuthor = async <T = unknown>() => {
 
     return response.data
 }
+
+export const getDirectusConsult = async <T = unknown>() => {
+    const response = await api.get<T>(`/items/consult`);
+    return response.data
+
+}

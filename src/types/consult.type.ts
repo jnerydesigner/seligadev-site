@@ -38,3 +38,13 @@ export interface ServicesId {
     description_large: string
     services: number[]
 }
+
+export type ConsultTypeData = {
+    data: ConsultType
+}
+
+export type ConsultType = {
+    title: string
+    bio: string
+    image: string
+}

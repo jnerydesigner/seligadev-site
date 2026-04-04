@@ -25,6 +25,8 @@ export type Technologies = TechnologyGeneral
 
 export type Consult = {
     title: string
+    bio: string
+    image: string
 }
 
 type Schema = {
