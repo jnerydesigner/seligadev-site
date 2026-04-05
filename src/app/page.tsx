@@ -6,11 +6,12 @@ import { NewsTicker } from "@/components/ticker";
 import { CardFlexHome } from "@/components/card-flex-home";
 
 import { getGlobals } from "@/lib/directus";
-import { getDirectusPostsHome, getDirectusResume } from "@/api/directus";
+import { getDirectusAdvertising, getDirectusPostsHome, getDirectusResume } from "@/api/directus";
 import { JsonLd } from "@/components/json-ld";
 import { HomePostsSection } from "@/components/home-posts-section";
 import { ResumeDirectusTypeData } from "@/types/resume.type";
 import { PostHomeDirectusTypeHome } from "@/types/post-directus.type";
+import { AdvertisingDirectusTypeData } from "@/types/advertising.type";
 
 export const dynamic = "force-dynamic";
 
@@ -63,6 +64,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function Home() {
   const resume = await getDirectusResume<ResumeDirectusTypeData>();
   const { data: postsHome } = await getDirectusPostsHome<PostHomeDirectusTypeHome>();
+  const advertising = await getDirectusAdvertising<AdvertisingDirectusTypeData>();
   const global = await getGlobals();
   const featuredPost = postsHome[0] ?? null;
   const recentPosts = postsHome.slice(1, 5);
@@ -120,6 +122,7 @@ export default async function Home() {
           postsHome={postsHome}
           featuredPost={featuredPost}
           recentPosts={recentPosts}
+          advertising={advertising}
         />
       </div>
     </>
