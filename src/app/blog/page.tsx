@@ -1,7 +1,6 @@
 import { CardBlog } from "@/components/card-blog";
 import TitleTop from "@/components/title";
 import { getPosts } from "@/lib/directus";
-import prisma from "@/lib/prisma";
 import { Metadata } from "next";
 import React from "react";
 
@@ -43,25 +42,11 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function PageBlog() {
-  const findPosts = await prisma.post.findMany();
-
-  const { data: posts, meta } = await getPosts(1, 10);
-
-  // console.log("data:", JSON.stringify(posts[0].slug, null, 2));
+  const { data: posts } = await getPosts(1, 10);
 
   return (
     <section className="flex h-auto w-full flex-col items-center justify-center p-3 sm:p-4">
       <TitleTop titleStr="Blog do Se Liga Dev - Notícias Gerais" notH1 />
-      {findPosts.map((post) => (
-        <CardBlog
-          key={post.id}
-          title={post.title}
-          content={post.content}
-          slug={post.slug}
-          imageUrl={post.imageUrl || ""}
-        />
-      ))}
-
       {posts.map((post) => (
         <CardBlog
           key={post.id}
