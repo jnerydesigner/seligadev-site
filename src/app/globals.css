@@ -517,8 +517,34 @@
   padding-left: 1.5rem;
 }
 
+.chatgpt-html ul {
+  list-style: disc outside;
+}
+
+.chatgpt-html ol {
+  list-style: decimal outside;
+}
+
+.chatgpt-html ul ul {
+  list-style-type: circle;
+}
+
+.chatgpt-html ul ul ul {
+  list-style-type: square;
+}
+
+.chatgpt-html ol ol {
+  list-style-type: lower-alpha;
+}
+
+.chatgpt-html ol ol ol {
+  list-style-type: lower-roman;
+}
+
 .chatgpt-html li {
+  display: list-item;
   margin: 0.35rem 0;
+  padding-left: 0.15rem;
 }
 
 .chatgpt-html blockquote {
