@@ -2,10 +2,15 @@
   "apps": [
     {
       "name": "seligadev",
+      "cwd": "/root/projects/seligadev",
       "script": "yarn",
       "args": "start",
       "autorestart": true,
-      "watch": true
+      "watch": false,
+      "env": {
+        "NODE_ENV": "production",
+        "PORT": "4455"
+      }
     }
   ]
 }
