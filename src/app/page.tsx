@@ -3,69 +3,16 @@ import Hero from "@/components/hero";
 import { CardHome } from "@/components/card-home";
 import { Metadata } from "next";
 import { NewsTicker } from "@/components/ticker";
-import prisma from "@/lib/prisma";
 import { CardFlexHome } from "@/components/card-flex-home";
 
 import { getGlobals } from "@/lib/directus";
-import { getDirectusAuthor, getDirectusPostsHome, getDirectusResume } from "@/api/directus";
-import { AuthorDirectusTypeData } from "@/types/author.type";
+import { getDirectusPostsHome, getDirectusResume } from "@/api/directus";
 import { JsonLd } from "@/components/json-ld";
 import { HomePostsSection } from "@/components/home-posts-section";
 import { ResumeDirectusTypeData } from "@/types/resume.type";
-import { PostHomeDirectusTypeHome } from "@/types/post-home-directus.type";
+import { PostHomeDirectusTypeHome } from "@/types/post-directus.type";
 
-type HomePostPreview = {
-  id: number | string;
-  title: string;
-  slug: string;
-  content: string;
-  banner?: string | null;
-  imageUrl?: string | null;
-  dateCreated?: string;
-};
-
-const simulatedHomePosts: HomePostPreview[] = [
-  {
-    id: 1,
-    title: "Prisma + NestJS: iniciando o acesso ao banco de dados",
-    slug: "prisma-nestjs-iniciando-o-acesso-ao-banco",
-    content: "Aprenda a conectar sua API NestJS ao banco de dados usando Prisma.",
-    banner: "/no-image.png",
-    dateCreated: "2026-04-05T10:00:00.000Z",
-  },
-  {
-    id: 2,
-    title: "Cansei de reescrever a mesma lógica de query no NestJS",
-    slug: "cansei-de-reescrever-query-nestjs",
-    content: "Uma abordagem simples para reaproveitar filtros e paginação.",
-    banner: "/no-image.png",
-    dateCreated: "2026-04-04T10:00:00.000Z",
-  },
-  {
-    id: 3,
-    title: "Destrinchando o NestJS do zero ao primeiro endpoint",
-    slug: "destrinchando-o-nestjs-do-zero",
-    content: "Uma introdução prática para começar com NestJS sem complicação.",
-    banner: "/no-image.png",
-    dateCreated: "2026-04-03T10:00:00.000Z",
-  },
-  {
-    id: 4,
-    title: "Como organizar melhor seus módulos no backend",
-    slug: "como-organizar-melhor-seus-modulos",
-    content: "Dicas para estruturar projetos backend com mais clareza.",
-    banner: "/no-image.png",
-    dateCreated: "2026-04-02T10:00:00.000Z",
-  },
-  {
-    id: 5,
-    title: "Boas práticas para publicar conteúdo técnico no blog",
-    slug: "boas-praticas-para-publicar-conteudo-tecnico",
-    content: "Como deixar seus artigos mais legíveis, escaneáveis e úteis.",
-    banner: "/no-image.png",
-    dateCreated: "2026-04-01T10:00:00.000Z",
-  },
-];
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
   const global = await getGlobals();
@@ -114,24 +61,15 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Home() {
-  const author = await getDirectusAuthor<AuthorDirectusTypeData>();
   const resume = await getDirectusResume<ResumeDirectusTypeData>();
-
-  const postsHome = await getDirectusPostsHome<PostHomeDirectusTypeHome>();
-
-
-  console.log("Posts data:", JSON.stringify(postsHome.data[0].slug, null, 2));
+  const { data: postsHome } = await getDirectusPostsHome<PostHomeDirectusTypeHome>();
   const global = await getGlobals();
-
-  const posts = await prisma.post.findMany({
-    take: 5,
-  });
-  const titleWithSlug = posts.map((post) => {
-    return {
-      title: post.title,
-      slug: post.slug,
-    };
-  });
+  const featuredPost = postsHome[0] ?? null;
+  const recentPosts = postsHome.slice(1, 5);
+  const titleWithSlug = postsHome.map((post) => ({
+    title: post.title,
+    slug: post.slug,
+  }));
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -179,8 +117,9 @@ export default async function Home() {
         </div>
 
         <HomePostsSection
-          featuredPost={simulatedHomePosts[0]}
-          recentPosts={simulatedHomePosts.slice(1, 5)}
+          postsHome={postsHome}
+          featuredPost={featuredPost}
+          recentPosts={recentPosts}
         />
       </div>
     </>

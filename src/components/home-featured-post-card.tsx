@@ -1,6 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
-import { normalizeImageSrc } from "@/helpers/image.helper";
+import { getImageUrl, normalizeImageSrc } from "@/helpers/image.helper";
+
+const getPlainText = (value: string) =>
+  value.replace(/<[^>]*>/g, " ").replace(/&nbsp;/g, " ").replace(/\s+/g, " ").trim();
 
 interface HomeFeaturedPostCardProps {
   id: number | string;
@@ -18,11 +21,15 @@ export function HomeFeaturedPostCard({
   content,
   banner,
   imageUrl,
-  dateCreated,
 }: HomeFeaturedPostCardProps) {
-  const imageSrc = normalizeImageSrc(banner || imageUrl || "/no-image.png");
+  const imageSrc = banner
+    ? getImageUrl(banner)
+    : normalizeImageSrc(imageUrl || "/no-image.png");
+  const plainContent = getPlainText(content);
   const summary =
-    content && content.length > 180 ? content.substring(0, 180).trim() + "..." : content || "";
+    plainContent && plainContent.length > 180
+      ? `${plainContent.substring(0, 180).trim()}...`
+      : plainContent;
 
   return (
     <Link href={`/blog/${slug}`} className="group block h-full w-full">
