@@ -22,8 +22,9 @@ export const getDirectusShorts = async <T = unknown>() => {
 }
 
 export const getDirectusAuthor = async <T = unknown>() => {
-    const response = await api.get<T>(`/items/User?fields=*,user_author.author_id.*,user_author.author_id.author_social_medias.social_media_id.*,user_author.author_id.post.post_id.*);
-    return response.data`);
+    const response = await api.get<T>(
+        `/items/User?fields=*,user_author.author_id.*,user_author.author_id.author_social_medias.social_media_id.*,user_author.author_id.post.post_id.*`
+    );
 
     return response.data
 }
