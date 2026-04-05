@@ -86,9 +86,9 @@ export default async function AdvertisingPage({ params }: { params: Params }) {
 
         <div className="border-oliver-dark flex w-full flex-col gap-3 rounded-sm border-2 bg-white p-4 text-center text-zinc-800">
           <h2 className="font-bangers text-2xl leading-tight sm:text-3xl">{advertising.title}</h2>
-          <p className="text-sm uppercase tracking-wide text-zinc-600 sm:text-base">
+          {/* <p className="text-sm uppercase tracking-wide text-zinc-600 sm:text-base">
             Posicao: {advertising.position}
-          </p>
+          </p> */}
           <p className="text-sm text-zinc-700 sm:text-base">
             Esta e a pagina de detalhes da publicidade selecionada.
           </p>
