@@ -11,13 +11,14 @@ export async function generateMetadata(): Promise<Metadata> {
   const url = `${process.env.NEXT_PUBLIC_BASE_URL}/shorts`;
   const image = `https://seliga-dev.s3.us-east-1.amazonaws.com/logo-new.png`;
   return {
-    title: "Shorts do Youtube | Se Liga Dev",
+    title: "Shorts do Youtube",
     description: "Veja alguns shorts do youtube relevantes do canal jander nery dev",
+    keywords: ["shorts", "youtube", "vídeos curtos", "tutoriais rápidos", "dicas programação"],
     alternates: {
       canonical: url,
     },
     openGraph: {
-      title: "Setup que eu utilizo",
+      title: "Shorts do Youtube | Se Liga Dev",
       description: "Veja alguns shorts do youtube relevantes do canal jander nery dev",
       url,
       siteName: "Se Liga Dev",
@@ -33,7 +34,7 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: "summary",
-      title: "Setup que eu utilizo",
+      title: "Shorts do Youtube | Se Liga Dev",
       description: "Veja alguns shorts do youtube relevantes do canal jander nery dev",
     },
   };

@@ -18,13 +18,13 @@ export async function generateMetadata(): Promise<Metadata> {
   const image = `https://seliga-dev.s3.us-east-1.amazonaws.com/logo-new.png`;
 
   return {
-    title: `Compre meu Café | Se Liga Dev`,
+    title: "Compre meu Café",
     description: "Contribua com o projeto Se Liga Dev comprando um café virtual.",
     alternates: {
       canonical: url,
     },
     openGraph: {
-      title: `Compre meu Café | Se Liga Dev`,
+      title: "Compre meu Café",
       type: "website",
       description: "Contribua com o projeto Se Liga Dev comprando um café virtual.",
       url,
@@ -40,7 +40,7 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: `Compre meu Café | Se Liga Dev`,
+      title: "Compre meu Café",
       description: "Contribua com o projeto Se Liga Dev comprando um café virtual.",
       images: [image],
     },

@@ -6,18 +6,30 @@ import { NewsTicker } from "@/components/ticker";
 import prisma from "@/lib/prisma";
 import { CardFlexHome } from "@/components/card-flex-home";
 
-import { getGlobals } from '@/lib/directus';
+import { getGlobals } from "@/lib/directus";
 import { getDirectusAuthor } from "@/api/directus";
 import { AuthorDirectusTypeData } from "@/types/author.type";
-
+import { JsonLd } from "@/components/json-ld";
 
 export async function generateMetadata(): Promise<Metadata> {
   const global = await getGlobals();
   const url = `${process.env.NEXT_PUBLIC_BASE_URL}`;
   const image = global.image_url;
   return {
-    title: global.title,
+    title: {
+      absolute: global.title,
+    },
     description: global.description,
+    keywords: [
+      "desenvolvimento web",
+      "programação",
+      "blog tech",
+      "tutoriais",
+      "carreira developer",
+      "javascript",
+      "react",
+      "next.js",
+    ],
     alternates: {
       canonical: url,
     },
@@ -41,16 +53,13 @@ export async function generateMetadata(): Promise<Metadata> {
       title: global.title,
       description: global.description,
       images: [global.image_url],
-    }
+    },
   };
 }
 
-
-
 export default async function Home() {
   const author = await getDirectusAuthor<AuthorDirectusTypeData>();
-
-
+  const global = await getGlobals();
 
   const posts = await prisma.post.findMany({
     take: 5,
@@ -62,25 +71,49 @@ export default async function Home() {
     };
   });
 
-  return (
-    <div className="w-full">
-      <NewsTicker postsTitleSlug={titleWithSlug} />
-      <div className="grid h-auto w-full auto-rows-auto grid-cols-12 gap-2 md:items-stretch">
-        <Hero className="col-span-12 h-full md:col-span-8" author={author} />
-        <CardFlexHome
-          title="Consultoria Premium 🚀"
-          description="A orientação certa para levar seu projeto ao próximo nível."
-          link="/consult"
-          className="halftone-purple col-span-12 h-full md:col-span-4"
-        />
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Se Liga Dev",
+    url: process.env.NEXT_PUBLIC_BASE_URL || "https://seligadev.com",
+    description: global.description,
+    publisher: {
+      "@type": "Organization",
+      name: "Se Liga Dev",
+      logo: {
+        "@type": "ImageObject",
+        url: global.image_url,
+      },
+    },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${process.env.NEXT_PUBLIC_BASE_URL}/blog?q={search_term_string}`,
+      "query-input": "required name=search_term_string",
+    },
+  };
 
-        <CardHome
-          title="🌏 Quer uma VPS para aumentar sua produtividade 🚀"
-          description="Vem para Hostinger e seja feliz"
-          link="/hostinger"
-          className="halftone-emerald border-oliver-dark col-span-12 rounded-sm border-2"
-        />
+  return (
+    <>
+      <JsonLd data={jsonLd} />
+      <div className="w-full">
+        <NewsTicker postsTitleSlug={titleWithSlug} />
+        <div className="grid h-auto w-full auto-rows-auto grid-cols-12 gap-2 md:items-stretch">
+          <Hero className="col-span-12 h-full md:col-span-8" author={author} />
+          <CardFlexHome
+            title="Consultoria Premium 🚀"
+            description="A orientação certa para levar seu projeto ao próximo nível."
+            link="/consult"
+            className="halftone-purple col-span-12 h-full md:col-span-4"
+          />
+
+          <CardHome
+            title="🌏 Quer uma VPS para aumentar sua produtividade 🚀"
+            description="Vem para Hostinger e seja feliz"
+            link="/hostinger"
+            className="halftone-emerald border-oliver-dark col-span-12 rounded-sm border-2"
+          />
+        </div>
       </div>
-    </div>
+    </>
   );
 }

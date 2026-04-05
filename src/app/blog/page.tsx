@@ -11,8 +11,10 @@ export async function generateMetadata(): Promise<Metadata> {
   const image = `https://seliga-dev.s3.us-east-1.amazonaws.com/logo-new.png`;
 
   return {
-    title: `Blog | Se Liga Dev`,
-    description: "Blog do Se Liga Dev",
+    title: "Blog",
+    description:
+      "Blog do Se Liga Dev - Artigos sobre desenvolvimento web, programação, carreira tech e tutoriais.",
+    keywords: ["blog", "desenvolvimento web", "programação", "tutoriais", "carreira tech"],
     alternates: {
       canonical: url,
     },
@@ -43,11 +45,9 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function PageBlog() {
   const findPosts = await prisma.post.findMany();
 
-  const { data: posts, meta } = await getPosts(1, 10)
+  const { data: posts, meta } = await getPosts(1, 10);
 
   // console.log("data:", JSON.stringify(posts[0].slug, null, 2));
-
-
 
   return (
     <section className="flex h-auto w-full flex-col items-center justify-center p-3 sm:p-4">
