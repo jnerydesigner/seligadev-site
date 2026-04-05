@@ -11,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const image = `https://seliga-dev.s3.us-east-1.amazonaws.com/logo-new.png`;
 
   return {
-    title: `Blog | Se Liga Dev`,
+    title: "Blog",
     description:
       "Blog do Se Liga Dev - Artigos sobre desenvolvimento web, programação, carreira tech e tutoriais.",
     keywords: ["blog", "desenvolvimento web", "programação", "tutoriais", "carreira tech"],

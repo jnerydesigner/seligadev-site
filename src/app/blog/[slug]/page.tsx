@@ -7,12 +7,59 @@ import { ConvertMdToText } from "@/lib/convert-md-to-text";
 import { getPostBySlug } from "@/lib/directus";
 import { PostContainerDirectus } from "@/components/post-container-directus";
 import { JsonLd } from "@/components/json-ld";
+import { getDirectusAssetUrl } from "@/helpers/image.helper";
 export const dynamic = "force-dynamic";
 
 type tParams = Promise<{ slug: string }>;
 
 export async function generateMetadata({ params }: { params: tParams }): Promise<Metadata> {
   const { slug }: { slug: string } = await params;
+  const directusPost = await getPostBySlug(slug);
+
+  if (directusPost) {
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "";
+    const url = `${baseUrl}/blog/${directusPost.slug}`;
+    const description = directusPost.content
+      ?.replace(/<[^>]*>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim()
+      .slice(0, 160);
+    const image = getDirectusAssetUrl(
+      directusPost.banner,
+      "https://seliga-dev.s3.us-east-1.amazonaws.com/logo-new.png"
+    );
+
+    return {
+      title: directusPost.title,
+      description: description || directusPost.title,
+      keywords: [directusPost.title, "blog", "desenvolvimento web", "programação"],
+      alternates: {
+        canonical: url,
+      },
+      openGraph: {
+        title: directusPost.title,
+        type: "article",
+        description: description || directusPost.title,
+        url,
+        images: [
+          {
+            url: image,
+            width: 800,
+            height: 600,
+            alt: directusPost.title,
+          },
+        ],
+        siteName: "Se Liga Dev",
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: directusPost.title,
+        description: description || directusPost.title,
+        images: [image],
+      },
+    };
+  }
+
   const post = await prisma.post.findFirst({
     where: {
       slug,
@@ -32,7 +79,7 @@ export async function generateMetadata({ params }: { params: tParams }): Promise
   const image = post.imageUrl ?? `https://seliga-dev.s3.us-east-1.amazonaws.com/logo-new.png`;
 
   return {
-    title: `${post.title} | Se Liga Dev`,
+    title: post.title,
     description: textMD,
     keywords: [post.title, "blog", "desenvolvimento web", "programação"],
     alternates: {

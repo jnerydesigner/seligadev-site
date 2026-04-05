@@ -7,10 +7,10 @@ import { getHostingerData } from "../services/hostinger.service";
 import { HostingerPageDataType } from "@/types/hostinger-page-data.type";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const url = `${process.env.NEXT_PUBLIC_BASE_URL}/setup`;
+  const url = `${process.env.NEXT_PUBLIC_BASE_URL}/hostinger`;
   const imageHostinger = `${process.env.NEXT_PUBLIC_BASE_URL}/images/image-hostinger.png`;
   return {
-    title: "Planos Hostinger | Se Liga Dev",
+    title: "Planos Hostinger",
     description:
       "Planos Hostinger para você elevar o nível de seu desenvolvimento, com VPS e não tem desculpa de que na minha máquina não funciona.",
     keywords: ["hostinger", "vps", "hospedagem", "servidor", "desenvolvimento"],

@@ -16,7 +16,9 @@ export async function generateMetadata(): Promise<Metadata> {
   const url = `${process.env.NEXT_PUBLIC_BASE_URL}`;
   const image = global.image_url;
   return {
-    title: global.title,
+    title: {
+      absolute: global.title,
+    },
     description: global.description,
     keywords: [
       "desenvolvimento web",

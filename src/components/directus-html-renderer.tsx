@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useMemo } from "react";
+import { Fragment, useMemo, useState, useEffect } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dracula } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
@@ -191,14 +191,19 @@ const splitContentSegments = (html: string): ContentSegment[] => {
 };
 
 export function DirectusHtmlRenderer({ html, className }: DirectusHtmlRendererProps) {
+  const [isMounted, setIsMounted] = useState(false);
   const processedHtml = transformDirectusHtml(html);
   const segments = splitContentSegments(processedHtml);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   return (
     <div className={`chatgpt-html ${className ?? ""}`.trim()}>
       {segments.map((segment, index) => {
         if (segment.type === "code") {
-          return (
+          return isMounted ? (
             <SyntaxHighlighter
               key={`code-${index}`}
               language={segment.language}
@@ -232,6 +237,13 @@ export function DirectusHtmlRenderer({ html, className }: DirectusHtmlRendererPr
             >
               {segment.value}
             </SyntaxHighlighter>
+          ) : (
+            <pre
+              key={`code-${index}`}
+              className="mt-5 mb-5 overflow-x-auto rounded-md bg-[#282a36] p-4 font-mono text-sm text-gray-100"
+            >
+              <code>{segment.value}</code>
+            </pre>
           );
         }
 

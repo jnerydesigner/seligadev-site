@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: { params: tParams }): Promise
   const image = product.imageUrl ?? `${baseUrl}/og-default.png`;
 
   return {
-    title: `${product.name} | Se Liga Dev`,
+    title: product.name,
     description,
     keywords: [product.name, "setup", "equipamento", "produto"],
     alternates: {

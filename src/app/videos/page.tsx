@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const image = `https://seliga-dev.s3.us-east-1.amazonaws.com/logo-new.png`;
 
   return {
-    title: `Vídeos | Se Liga Dev`,
+    title: "Vídeos",
     description: "Videos do Canal Jander Nery Dev / Se Liga Dev",
     keywords: ["vídeos", "youtube", "tutoriais", "desenvolvimento web", "programação"],
     alternates: {

@@ -6,9 +6,33 @@ import { FaHome } from "react-icons/fa";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Patrocinadores | Se Liga Dev",
-  description: "Patrocinadores do Se Liga Dev",
+  title: "Patrocinadores",
+  description: "Patrocinadores e parcerias do Se Liga Dev.",
   keywords: ["patrocinadores", "parcerias", "apoio"],
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/sponsors`,
+  },
+  openGraph: {
+    title: "Patrocinadores",
+    description: "Patrocinadores e parcerias do Se Liga Dev.",
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}/sponsors`,
+    siteName: "Se Liga Dev",
+    type: "website",
+    images: [
+      {
+        url: "https://seliga-dev.s3.us-east-1.amazonaws.com/logo-new.png",
+        width: 800,
+        height: 600,
+        alt: "Se Liga Dev",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Patrocinadores",
+    description: "Patrocinadores e parcerias do Se Liga Dev.",
+    images: ["https://seliga-dev.s3.us-east-1.amazonaws.com/logo-new.png"],
+  },
 };
 
 export default function PageSponsors() {
