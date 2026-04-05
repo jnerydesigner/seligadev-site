@@ -27,3 +27,14 @@ export const getDirectusAuthor = async <T = unknown>() => {
 
     return response.data
 }
+
+export const getDirectusResume = async <T = unknown>() => {
+    const response = await api.get<T>(`/items/resume?fields=*,User.User_id.*,User.User_id.user_author.author_id.*,User.User_id.user_author.author_id.author_social_medias.social_media_id.*,resume_experience.experience_id.*,User.User_id.user_author.author_id.post.post_id.*,resume_education.education_id.*&deep[resume_experience][_sort]=-experience_id.admission`);
+
+    return response.data
+}
+
+export const getDirectusPostsHome = async <T = unknown>() => {
+    const response = await api.get<T>(`/items/post?fields=*,blog.blog_id.*&page=1&limit=10&meta=filter_count&sort=-date_created`);
+    return response.data
+}
