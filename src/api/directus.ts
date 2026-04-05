@@ -40,6 +40,8 @@ export const getDirectusPostsHome = async <T = unknown>() => {
         `/items/post?fields=id,title,slug,content,banner,date_created,date_updated,blog.blog_id.*&page=1&limit=5&meta=filter_count&sort=-date_created`
     );
     return response.data
+}
+
 export const getDirectusConsult = async <T = unknown>() => {
     const response = await api.get<T>(`/items/consult`);
     return response.data
