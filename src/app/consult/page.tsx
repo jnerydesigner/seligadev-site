@@ -1,6 +1,7 @@
+import { getDirectusConsult } from "@/api/directus";
 import { PlanConsult } from "@/components/planConsult";
 import { getConsult, getTechnologies } from "@/lib/directus";
-import { TechnologyGeneral } from "@/types/consult.type";
+import { ConsultType, ConsultTypeData, TechnologyGeneral } from "@/types/consult.type";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -48,12 +49,14 @@ export const metadata: Metadata = {
   },
 };
 export default async function Consult() {
-  const consult = await getConsult()
+  const consult = await getDirectusConsult<ConsultTypeData>()
+
+  console.log("Consult data:", JSON.stringify(consult, null, 2)); // Log completo do objeto consult
   const technologies: TechnologyGeneral[] = await getTechnologies();
 
   return (
     <>
-      <PlanConsult consult={consult} techsGeneral={technologies[0]} />
+      <PlanConsult consult={consult.data} techsGeneral={technologies[0]} />
     </>
   );
 }
