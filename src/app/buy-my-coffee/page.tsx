@@ -51,11 +51,8 @@ export default async function PageByMyCoffee() {
   const bymycoffe: ByMyCoofeType = await getByMyCoffe();
   return (
     <section className="flex w-full flex-col items-center justify-center p-3 sm:p-4">
+      <TitleTop titleStr={bymycoffe.title} notH1 />
       <div className="halftone-blue border-oliver-dark flex w-full max-w-3xl flex-col items-center justify-center gap-4 rounded-sm border-2 bg-red-300 p-4 sm:p-6">
-        <TitleHalftone
-          h2Exists={true}
-          title={bymycoffe.title}
-        />
         <div className="flex w-full items-center justify-center">
           <Image
             src={getImageUrl(bymycoffe.qrcode_pix)}

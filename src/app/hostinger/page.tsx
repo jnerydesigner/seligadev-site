@@ -6,6 +6,8 @@ import React from "react";
 import { getHostingerData } from "../services/hostinger.service";
 import { HostingerPageDataType } from "@/types/hostinger-page-data.type";
 
+export const dynamic = "force-dynamic";
+
 export async function generateMetadata(): Promise<Metadata> {
   const url = `${process.env.NEXT_PUBLIC_BASE_URL}/hostinger`;
   const imageHostinger = `${process.env.NEXT_PUBLIC_BASE_URL}/images/image-hostinger.png`;

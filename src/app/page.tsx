@@ -3,13 +3,16 @@ import Hero from "@/components/hero";
 import { CardHome } from "@/components/card-home";
 import { Metadata } from "next";
 import { NewsTicker } from "@/components/ticker";
-import prisma from "@/lib/prisma";
 import { CardFlexHome } from "@/components/card-flex-home";
 
 import { getGlobals } from "@/lib/directus";
-import { getDirectusAuthor } from "@/api/directus";
-import { AuthorDirectusTypeData } from "@/types/author.type";
+import { getDirectusPostsHome, getDirectusResume } from "@/api/directus";
 import { JsonLd } from "@/components/json-ld";
+import { HomePostsSection } from "@/components/home-posts-section";
+import { ResumeDirectusTypeData } from "@/types/resume.type";
+import { PostHomeDirectusTypeHome } from "@/types/post-directus.type";
+
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
   const global = await getGlobals();
@@ -58,18 +61,15 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Home() {
-  const author = await getDirectusAuthor<AuthorDirectusTypeData>();
+  const resume = await getDirectusResume<ResumeDirectusTypeData>();
+  const { data: postsHome } = await getDirectusPostsHome<PostHomeDirectusTypeHome>();
   const global = await getGlobals();
-
-  const posts = await prisma.post.findMany({
-    take: 5,
-  });
-  const titleWithSlug = posts.map((post) => {
-    return {
-      title: post.title,
-      slug: post.slug,
-    };
-  });
+  const featuredPost = postsHome[0] ?? null;
+  const recentPosts = postsHome.slice(1, 5);
+  const titleWithSlug = postsHome.map((post) => ({
+    title: post.title,
+    slug: post.slug,
+  }));
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -98,21 +98,29 @@ export default async function Home() {
       <div className="w-full">
         <NewsTicker postsTitleSlug={titleWithSlug} />
         <div className="grid h-auto w-full auto-rows-auto grid-cols-12 gap-2 md:items-stretch">
-          <Hero className="col-span-12 h-full md:col-span-8" author={author} />
+          <div className="col-span-12 grid gap-2 md:col-span-8">
+            <Hero className="col-span-12 h-full" author={resume.data[0].User[0].User_id} />
+            <CardHome
+              title="🌏 Quer uma VPS para aumentar sua produtividade 🚀"
+              description="Vem para Hostinger e seja feliz"
+              link="/hostinger"
+              className="halftone-emerald border-oliver-dark col-span-12 rounded-sm border-2"
+            />
+          </div>
+
           <CardFlexHome
             title="Consultoria Premium 🚀"
             description="A orientação certa para levar seu projeto ao próximo nível."
             link="/consult"
             className="halftone-purple col-span-12 h-full md:col-span-4"
           />
-
-          <CardHome
-            title="🌏 Quer uma VPS para aumentar sua produtividade 🚀"
-            description="Vem para Hostinger e seja feliz"
-            link="/hostinger"
-            className="halftone-emerald border-oliver-dark col-span-12 rounded-sm border-2"
-          />
         </div>
+
+        <HomePostsSection
+          postsHome={postsHome}
+          featuredPost={featuredPost}
+          recentPosts={recentPosts}
+        />
       </div>
     </>
   );

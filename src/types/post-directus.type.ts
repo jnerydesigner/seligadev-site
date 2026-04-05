@@ -3,6 +3,9 @@ export interface PostDirectusType {
     meta: Meta
 }
 
+export type PostHomeDirectusTypeHome = PostDirectusType
+export type PostHomeDirectusTypeData = PostData
+
 export interface Meta {
     filter_count: number
 }

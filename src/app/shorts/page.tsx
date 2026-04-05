@@ -5,7 +5,7 @@ import { ShortDataType } from "@/types/shorts.type";
 import { Metadata } from "next";
 import React from "react";
 
-export const revalidate = 360;
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
   const url = `${process.env.NEXT_PUBLIC_BASE_URL}/shorts`;

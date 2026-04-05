@@ -5,14 +5,15 @@ import { twMerge } from "tailwind-merge";
 import { AuthorDirectusTypeData } from "@/types/author.type";
 import { isRemoteImage, normalizeImageSrc } from "@/helpers/image.helper";
 import { showIcon } from "@/lib/show-icon";
+import { AuthorDirectusType } from "@/types/resume.type";
 
 interface HeroProps {
   className: string;
-  author: AuthorDirectusTypeData;
+  author: AuthorDirectusType;
 }
 
 export default function Hero(props: HeroProps) {
-  const authorPage = props.author.data[0];
+  const authorPage = props.author;
   const author = authorPage?.user_author[0]?.author_id;
   const authorAvatarUrl = normalizeImageSrc(
     author?.avatar_url,
