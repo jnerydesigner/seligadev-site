@@ -2,7 +2,7 @@ import TitleTop from "./title";
 
 export default function Footer() {
   return (
-    <footer className="halftone-blue border-oliver-dark mx-auto my-0 mb-1 flex w-full items-center justify-center rounded-l-sm rounded-r-sm border-[2px] px-3 py-4 text-[0.8rem] md:px-2 md:py-2 md:text-[1rem]">
+    <footer className="halftone-blue border-oliver-dark mx-auto mt-6 mb-1 flex w-full items-center justify-center rounded-l-sm rounded-r-sm border-[2px] px-3 py-4 text-[0.8rem] md:mt-8 md:px-2 md:py-2 md:text-[1rem]">
       <TitleTop
         titleStr={`&copy; 2024 Seligadev. Todos os direitos reservados.`}
         notH1={false}
